@@ -24,6 +24,13 @@ class AppStyles
 
   );
 
+  static const textStyle20mainColor2W700 = TextStyle(
+      fontWeight: FontWeight.w700,
+      fontSize: 20,
+      color: AppColors.mainColor2
+
+  );
+
 
 
 

@@ -8,6 +8,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../../certificates/presentation/views/certificates_view.dart';
+import '../../../../gifts/presentation/views/gifts_view.dart';
 import 'certificates_and_gifts_view_body_item.dart';
 
 class CertificatesAndGiftsViewBody extends StatelessWidget {
@@ -36,7 +37,7 @@ class CertificatesAndGiftsViewBody extends StatelessWidget {
               image: AppImages.gift,
               color: AppColors.mainColor,
               height: 40,
-              screen: const CertificatesView(),
+              screen: const GiftsView(),
             ),
           ),
         ],
