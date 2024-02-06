@@ -16,7 +16,7 @@ class CertificatesAndGiftsView extends StatelessWidget {
       appBar: CustomGlobalAppBar(
         title: LocaleKeys.awards.tr(),
       ),
-      body: CertificatesAndGiftsViewBody(),
+      body: const CertificatesAndGiftsViewBody(),
     ));
   }
 }

@@ -16,4 +16,5 @@ class AppImages
   static const String cutLogo = "assets/images/pngs/اليوم_الهندسي__1___1__page-0002-removebg-preview 6.png";
 
 
+
 }

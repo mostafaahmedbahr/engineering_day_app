@@ -7,6 +7,7 @@ abstract class LocaleKeys {
   static const tickets = "tickets";
   static const certifications = "certifications";
   static const gifts = "gifts";
+  static const showDetails = "showDetails";
 
 
 

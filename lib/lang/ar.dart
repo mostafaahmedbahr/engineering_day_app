@@ -8,6 +8,7 @@ class Ar
    "home" : "الرئيسية",
    "certifications" : "الشهادات",
    "gifts" : "الهدايا",
+   "showDetails" : "عرض التفاصيل",
 
 
 

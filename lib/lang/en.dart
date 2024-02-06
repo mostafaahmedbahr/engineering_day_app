@@ -8,6 +8,7 @@ class En{
     "home" : "Home",
     "certifications" : "Certifications",
     "gifts" : "Gifts",
+    "showDetails" : "Show Details",
 
 
   };

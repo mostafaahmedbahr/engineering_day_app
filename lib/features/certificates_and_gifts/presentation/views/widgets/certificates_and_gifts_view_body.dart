@@ -7,6 +7,7 @@ import 'package:engineering_day_app/lang/locale_keys.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import '../../../../certificates/presentation/views/certificates_view.dart';
 import 'certificates_and_gifts_view_body_item.dart';
 
 class CertificatesAndGiftsViewBody extends StatelessWidget {
@@ -23,6 +24,7 @@ class CertificatesAndGiftsViewBody extends StatelessWidget {
               title: LocaleKeys.certifications.tr(),
               image: AppImages.cup,
               color: AppColors.darkMainColor2,
+              screen: const CertificatesView(),
             ),
           ),
           const CustomSizedBox(
@@ -34,6 +36,7 @@ class CertificatesAndGiftsViewBody extends StatelessWidget {
               image: AppImages.gift,
               color: AppColors.mainColor,
               height: 40,
+              screen: const CertificatesView(),
             ),
           ),
         ],
