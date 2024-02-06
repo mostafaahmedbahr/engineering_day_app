@@ -6,6 +6,8 @@ class En{
     "me" : "Me",
     "statistics" : "Statistics",
     "home" : "Home",
+    "certifications" : "Certifications",
+    "gifts" : "Gifts",
 
 
   };

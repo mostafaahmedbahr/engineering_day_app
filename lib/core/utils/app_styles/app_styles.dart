@@ -6,44 +6,20 @@ class AppStyles
 {
 
 
-  static const textStyle10 = TextStyle(
-      fontWeight: FontWeight.w400,
-      fontSize: 10,
-      color: AppColors.greyColor
-
-  );
-
   
-  static const textStyle12 = TextStyle(
-      fontWeight: FontWeight.w500,
-      fontSize: 12,
-      color: AppColors.greyColor
 
-  );
 
-  static const textStyle14 = TextStyle(
-      fontWeight: FontWeight.w600,
-      fontSize: 14,
-      color: AppColors.greyColor
-
-  );
-
-  static const textStyle15 = TextStyle(
-      fontWeight: FontWeight.w700,
-      fontSize: 15,
-      color: AppColors.whiteColor
-
-  );
-  static const textStyle16 = TextStyle(
-      fontWeight: FontWeight.w600,
+  static const textStyle16DarkMainColorW800 = TextStyle(
+      fontWeight: FontWeight.w800,
       fontSize: 16,
-      color: AppColors.blackColor
+      color: AppColors.darkMainColor
 
   );
 
-  static const textStyle18 = TextStyle(
-      fontWeight: FontWeight.w400,
-      fontSize: 18,
+
+  static const textStyle14WhiteW800 = TextStyle(
+      fontWeight: FontWeight.w800,
+      fontSize: 14,
       color: AppColors.whiteColor
 
   );

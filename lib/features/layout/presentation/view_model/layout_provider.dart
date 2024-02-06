@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../certificates_and_gifts/presentation/views/certificates_and_gifts_view.dart';
+
 class LayoutProvider with ChangeNotifier {
 
   int layoutIndex = 1;
@@ -15,7 +17,7 @@ class LayoutProvider with ChangeNotifier {
   final List<Widget> pages = [
     Text("1"),
     Text("2"),
-    Text("3"),
+    CertificatesAndGiftsView(),
     Text("4"),
     Text("5"),
   ];

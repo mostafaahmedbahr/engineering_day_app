@@ -13,14 +13,16 @@ class LayoutView extends StatelessWidget {
   Widget build(BuildContext context) {
     // final themeProvider = Provider.of<LayoutProvider>(context);
     return Consumer<LayoutProvider>(builder: (context, layoutProvider, child) {
-      return Scaffold(
-        body: PageView(
-          controller: layoutProvider.controller,
-          physics: const NeverScrollableScrollPhysics(),
-          children: layoutProvider.pages,
+      return SafeArea(
+        child: Scaffold(
+          body: PageView(
+            controller: layoutProvider.controller,
+            physics: const NeverScrollableScrollPhysics(),
+            children: layoutProvider.pages,
+          ),
+          bottomNavigationBar: const BottomNavBarItems(),
+        
         ),
-        bottomNavigationBar: const BottomNavBarItems(),
-
       );
     });
   }
