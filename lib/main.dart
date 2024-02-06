@@ -1,17 +1,22 @@
+import 'package:engineering_day_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:provider/provider.dart';
 import 'package:responsive_framework/responsive_wrapper.dart';
 import 'package:responsive_framework/utils/scroll_behavior.dart';
 
-
+import 'core/utils/app_services/local_services/cache_helper.dart';
+import 'core/utils/app_services/remote_services/service_locator.dart';
+import 'features/layout/presentation/view_model/layout_provider.dart';
+import 'features/layout/presentation/views/layout_view.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await CacheHelper.init();
   setup();
-  await EasyLocalization.ensureInitialized();
-  Bloc.observer = SimpleBlocObserver();
-  runApp(  const MyApp(),);
+  runApp(
+    const MyApp(),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -19,23 +24,34 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
+    return MultiProvider(
       providers: [
-        BlocProvider(  create: (context) => OnBoardingCubit()),
-        BlocProvider(create: (context) => LayoutCubit(getIt.get<LayoutRepoImpl>())),
-        BlocProvider(create: (context) => ServicesCubit(getIt.get<ServicesReposImplementation>())),
-        BlocProvider(create: (context) => ServicesDetailsCubit(getIt.get<ServicesDetailsRepoImpl>())),
-        BlocProvider(create: (context) => QoutesCubit(getIt.get<QoutesReposImplementation>())),
-        BlocProvider(create: (context) => CourseDetailsCubit(getIt.get<CourseDetailsRepoImplementation>())),
-        BlocProvider(create: (context) => OurTeamCubit()),
+        ChangeNotifierProvider(
+          create: (_) => LayoutProvider(),
+        ),
+
+        // BlocProvider(create: (context) => LayoutCubit(getIt.get<LayoutRepoImpl>())),
+        // BlocProvider(create: (context) => ServicesCubit(getIt.get<ServicesReposImplementation>())),
+        // BlocProvider(create: (context) => ServicesDetailsCubit(getIt.get<ServicesDetailsRepoImpl>())),
+        // BlocProvider(create: (context) => QoutesCubit(getIt.get<QoutesReposImplementation>())),
+        // BlocProvider(create: (context) => CourseDetailsCubit(getIt.get<CourseDetailsRepoImplementation>())),
+        // BlocProvider(create: (context) => OurTeamCubit()),
       ],
-      child:MaterialApp(
+      child: MaterialApp(
         theme: ThemeData(
           scaffoldBackgroundColor: const Color(0xffEBE9E9),
         ),
-        title: 'Add Samy App',
+        title: 'Engineering Day App',
         debugShowCheckedModeBanner: false,
-        home:     const SplashView(),
+        locale: Locale("ar"),
+        localizationsDelegates: const [
+          S.delegate,
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
+        supportedLocales: S.delegate.supportedLocales,
+        home: const LayoutView(),
         builder: (context, child) => ResponsiveWrapper.builder(
           BouncingScrollWrapper.builder(context, child!),
           maxWidth: 1200,

@@ -14,8 +14,8 @@ class CustomErrorWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return   Column(
       children: [
-        SvgPicture.asset(AppImages.serverErrorImage,
-        color: AppColors.greyColor,),
+       // SvgPicture.asset(AppImages.serverErrorImage,
+       //  color: AppColors.greyColor,),
         const CustomSizedBox(height: 10,),
         InkWell(
             onTap: onTap,
