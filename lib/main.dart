@@ -1,5 +1,5 @@
-import 'package:engineering_day_app/generated/l10n.dart';
-import 'package:flutter/material.dart';
+import 'package:easy_localization/easy_localization.dart';
+ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_framework/responsive_wrapper.dart';
@@ -9,13 +9,27 @@ import 'core/utils/app_services/local_services/cache_helper.dart';
 import 'core/utils/app_services/remote_services/service_locator.dart';
 import 'features/layout/presentation/view_model/layout_provider.dart';
 import 'features/layout/presentation/views/layout_view.dart';
+import 'lang/codegen_loader.g.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await EasyLocalization.ensureInitialized();
   await CacheHelper.init();
   setup();
   runApp(
-    const MyApp(),
+    EasyLocalization(
+      startLocale: const Locale('ar',""),
+      supportedLocales: const [
+        Locale('ar',""),
+        Locale('en',""),
+      ],
+      path: 'assets/lang',
+      saveLocale: true,// <-- change the path of the translation files
+      fallbackLocale: const Locale('ar',""),
+      useOnlyLangCode: true,
+      assetLoader: const CodegenLoader(),
+      child: const MyApp(),
+    ),
   );
 }
 
@@ -43,14 +57,9 @@ class MyApp extends StatelessWidget {
         ),
         title: 'Engineering Day App',
         debugShowCheckedModeBanner: false,
-        locale: Locale("ar"),
-        localizationsDelegates: const [
-          S.delegate,
-          GlobalMaterialLocalizations.delegate,
-          GlobalWidgetsLocalizations.delegate,
-          GlobalCupertinoLocalizations.delegate,
-        ],
-        supportedLocales: S.delegate.supportedLocales,
+        locale: context.locale,
+        supportedLocales: context.supportedLocales,
+        localizationsDelegates: context.localizationDelegates,
         home: const LayoutView(),
         builder: (context, child) => ResponsiveWrapper.builder(
           BouncingScrollWrapper.builder(context, child!),
