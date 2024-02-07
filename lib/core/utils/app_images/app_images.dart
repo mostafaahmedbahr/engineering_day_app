@@ -8,6 +8,7 @@ class AppImages
   static const String ticket = "assets/images/svgs/ticket-01.svg";
   static const String user = "assets/images/svgs/user-01.svg";
   static const String cup = "assets/images/svgs/svgexport-17 (6) 1.svg";
+  static const String cubOpacity = "assets/images/svgs/cub_opacity.svg";
   static const String gift = "assets/images/svgs/gift.svg";
   static const String gift2 = "assets/images/svgs/Component 4.svg";
   static const String profile = "assets/images/svgs/profile.svg";

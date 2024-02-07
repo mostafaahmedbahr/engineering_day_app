@@ -18,7 +18,7 @@ class GiftsViewBodyItem extends StatelessWidget {
       width: double.infinity,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(19),
-        color: AppColors.mainColor.withOpacity(0.1),
+        color: AppColors.lightBackGround,
         border: Border.all(
           color: AppColors.mainColor,
         ),
@@ -28,7 +28,7 @@ class GiftsViewBodyItem extends StatelessWidget {
         children: [
           const Text("لديك هدية",
           style: AppStyles.textStyle20mainColor2W700,),
-          SvgPicture.asset(AppImages.gift2,),
+          SvgPicture.asset(AppImages.gift2,width: 94,height: 106,fit: BoxFit.fill,),
         ],
       ),
     );

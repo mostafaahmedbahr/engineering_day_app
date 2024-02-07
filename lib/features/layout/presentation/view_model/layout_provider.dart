@@ -5,7 +5,7 @@ import '../../../charts/presentation/views/charts_view.dart';
 
 class LayoutProvider with ChangeNotifier {
 
-  int layoutIndex = 1;
+  int layoutIndex = 0;
 
   PageController  controller = PageController();
 

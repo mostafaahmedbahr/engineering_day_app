@@ -9,6 +9,9 @@ import 'charts_list_item.dart';
 
 class ChartsList extends StatelessWidget {
   const ChartsList({super.key});
+
+
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -19,6 +22,7 @@ class ChartsList extends StatelessWidget {
           Text(LocaleKeys.statistics.tr(),
             style: AppStyles.textStyle16DarkMainColorW800.copyWith(
               color: AppColors.whiteColor,
+
             ),),
           const CustomSizedBox(height: 30,),
           Expanded(

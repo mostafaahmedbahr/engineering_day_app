@@ -1,9 +1,7 @@
 
  import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 import '../utils/app_colors/app_colors.dart';
-import '../utils/app_images/app_images.dart';
 import 'custom_sized_box.dart';
 
 //ignore: must_be_immutable

@@ -15,19 +15,13 @@ class CertificatesViewBodyItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        Positioned(
-            right: 0,
-            top: 50,
-            child: SvgPicture.asset(AppImages.cup,
-              height: 78,
-              width: 73,
-              fit: BoxFit.cover,)),
+
         Container(
           height: 184,
           width: double.infinity,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
-            color: AppColors.darkMainColor2.withOpacity(0.9) ,
+            color: AppColors.darkMainColor2 ,
           ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -62,6 +56,13 @@ class CertificatesViewBodyItem extends StatelessWidget {
             ],
           ),
         ),
+        Positioned(
+            right: 0,
+            top: 50,
+            child: SvgPicture.asset(AppImages.cubOpacity,
+              height: 78,
+              width: 73,
+              fit: BoxFit.cover,)),
         Positioned(
             left: 0,
             top: 8,
