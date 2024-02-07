@@ -10,11 +10,13 @@ class AppImages
   static const String cup = "assets/images/svgs/svgexport-17 (6) 1.svg";
   static const String gift = "assets/images/svgs/gift.svg";
   static const String gift2 = "assets/images/svgs/Component 4.svg";
+  static const String profile = "assets/images/svgs/profile.svg";
 
 
 
   /// pngs
   static const String cutLogo = "assets/images/pngs/اليوم_الهندسي__1___1__page-0002-removebg-preview 6.png";
+  static const String background = "assets/images/pngs/background.png";
 
 
 

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../certificates_and_gifts/presentation/views/certificates_and_gifts_view.dart';
+import '../../../charts/presentation/views/charts_view.dart';
 
 class LayoutProvider with ChangeNotifier {
 
@@ -14,9 +15,9 @@ class LayoutProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  final List<Widget> pages = [
+  final List<Widget> pages = const [
     Text("1"),
-    Text("2"),
+    ChartsView(),
     CertificatesAndGiftsView(),
     Text("4"),
     Text("5"),
