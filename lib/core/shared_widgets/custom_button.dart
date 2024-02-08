@@ -1,40 +1,87 @@
+import 'package:engineering_day_app/core/utils/app_dimensions/dimension.dart';
 import 'package:flutter/material.dart';
 
-import '../utils/app_colors/app_colors.dart';
-
 class CustomButton extends StatelessWidget {
-  const CustomButton({Key? key,   this.height,   this.width,     this.btnColor, required this.btnText,required this.onPressed,   this.borderColor, this.radius}) : super(key: key);
-  final double? height;
-  final double? width;
-
-  final Color? btnColor;
+  final Function? onTap;
+  final String? btnTxt;
+  final TextStyle? textStyle;
+  final Color? backgroundColor;
   final Color? borderColor;
-  final double? radius;
-  final Widget btnText;
-  final void Function() onPressed;
+  final double borderRadius;
+  final double? width;
+  final double? height;
+  final bool transparent;
+  final EdgeInsets? margin;
+
+  const CustomButton({
+    Key? key,
+    this.onTap,
+    required this.btnTxt,
+    this.backgroundColor,
+    this.textStyle,
+    this.borderColor,
+    this.borderRadius = 100,
+    this.width,
+    this.transparent = true,
+    this.height,
+    this.margin,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return    SizedBox(
-      height: height ?? 60,
-      width: width,
-      child:  ElevatedButton(
-        onPressed: onPressed,
-        style: ElevatedButton.styleFrom(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.only(
-              bottomLeft: Radius.circular(radius ?? 10) ,
-              bottomRight:Radius.circular(radius ?? 10) ,
-            ),
-              side:   BorderSide(
-                width: 1.0,
-                color:borderColor ?? AppColors.mainColor,
-              )
-          ),
-          backgroundColor: btnColor ?? AppColors.mainColor,
-        ),
-        child:  btnText,
+    final ButtonStyle flatButtonStyle = TextButton.styleFrom(
+      side: BorderSide(
+        color: borderColor ?? Colors.transparent, // your color here
+        width: 2,
+      ),
+      backgroundColor: onTap == null
+          ? Theme.of(context).disabledColor
+          : transparent
+              ? Colors.transparent
+              : backgroundColor ?? Theme.of(context).primaryColor,
+      // minimumSize: Size(MediaQuery.of(context).size.width, 50),
+      minimumSize: Size(width != null ? width! : Dimensions.webScreenWidth,
+          height != null ? height! : 40),
+      // textStyle:
+      //     rubikBold.copyWith(color: borderColor),
+      padding: EdgeInsets.zero,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(borderRadius),
       ),
     );
+
+    return Container(
+      height: height != null ? height! : 40,
+        child: SizedBox(
+            width: width ?? Dimensions.webScreenWidth,
+            child: Padding(
+              padding: margin == null ? const EdgeInsets.all(0) : margin!,
+              child: DecoratedBox(
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(borderRadius),
+color: backgroundColor,
+                    gradient:
+
+                    onTap==null?null:
+                    backgroundColor!=null?null:
+                    transparent==true? LinearGradient(colors: [
+                      Color(0xff80cac9),
+                      Color(0xff0e90b1),
+                    ]):null
+
+                ),
+                child: TextButton(
+
+                  onPressed: onTap as void Function()?,
+                  style: flatButtonStyle,
+                  child: Text(btnTxt ?? '',
+                      style: textStyle ??
+                          Theme.of(context).textTheme.displaySmall!.copyWith(
+                              color: borderColor ??
+                                  Theme.of(context).scaffoldBackgroundColor,
+                              fontSize: Dimensions.fontSizeLarge)),
+                ),
+              ),
+            )));
   }
 }

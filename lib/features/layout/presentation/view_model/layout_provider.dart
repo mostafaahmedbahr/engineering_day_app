@@ -1,3 +1,4 @@
+import 'package:engineering_day_app/features/job_fair/presentation/views/add_job_fair_view.dart';
 import 'package:flutter/material.dart';
 
 import '../../../certificates_and_gifts/presentation/views/certificates_and_gifts_view.dart';
@@ -19,7 +20,8 @@ class LayoutProvider with ChangeNotifier {
     Text("1"),
     ChartsView(),
     CertificatesAndGiftsView(),
-    Text("4"),
+    AddJobFairView(),
+
     Text("5"),
   ];
 

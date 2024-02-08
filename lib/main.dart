@@ -1,6 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:engineering_day_app/core/utils/app_colors/theme.dart';
  import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_framework/responsive_wrapper.dart';
 import 'package:responsive_framework/utils/scroll_behavior.dart';
@@ -52,10 +52,12 @@ class MyApp extends StatelessWidget {
         // BlocProvider(create: (context) => OurTeamCubit()),
       ],
       child: MaterialApp(
-        theme: ThemeData(
-          scaffoldBackgroundColor: const Color(0xffEBE9E9),
-          fontFamily:GoogleFonts.tajawal().fontFamily
-        ),
+        theme:
+
+
+        lightTheme
+          ,
+
         title: 'Engineering Day App',
         debugShowCheckedModeBanner: false,
         locale: context.locale,

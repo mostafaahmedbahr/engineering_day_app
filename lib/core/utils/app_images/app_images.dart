@@ -12,12 +12,16 @@ class AppImages
   static const String gift = "assets/images/svgs/gift.svg";
   static const String gift2 = "assets/images/svgs/Component 4.svg";
   static const String profile = "assets/images/svgs/profile.svg";
+  static const String upload = "assets/images/svgs/upload.svg";
+  static const String pdfIcon = "assets/images/svgs/pdf_icon.svg";
+  static const String qrIcon = "assets/images/svgs/qr_icon.svg";
 
 
 
   /// pngs
   static const String cutLogo = "assets/images/pngs/اليوم_الهندسي__1___1__page-0002-removebg-preview 6.png";
   static const String background = "assets/images/pngs/background.png";
+  static const String userProfileImage = "assets/images/pngs/user_profile_image.png";
 
 
 
