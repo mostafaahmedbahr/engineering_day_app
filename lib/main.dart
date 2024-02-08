@@ -8,6 +8,7 @@ import 'package:responsive_framework/utils/scroll_behavior.dart';
 
 import 'core/utils/app_services/local_services/cache_helper.dart';
 import 'core/utils/app_services/remote_services/service_locator.dart';
+import 'features/auth/register/presentation/view_model/register_provider.dart';
 import 'features/layout/presentation/view_model/layout_provider.dart';
 import 'features/layout/presentation/views/layout_view.dart';
 import 'features/splash/splash_screen.dart';
@@ -45,13 +46,9 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (_) => LayoutProvider(),
         ),
-
-        // BlocProvider(create: (context) => LayoutCubit(getIt.get<LayoutRepoImpl>())),
-        // BlocProvider(create: (context) => ServicesCubit(getIt.get<ServicesReposImplementation>())),
-        // BlocProvider(create: (context) => ServicesDetailsCubit(getIt.get<ServicesDetailsRepoImpl>())),
-        // BlocProvider(create: (context) => QoutesCubit(getIt.get<QoutesReposImplementation>())),
-        // BlocProvider(create: (context) => CourseDetailsCubit(getIt.get<CourseDetailsRepoImplementation>())),
-        // BlocProvider(create: (context) => OurTeamCubit()),
+        ChangeNotifierProvider(
+          create: (_) => RegisterProvider(),
+        ),
       ],
       child: MaterialApp(
         theme:

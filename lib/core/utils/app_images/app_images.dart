@@ -20,6 +20,7 @@ class AppImages
   static const String upload = "assets/images/svgs/upload.svg";
   static const String pdfIcon = "assets/images/svgs/pdf_icon.svg";
   static const String qrIcon = "assets/images/svgs/qr_icon.svg";
+  static const String camera = "assets/images/svgs/camera-plus.svg";
 
 
 
