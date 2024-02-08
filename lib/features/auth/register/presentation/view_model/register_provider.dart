@@ -1,6 +1,6 @@
 
 import 'package:engineering_day_app/core/utils/app_methods/app_methods.dart';
-import 'package:engineering_day_app/features/auth/register/presentation/views/widgets/register2.dart';
+ import 'package:engineering_day_app/features/auth/register/presentation/views/widgets/register2.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -59,6 +59,43 @@ class RegisterProvider with ChangeNotifier {
     }
     if (isValid) {}
   }
+
+
+  String? selectedCity;
+  changeSelectCity(val)
+  {
+    selectedCity = val;
+    notifyListeners();
+  }
+
+
+  final List<String> items = [
+    'Item1',
+    'Item2',
+    'Item3',
+    'Item4',
+    'Item5',
+    'Item6',
+    'Item7',
+    'Item8',
+  ];
+
+  DateTime? selectedDate;
+
+  Future<void> selectDateFunction(BuildContext context) async {
+    final DateTime? picked = await showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(1900),
+      lastDate: DateTime(2100),
+    );
+
+    if (picked != null && picked != selectedDate) {
+        selectedDate = picked;
+        notifyListeners();
+    }
+  }
+
 
 
 

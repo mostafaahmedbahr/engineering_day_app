@@ -2,8 +2,7 @@
 import 'package:engineering_day_app/core/shared_widgets/custom_sized_box.dart';
 import 'package:engineering_day_app/core/shared_widgets/custom_text_form_filed.dart';
 import 'package:engineering_day_app/core/utils/app_images/app_images.dart';
-import 'package:engineering_day_app/core/utils/app_nav/app_nav.dart';
-import 'package:engineering_day_app/core/utils/app_styles/app_styles.dart';
+ import 'package:engineering_day_app/core/utils/app_styles/app_styles.dart';
 import 'package:engineering_day_app/core/utils/app_validator/app_validator.dart';
 import 'package:engineering_day_app/features/auth/register/presentation/view_model/register_provider.dart';
 import 'package:engineering_day_app/features/auth/register/presentation/views/widgets/pick_image_widget.dart';
@@ -159,7 +158,11 @@ class RegisterPartOne extends StatelessWidget {
                  const CustomSizedBox(height: 40,),
                   CustomButton(
                     onTap: () {
-        
+                      registerProvider.changePage(registerProvider.currentPage=1);
+                      registerProvider.pageController.nextPage(
+                              duration: const Duration(milliseconds: 500),
+                              curve: Curves.ease,
+                            );
                     },
                     height: 52,
                     transparent: true,
@@ -172,6 +175,7 @@ class RegisterPartOne extends StatelessWidget {
                     fontWeight: FontWeight.w800,
                     color: Color.fromRGBO(202, 195, 195, 1),
                   ),),
+
                 ],
               ),
             ),

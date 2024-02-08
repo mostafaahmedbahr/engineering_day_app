@@ -40,6 +40,7 @@ class CustomTextFormField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      onTap: onPressed,
       readOnly: readOnly ?? false,
       maxLines: maxLines ?? 1,
       autovalidateMode: AutovalidateMode.onUserInteraction,
