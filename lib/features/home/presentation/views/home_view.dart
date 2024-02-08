@@ -96,15 +96,10 @@ class HomeView extends StatelessWidget {
                         CustomButton(
                           height: 43,
                           width: 136,
-                          radius: 8,
-                          btnColor: AppColors.mainColor3,
-                          btnText: Text(
-                            LocaleKeys.registerNow.tr(),
-                            style: AppStyles.textStyle16WhiteW400.copyWith(
-                              fontWeight: FontWeight.w700,
-                            ),
-                          ),
-                          onPressed: () {},
+                          borderRadius: 8,
+                          backgroundColor: AppColors.mainColor3,
+                          btnTxt:  LocaleKeys.registerNow.tr(),
+                           onTap: () {},
                         ),
                         const CustomSizedBox(
                           width: 16,

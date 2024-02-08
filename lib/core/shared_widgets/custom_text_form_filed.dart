@@ -56,30 +56,32 @@ class CustomTextFormField extends StatelessWidget {
         prefixIcon: prefixIcon,
         prefix: prefix,
         filled: true,
-        fillColor:fillColor ?? AppColors.whiteColor,
+
+        fillColor:fillColor ?? const Color.fromRGBO(245, 248, 252, 1),
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(raduis ?? 5),
+          borderRadius: BorderRadius.circular(raduis ?? 24),
           borderSide:   BorderSide(
-            color: borderColor ?? const Color.fromRGBO(208, 208, 208, 1),
+            color: borderColor ?? const Color.fromRGBO(245, 248, 252, 1),
           ),
         ),
         enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(raduis ?? 5),
+          borderRadius: BorderRadius.circular(raduis ?? 24),
           borderSide:   BorderSide(
-            color: borderColor ?? const Color.fromRGBO(208, 208, 208, 1),
+            color: borderColor ?? const Color.fromRGBO(245, 248, 252, 1),
           ),
         ),
         focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(raduis ?? 5),
+          borderRadius: BorderRadius.circular(raduis ?? 24),
           borderSide:   BorderSide(
-            color: borderColor ?? const Color.fromRGBO(208, 208, 208, 1),
+            color: borderColor ??const Color.fromRGBO(245, 248, 252, 1),
           ),
         ),
         hintText: hintText,
         hintStyle:     TextStyle(
           fontSize: 14,
-          color: hintColor ?? const Color.fromRGBO(150, 150, 150, 1),
+          color: hintColor ?? const Color.fromRGBO(122, 131, 153, 1),
         ),
+
       ),
     );
   }
