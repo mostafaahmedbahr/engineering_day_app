@@ -10,8 +10,8 @@ import 'package:flutter/material.dart';
 
 import 'dropdown_field.dart';
 
-class RegisterPartTwo extends StatelessWidget {
-  const RegisterPartTwo({super.key});
+class RegisterPartThree extends StatelessWidget {
+  const RegisterPartThree({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -88,23 +88,8 @@ class RegisterPartTwo extends StatelessWidget {
               padding: const EdgeInsets.all(16.0),
               child: Column(
                 children: [
-                  CustomTextFormField(
-                    controller: TextEditingController(
-                      text: registerProvider.selectedDate != null
-                          ? '${registerProvider.selectedDate!.day}/${registerProvider.selectedDate!.month}/${registerProvider.selectedDate!.year}'
-                          : '',
-                    ),
-                    readOnly: true,
-                    onPressed: (){
-                      registerProvider.selectDateFunction(context);
-                    },
-                    hintText: "20/07/1999",
-                  ),
-                  const CustomSizedBox(
-                    height: 16,
-                  ),
                   DropdownField(
-                    title: "المدينة",
+                    title: "التخصص",
                     value: registerProvider.selectedCity,
                     onChanged: (v) {
                       registerProvider.changeSelectCity(v);
@@ -127,7 +112,7 @@ class RegisterPartTwo extends StatelessWidget {
                     height: 16,
                   ),
                   DropdownField(
-                    title: "الجامعة",
+                    title: "الحالة",
                     value: registerProvider.selectedCity,
                     onChanged: (v) {
                       registerProvider.changeSelectCity(v);
@@ -150,7 +135,7 @@ class RegisterPartTwo extends StatelessWidget {
                     height: 16,
                   ),
                   DropdownField(
-                    title: "الكلية",
+                    title: "المستوي الدراسي",
                     value: registerProvider.selectedCity,
                     onChanged: (v) {
                       registerProvider.changeSelectCity(v);
@@ -170,24 +155,24 @@ class RegisterPartTwo extends StatelessWidget {
                         .toList(),
                   ),
                   const CustomSizedBox(
-                    height: 40,
+                    height: 100,
                   ),
                   Row(
                     children: [
                       Expanded(
                         child: CustomButton(
                           onTap: () {
-                            registerProvider
-                                .changePage(registerProvider.currentPage = 2);
-                            registerProvider.pageController.nextPage(
-                              duration: const Duration(milliseconds: 500),
-                              curve: Curves.ease,
-                            );
+                            // registerProvider
+                            //     .changePage(registerProvider.currentPage = 2);
+                            // registerProvider.pageController.nextPage(
+                            //   duration: const Duration(milliseconds: 500),
+                            //   curve: Curves.ease,
+                            // );
                           },
                           height: 52,
                           transparent: true,
                           borderRadius: 32,
-                          btnTxt: "التالي",
+                          btnTxt: "تأكيد",
                         ),
                       ),
                       const CustomSizedBox(
@@ -197,7 +182,7 @@ class RegisterPartTwo extends StatelessWidget {
                         child: CustomButton(
                           onTap: () {
                             registerProvider
-                                .changePage(registerProvider.currentPage = 0);
+                                .changePage(registerProvider.currentPage = 1);
                             registerProvider.pageController.previousPage(
                               duration: const Duration(milliseconds: 500),
                               curve: Curves.ease,
@@ -217,7 +202,7 @@ class RegisterPartTwo extends StatelessWidget {
                     height: 18,
                   ),
                   const Text(
-                    "خطوة 2 من 3",
+                    "خطوة 3 من 3",
                     style: TextStyle(
                       fontSize: 10,
                       fontWeight: FontWeight.w800,

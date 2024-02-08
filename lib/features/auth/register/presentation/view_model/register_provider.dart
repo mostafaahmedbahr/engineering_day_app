@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../views/widgets/register1.dart';
+import '../views/widgets/register3.dart';
 
 
 class RegisterProvider with ChangeNotifier {
@@ -16,7 +17,7 @@ class RegisterProvider with ChangeNotifier {
   List<Widget> pages = [
     const RegisterPartOne(),
     const RegisterPartTwo(),
-    // RegisterPartThree(),
+    const RegisterPartThree(),
 
   ];
 
