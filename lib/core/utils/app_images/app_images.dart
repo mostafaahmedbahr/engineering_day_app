@@ -21,6 +21,8 @@ class AppImages
   static const String pdfIcon = "assets/images/svgs/pdf_icon.svg";
   static const String qrIcon = "assets/images/svgs/qr_icon.svg";
   static const String camera = "assets/images/svgs/camera-plus.svg";
+  static const String male = "assets/images/svgs/svgexport-17 (21) 1.svg";
+  static const String female = "assets/images/svgs/female.svg";
 
 
 

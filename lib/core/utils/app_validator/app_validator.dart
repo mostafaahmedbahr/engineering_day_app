@@ -37,4 +37,15 @@ class MyValidators {
     }
     return null;
   }
+
+
+  static String? phoneValidator(String? value) {
+    if (value!.isEmpty) {
+      return 'Please enter a phone number';
+    }
+    if (value.length < 6) {
+      return 'phone number must be at least 11 numbers long';
+    }
+    return null;
+  }
 }
