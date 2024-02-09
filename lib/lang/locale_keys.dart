@@ -42,6 +42,9 @@ abstract class LocaleKeys {
   static const schoolLevel = "schoolLevel";
   static const status = "status";
   static const specialization = "specialization";
+  static const camera = "camera";
+  static const remove =   "remove";
+  static const gallery =  "gallery";
 
 
 

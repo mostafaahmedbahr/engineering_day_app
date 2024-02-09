@@ -43,6 +43,9 @@ class En{
     "schoolLevel" : "School level",
     "status" : "Status",
     "specialization" : "specialization",
+    "camera"  : "Camera",
+    "remove"  : "Remove",
+    "gallery" : "Gallery",
 
 
   };

@@ -1,4 +1,6 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:engineering_day_app/core/utils/app_images/app_images.dart';
+import 'package:engineering_day_app/lang/locale_keys.dart';
 import 'package:flutter/material.dart';
 
 
@@ -85,8 +87,8 @@ class MyAppMethods {
                     }
                   },
                   icon: const Icon(Icons.camera),
-                  label: const Text(
-                    "Camera",
+                  label:   Text(
+                    LocaleKeys.camera.tr(),
                   ),
                 ),
                 TextButton.icon(
@@ -97,8 +99,8 @@ class MyAppMethods {
                     }
                   },
                   icon: const Icon(Icons.image),
-                  label: const Text(
-                    "Gallery",
+                  label:   Text(
+                    LocaleKeys.gallery.tr(),
                   ),
                 ),
                 TextButton.icon(
@@ -109,8 +111,8 @@ class MyAppMethods {
                     }
                   },
                   icon: const Icon(Icons.remove),
-                  label: const Text(
-                    "Remove",
+                  label:   Text(
+                    LocaleKeys.remove.tr(),
                   ),
                 ),
               ],
