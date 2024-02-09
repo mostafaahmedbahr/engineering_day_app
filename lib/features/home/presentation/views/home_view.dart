@@ -6,6 +6,8 @@ import 'package:engineering_day_app/core/utils/app_colors/app_colors.dart';
 import 'package:engineering_day_app/core/utils/app_images/app_images.dart';
 import 'package:engineering_day_app/core/utils/app_styles/app_styles.dart';
 import 'package:engineering_day_app/features/home/data/models/home_item_model.dart';
+import 'package:engineering_day_app/features/home/presentation/views/widgets/home_header.dart';
+import 'package:engineering_day_app/features/home/presentation/views/widgets/home_items_list.dart';
 import 'package:engineering_day_app/features/home/presentation/views/widgets/home_list_item.dart';
 import 'package:engineering_day_app/lang/locale_keys.dart';
 import 'package:flutter/material.dart';
@@ -14,32 +16,8 @@ import 'package:better_player/better_player.dart';
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
 
-
-
   @override
   Widget build(BuildContext context) {
-    List<HomeItemModel> homeItemsList  = [
-      HomeItemModel(
-        title: LocaleKeys.edamethone.tr(),
-        image: AppImages.svgexport,
-      ),
-      HomeItemModel(
-        title: LocaleKeys.quizzes.tr(),
-        image: AppImages.svgexport2,
-      ),
-      HomeItemModel(
-        title: LocaleKeys.engineeringTalks.tr(),
-        image: AppImages.svgexport3,
-      ),
-      HomeItemModel(
-        title: LocaleKeys.dialogues.tr(),
-        image: AppImages.svgexport4,
-      ),
-      HomeItemModel(
-        title: LocaleKeys.vershAction.tr(),
-        image: AppImages.svgexport5,
-      ),
-    ];
     final GlobalKey<ScaffoldState> sKey = GlobalKey();
     return Scaffold(
       key: sKey,
@@ -64,86 +42,7 @@ class HomeView extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    InkWell(
-                      onTap: () {
-                        sKey.currentState?.openDrawer();
-                      },
-                      child: const Icon(
-                        Icons.menu,
-                        color: AppColors.whiteColor,
-                        size: 32,
-                      ),
-                    ),
-                    const CustomSizedBox(
-                      height: 23,
-                    ),
-                    Text(
-                      LocaleKeys.reserve.tr(),
-                      style: AppStyles.textStyle32WhiteW700,
-                    ),
-                    const CustomSizedBox(
-                      height: 22,
-                    ),
-                    Text(
-                      LocaleKeys.homeDes.tr(),
-                      style: AppStyles.textStyle16WhiteW400,
-                    ),
-                    const CustomSizedBox(
-                      height: 33,
-                    ),
-                    Row(
-                      children: [
-                        CustomButton(
-                          height: 43,
-                          width: 136,
-                          borderRadius: 8,
-                          backgroundColor: AppColors.mainColor3,
-                          btnTxt:  LocaleKeys.registerNow.tr(),
-                           onTap: () {},
-                        ),
-                        const CustomSizedBox(
-                          width: 16,
-                        ),
-                        InkWell(
-                          onTap: (){},
-                          child: Container(
-                            height: 43,
-                            width: 140,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(8),
-                              border: Border.all(color: AppColors.whiteColor),
-                            ),
-                            child: Center(
-                              child: Text(
-                                LocaleKeys.userGuide.tr(),
-                                style: AppStyles.textStyle16WhiteW400.copyWith(
-                                  fontWeight: FontWeight.w700,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    const CustomSizedBox(
-                      height: 48,
-                    ),
-                    Container(
-                      height: 181,
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(8),
-                      ),
-                      child: BetterPlayer.network(
-                        "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
-                        betterPlayerConfiguration:const BetterPlayerConfiguration(
-                          aspectRatio: 16 / 9,
-                        ),
-                      ),
-                    ),
-                    const CustomSizedBox (
-                      height: 64,
-                    ),
+                    const HomeHeader(),
                     Text(
                       LocaleKeys.forumEvents.tr(),
                       style: AppStyles.textStyle20mainColor2W700.copyWith(
@@ -153,20 +52,7 @@ class HomeView extends StatelessWidget {
                     const CustomSizedBox(
                       height: 24,
                     ),
-                    DynamicHeightGridView(
-                      shrinkWrap: true,
-                        physics:const NeverScrollableScrollPhysics(),
-                        itemCount: homeItemsList.length,
-                        crossAxisCount: 2,
-                        crossAxisSpacing: 16,
-                        mainAxisSpacing: 17,
-                        builder: (ctx, index) {
-                          return     HomeListItem(
-                            title: homeItemsList[index].title,
-                            image: homeItemsList[index].image,
-                          );
-                        }
-                    ),
+                   const HomeItemsList(),
 
                   ],
                 ),
