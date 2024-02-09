@@ -5,11 +5,11 @@ import 'package:engineering_day_app/core/shared_widgets/custom_sized_box.dart';
 import 'package:engineering_day_app/core/utils/app_colors/app_colors.dart';
 import 'package:engineering_day_app/core/utils/app_images/app_images.dart';
 import 'package:engineering_day_app/core/utils/app_styles/app_styles.dart';
+import 'package:engineering_day_app/features/home/data/models/home_item_model.dart';
 import 'package:engineering_day_app/features/home/presentation/views/widgets/home_list_item.dart';
 import 'package:engineering_day_app/lang/locale_keys.dart';
 import 'package:flutter/material.dart';
-
-import '../../data/models/home_item_model.dart';
+import 'package:better_player/better_player.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -133,7 +133,12 @@ class HomeView extends StatelessWidget {
                       width: double.infinity,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(8),
-                          color: Colors.red
+                      ),
+                      child: BetterPlayer.network(
+                        "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+                        betterPlayerConfiguration:const BetterPlayerConfiguration(
+                          aspectRatio: 16 / 9,
+                        ),
                       ),
                     ),
                     const CustomSizedBox (
