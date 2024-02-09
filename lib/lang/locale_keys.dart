@@ -18,6 +18,12 @@ abstract class LocaleKeys {
   static const quizzes = "quizzes";
   static const engineeringTalks = "engineeringTalks";
   static const dialogues = "dialogues";
+  static const signIn = "signIn";
+  static const email = "email";
+  static const password = "password";
+  static const forgetPassword = "forgetPassword";
+  static const haveAccount = "haveAccount";
+  static const registerForTheForum = "registerForTheForum";
 
 
 

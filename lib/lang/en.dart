@@ -19,6 +19,12 @@ class En{
     "quizzes" : "Quizzes",
     "engineeringTalks" : "Engineering Talks",
     "dialogues" : "Dialogues",
+    "signIn" : "Sign In",
+    "email" : "E-Mail",
+    "password" : "Password",
+    "forgetPassword" : "Forget Password?",
+    "haveAccount" : "You don't have an account?",
+    "registerForTheForum" : "Register for the Forum",
 
 
   };

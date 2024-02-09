@@ -19,6 +19,12 @@ class Ar
    "quizzes" : "مسابقات",
    "engineeringTalks" : "محادثات هندسية",
    'dialogues' : "الحوارات",
+   'signIn' :   "تسجيل الدخول",
+   'email' :    "البريد الاليكتروني",
+   'password' :    "كلمة المرور",
+   'forgetPassword' :     "نسيت كلمة المرور ؟",
+   'haveAccount' :    'ليس لديك حساب؟',
+   'registerForTheForum' :     'التسجيل في الملتقى',
 
 
   };
