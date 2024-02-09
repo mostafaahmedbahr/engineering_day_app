@@ -1,7 +1,10 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:engineering_day_app/core/shared_widgets/custom_button.dart';
 import 'package:engineering_day_app/core/shared_widgets/custom_sized_box.dart';
+import 'package:engineering_day_app/core/utils/app_nav/app_nav.dart';
 import 'package:engineering_day_app/features/auth/register/presentation/view_model/register_provider.dart';
+import 'package:engineering_day_app/features/auth/success_auth/presentation/views/success_auth_view.dart';
+import 'package:engineering_day_app/features/layout/presentation/views/layout_view.dart';
 import 'package:engineering_day_app/lang/locale_keys.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -94,6 +97,12 @@ class RegisterPartThreeBody extends StatelessWidget {
                   Expanded(
                     child: CustomButton(
                       onTap: () {
+                        AppNav.customNavigator(context: context,
+                            screen: const  SuccessAuthView(
+                              home: LayoutView(),
+                            ),
+                            finish: true,
+                        );
                         // registerProvider
                         //     .changePage(registerProvider.currentPage = 2);
                         // registerProvider.pageController.nextPage(
