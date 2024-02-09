@@ -74,50 +74,47 @@ class MyAppMethods {
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            title: const Center(
-              child: Text("dd"),
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                TextButton.icon(
+                  onPressed: () {
+                    cameraFCT();
+                    if (Navigator.canPop(context)) {
+                      Navigator.pop(context);
+                    }
+                  },
+                  icon: const Icon(Icons.camera),
+                  label: const Text(
+                    "Camera",
+                  ),
+                ),
+                TextButton.icon(
+                  onPressed: () {
+                    galleryFCT();
+                    if (Navigator.canPop(context)) {
+                      Navigator.pop(context);
+                    }
+                  },
+                  icon: const Icon(Icons.image),
+                  label: const Text(
+                    "Gallery",
+                  ),
+                ),
+                TextButton.icon(
+                  onPressed: () {
+                    removeFCT();
+                    if (Navigator.canPop(context)) {
+                      Navigator.pop(context);
+                    }
+                  },
+                  icon: const Icon(Icons.remove),
+                  label: const Text(
+                    "Remove",
+                  ),
+                ),
+              ],
             ),
-            content: SingleChildScrollView(
-                child: ListBody(
-                  children: [
-                    TextButton.icon(
-                      onPressed: () {
-                        cameraFCT();
-                        if (Navigator.canPop(context)) {
-                          Navigator.pop(context);
-                        }
-                      },
-                      icon: const Icon(Icons.camera),
-                      label: const Text(
-                        "Camera",
-                      ),
-                    ),
-                    TextButton.icon(
-                      onPressed: () {
-                        galleryFCT();
-                        if (Navigator.canPop(context)) {
-                          Navigator.pop(context);
-                        }
-                      },
-                      icon: const Icon(Icons.image),
-                      label: const Text(
-                        "Gallery",
-                      ),
-                    ),
-                    TextButton.icon(
-                      onPressed: () {
-                        removeFCT();
-                        if (Navigator.canPop(context)) {
-                          Navigator.pop(context);
-                        }
-                      },
-                      icon: const Icon(Icons.remove),
-                      label: const Text(
-                        "Remove",
-                      ),
-                    ),
-                  ],
-                )),
           );
         });
   }
