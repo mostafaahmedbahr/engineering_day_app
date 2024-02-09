@@ -33,6 +33,11 @@ class Ar
    "woman" : "امرأة",
    "next" : "التالى",
    "step1Of3" : "خطوة 1 من 3",
+   "college" :    "الكلية",
+   "university" : "الجامعة",
+   "city" : "المدينة",
+   "prevouis" :"السابق",
+   "step2Of3" : "خطوة 2 من 3",
 
 
   };
