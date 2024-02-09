@@ -37,7 +37,12 @@ class Ar
    "university" : "الجامعة",
    "city" : "المدينة",
    "prevouis" :"السابق",
+   "save" :"تأكيد",
    "step2Of3" : "خطوة 2 من 3",
+   "step3Of3" : "خطوة 3 من 3",
+   "schoolLevel"  : "المستوي الدراسي",
+   "status" :"الحالة",
+   "specialization" :  "التخصص",
 
 
   };

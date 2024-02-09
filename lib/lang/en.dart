@@ -34,10 +34,15 @@ class En{
     "next" : "next",
     "step1Of3" : "Step 1 of 3",
     "step2Of3" : "Step 2 of 3",
+    "step3Of3" : "Step 3 of 3",
     "college" :    "College",
     "university" : "University",
     "city" :     "City",
     "prevouis" : "Prevouis",
+    "save" : "save",
+    "schoolLevel" : "School level",
+    "status" : "Status",
+    "specialization" : "specialization",
 
 
   };

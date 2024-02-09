@@ -33,10 +33,15 @@ abstract class LocaleKeys {
   static const next = "next";
   static const step1Of3 = "step1Of3";
   static const step2Of3 = "step2Of3";
+  static const step3Of3 = "step3Of3";
   static const city = "city";
   static const university = "university";
   static const college = "college";
   static const prevouis = "prevouis";
+  static const save = "save";
+  static const schoolLevel = "schoolLevel";
+  static const status = "status";
+  static const specialization = "specialization";
 
 
 
