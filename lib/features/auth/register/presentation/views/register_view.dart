@@ -31,26 +31,8 @@ class RegisterView extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: _buildPageIndicator(context),
             ),
-            SizedBox(height: 20.0),
-            // ElevatedButton(
-            //   onPressed: () {
-            //     if (onBoardingCubit.currentPage == onBoardingCubit.pages.length - 1) {
-            //       GoRouter.of(context).push(AppRouter.kStart);
-            //     } else {
-            //       onBoardingCubit.pageController.nextPage(
-            //         duration: Duration(milliseconds: 500),
-            //         curve: Curves.ease,
-            //       );
-            //     }
-            //   },
-            //   child: Text(
-            //     onBoardingCubit.currentPage == onBoardingCubit.pages.length - 1 ? 'Get Started' : 'Next',
-            //     style: TextStyle(fontSize: 18.0,
-            //       color: AppColors.mainColor,
-            //     ),
-            //   ),
-            // ),
-            SizedBox(height: 20.0),
+            const SizedBox(height: 40.0),
+
           ],
         ),
       );

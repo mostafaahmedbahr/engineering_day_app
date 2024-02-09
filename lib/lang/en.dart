@@ -25,6 +25,14 @@ class En{
     "forgetPassword" : "Forget Password?",
     "haveAccount" : "You don't have an account?",
     "registerForTheForum" : "Register for the Forum",
+    "putProfilePicture" : "Put a profile picture for others to recognize you",
+    "enrollIn" : "Enroll In",
+    "typeYourName" : "Type your name",
+    "phoneNumber" : "Phone Number",
+    "woman" : "Woman",
+    "man" : "Man",
+    "next" : "next",
+    "step1Of3" : "Step 1 of 3",
 
 
   };

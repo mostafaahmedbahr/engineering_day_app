@@ -14,10 +14,10 @@ class RegisterProvider with ChangeNotifier {
   final PageController pageController = PageController();
   int currentPage = 0;
 
-  List<Widget> pages = [
-    const RegisterPartOne(),
-    const RegisterPartTwo(),
-    const RegisterPartThree(),
+  List<Widget> pages = const [
+     RegisterPartOne(),
+      RegisterPartTwo(),
+      RegisterPartThree(),
 
   ];
 

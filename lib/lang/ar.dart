@@ -25,6 +25,14 @@ class Ar
    'forgetPassword' :     "نسيت كلمة المرور ؟",
    'haveAccount' :    'ليس لديك حساب؟',
    'registerForTheForum' :     'التسجيل في الملتقى',
+   'putProfilePicture' :   "قم بوضع صورة للملف الشخصي ليتعرف عليك الأخرون",
+   "enrollIn" : "التسجيل في",
+   "typeYourName" : "اكتب أسمك",
+   "phoneNumber" : "رقم الهاتف",
+   "man" : "رجل",
+   "woman" : "امرأة",
+   "next" : "التالى",
+   "step1Of3" : "خطوة 1 من 3",
 
 
   };
