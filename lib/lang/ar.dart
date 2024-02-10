@@ -46,5 +46,6 @@ class Ar {
     "camera": "الكاميرا",
     "remove": "حذف",
     "gallery": "المعرض",
+    "jobs":"التوظيف"
   };
 }

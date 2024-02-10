@@ -46,6 +46,8 @@ class En{
     "camera"  : "Camera",
     "remove"  : "Remove",
     "gallery" : "Gallery",
+    "jobs":"jobs"
+
 
 
   };
