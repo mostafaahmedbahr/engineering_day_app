@@ -1,8 +1,5 @@
-import 'dart:io';
-
 import 'package:better_player/better_player.dart';
 import 'package:engineering_day_app/core/utils/app_colors/app_colors.dart';
-import 'package:engineering_day_app/core/utils/app_images/app_images.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:path_provider/path_provider.dart';
@@ -133,7 +130,7 @@ class VideoScrubberState extends State<VideoScrubber> {
                       _value = newValue;
                     });
                     final newProgress = Duration(
-                        milliseconds: ((_value ?? 0) *
+                        milliseconds: ((_value) *
                                 widget.controller.videoPlayerController!.value
                                     .duration!.inMilliseconds)
                             .toInt());

@@ -68,7 +68,7 @@ class HomeView extends StatelessWidget {
               left: 10,
               child: RawMaterialButton(
                 onPressed: () {
-AppNavigator.navigateTo(context, const ChartsView());
+                  AppNavigator.navigateTo(context, const ChartsView());
                 },
                 elevation: 2.0,
                 fillColor: AppColors.mainColor3,

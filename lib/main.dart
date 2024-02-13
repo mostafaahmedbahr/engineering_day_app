@@ -1,34 +1,30 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:engineering_day_app/core/utils/app_colors/theme.dart';
 import 'package:engineering_day_app/features/auth/login/presentation/views/login_view.dart';
- import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_framework/responsive_wrapper.dart';
 import 'package:responsive_framework/utils/scroll_behavior.dart';
 
-import 'core/utils/app_services/local_services/cache_helper.dart';
 import 'core/utils/app_services/remote_services/service_locator.dart';
 import 'features/auth/register/presentation/view_model/register_provider.dart';
 import 'features/layout/presentation/view_model/layout_provider.dart';
-import 'features/layout/presentation/views/layout_view.dart';
 import 'features/splash/splash_screen.dart';
 import 'lang/codegen_loader.g.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await EasyLocalization.ensureInitialized();
-  await CacheHelper.init();
   setup();
   runApp(
     EasyLocalization(
-      startLocale: const Locale('ar',""),
+      startLocale: const Locale('ar', ""),
       supportedLocales: const [
-        Locale('ar',""),
-        Locale('en',""),
+        Locale('ar', ""),
+        Locale('en', ""),
       ],
       path: 'assets/lang',
-      saveLocale: true,// <-- change the path of the translation files
-      fallbackLocale: const Locale('ar',""),
+      saveLocale: true,
+      // <-- change the path of the translation files
+      fallbackLocale: const Locale('ar', ""),
       useOnlyLangCode: true,
       assetLoader: const CodegenLoader(),
       child: const MyApp(),
@@ -51,18 +47,13 @@ class MyApp extends StatelessWidget {
         ),
       ],
       child: MaterialApp(
-        theme:
-
-
-        lightTheme
-          ,
-
+        theme: lightTheme,
         title: 'Engineering Day App',
         debugShowCheckedModeBanner: false,
         locale: context.locale,
         supportedLocales: context.supportedLocales,
         localizationsDelegates: context.localizationDelegates,
-        home: const  SplashScreen(
+        home: const SplashScreen(
           home: LoginView(),
         ),
         builder: (context, child) => ResponsiveWrapper.builder(
