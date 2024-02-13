@@ -40,8 +40,7 @@ class RegisterPartThreeBody extends StatelessWidget {
                     ),
                     overflow: TextOverflow.ellipsis,
                   ),
-                ))
-                    .toList(),
+                )).toList(),
               ),
               const CustomSizedBox(
                 height: 16,
@@ -63,8 +62,7 @@ class RegisterPartThreeBody extends StatelessWidget {
                     ),
                     overflow: TextOverflow.ellipsis,
                   ),
-                ))
-                    .toList(),
+                )).toList(),
               ),
               const CustomSizedBox(
                 height: 16,

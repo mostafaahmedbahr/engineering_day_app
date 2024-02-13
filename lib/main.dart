@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:engineering_day_app/core/utils/app_colors/theme.dart';
+import 'package:engineering_day_app/features/auth/login/presentation/view_model/login_provider.dart';
 import 'package:engineering_day_app/features/auth/login/presentation/views/login_view.dart';
  import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -8,6 +9,7 @@ import 'package:responsive_framework/utils/scroll_behavior.dart';
 
 import 'core/utils/app_services/local_services/cache_helper.dart';
 import 'core/utils/app_services/remote_services/service_locator.dart';
+import 'features/auth/login/data/repos/login_repo_implement.dart';
 import 'features/auth/register/presentation/view_model/register_provider.dart';
 import 'features/layout/presentation/view_model/layout_provider.dart';
 import 'features/layout/presentation/views/layout_view.dart';
@@ -45,6 +47,9 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(
           create: (_) => LayoutProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => LoginProvider( getIt.get<LoginRepoImpl>()),
         ),
         ChangeNotifierProvider(
           create: (_) => RegisterProvider(),
