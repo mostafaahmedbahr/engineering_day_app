@@ -77,6 +77,5 @@ class DropdownField extends StatelessWidget {
         ),
       ),
     );
-
   }
 }

@@ -1,7 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:engineering_day_app/features/auth/login/data/repos/login_repo_implement.dart';
 import 'package:get_it/get_it.dart';
-import '../../../../features/auth/login/presentation/view_model/login_provider.dart';
 import 'api_service.dart';
 //dependency Injection
 
@@ -9,12 +7,39 @@ final getIt = GetIt.instance;
 
 void setup() {
   getIt.registerSingleton<ApiService>(ApiService(Dio()));
-  getIt.registerSingleton<LoginRepoImpl>(LoginRepoImpl(
-    getIt.get<ApiService>(),
-  ));
-  getIt.registerSingleton<LoginProvider>(
-    LoginProvider(getIt.get<LoginRepoImpl>()),
-  );
+  // getIt.registerSingleton<LayoutRepoImpl>(LayoutRepoImpl(
+  //   getIt.get<ApiService>(),
+  // ));
+  // getIt.registerSingleton<ServicesReposImplementation>(ServicesReposImplementation(
+  //   getIt.get<ApiService>(),
+  // ));
+  // getIt.registerSingleton<ServicesDetailsRepoImpl>(ServicesDetailsRepoImpl(
+  //   getIt.get<ApiService>(),
+  // ));
+  //
+  // getIt.registerSingleton<QoutesReposImplementation>(QoutesReposImplementation(
+  //   getIt.get<ApiService>(),
+  // ));
 
+  // getIt.registerSingleton<CourseDetailsRepoImplementation>(CourseDetailsRepoImplementation(
+  //   getIt.get<ApiService>(),
+  // ));
 
+  // getIt.registerSingleton<SessionsRepoImpl>(SessionsRepoImpl(
+  //   getIt.get<ApiService>(),
+  // ));
+  //
+  // getIt.registerSingleton<ProjectsRepoImpl>(ProjectsRepoImpl(
+  //   getIt.get<ApiService>(),
+  // ));
+  //
+  // getIt.registerSingleton<NotificationsRepoImple>(NotificationsRepoImple(
+  //   getIt.get<ApiService>(),
+  // ));
+  // getIt.registerSingleton<SpeakersChatRepoImpl>(SpeakersChatRepoImpl(
+  //   getIt.get<ApiService>(),
+  // ));
+  // getIt.registerSingleton<ScanRepoImpl>(ScanRepoImpl(
+  //   getIt.get<ApiService>(),
+  // ));
 }

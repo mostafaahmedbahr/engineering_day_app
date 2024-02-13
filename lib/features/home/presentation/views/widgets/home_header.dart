@@ -1,6 +1,5 @@
- import 'package:easy_localization/easy_localization.dart';
- import 'package:engineering_day_app/core/shared_widgets/custom_sized_box.dart';
-import 'package:engineering_day_app/core/utils/app_colors/app_colors.dart';
+import 'package:easy_localization/easy_localization.dart';
+import 'package:engineering_day_app/core/shared_widgets/custom_sized_box.dart';
 import 'package:engineering_day_app/core/utils/app_styles/app_styles.dart';
 import 'package:engineering_day_app/lang/locale_keys.dart';
 import 'package:flutter/material.dart';
@@ -20,9 +19,9 @@ class HomeHeader extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-           DrawerIcon(
-           sKey: sKey,
-         ),
+          DrawerIcon(
+            sKey: sKey,
+          ),
           const CustomSizedBox(
             height: 23,
           ),
@@ -40,12 +39,12 @@ class HomeHeader extends StatelessWidget {
           const CustomSizedBox(
             height: 33,
           ),
-         const HomeTwoButtons(),
+          const HomeTwoButtons(),
           const CustomSizedBox(
             height: 48,
           ),
-        const  IntroVideo(),
-          const CustomSizedBox (
+          const IntroVideo(),
+          const CustomSizedBox(
             height: 64,
           ),
         ],

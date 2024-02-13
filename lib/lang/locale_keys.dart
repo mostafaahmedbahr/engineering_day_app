@@ -45,6 +45,7 @@ abstract class LocaleKeys {
   static const camera = "camera";
   static const remove =   "remove";
   static const gallery =  "gallery";
+  static const jobs =  "jobs";
 
 
 
