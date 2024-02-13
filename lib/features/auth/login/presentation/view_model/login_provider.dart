@@ -1,4 +1,7 @@
+import 'package:engineering_day_app/core/utils/app_nav/app_nav.dart';
 import 'package:engineering_day_app/core/utils/new_toast/new_toast.dart';
+import 'package:engineering_day_app/core/utils/new_toast/new_toast_2.dart';
+import 'package:engineering_day_app/features/layout/presentation/views/layout_view.dart';
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
 
@@ -38,6 +41,7 @@ import '../../data/repos/login_repos.dart';
       print(failure.errMessage);
     }, (data) {
       print("mostafa 6");
+      AppNav.customNavigator(context: context, screen: const LayoutView(), finish: true);
       NewToast.showNewSuccessToast(msg: "${data.message}", context: context);
       _isLoading = false;
       notifyListeners();

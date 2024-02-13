@@ -1,7 +1,7 @@
 import 'package:engineering_day_app/core/utils/app_styles/app_styles.dart';
 import 'package:flash/flash.dart';
 import 'package:flash/flash_helper.dart';
-import 'package:flutter/material.dart';
+  import 'package:flutter/material.dart';
 
 showCustomToast(BuildContext context,
     {String? title, String? description, backGroundColor}) {
@@ -23,7 +23,7 @@ showCustomToast(BuildContext context,
         backgroundColor: backGroundColor ?? Colors.red,
         position: FlashPosition.top,
         behavior: FlashBehavior.floating,
-        shape: RoundedRectangleBorder(
+        shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(10)),
         ),
         margin: const EdgeInsets.all(5.0),
