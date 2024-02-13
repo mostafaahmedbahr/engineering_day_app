@@ -10,6 +10,8 @@ import 'package:responsive_framework/utils/scroll_behavior.dart';
 import 'core/utils/app_services/remote_services/service_locator.dart';
 import 'features/auth/login/data/repos/login_repo_implement.dart';
 import 'features/auth/register/presentation/view_model/register_provider.dart';
+import 'features/charts/data/repos/statistics_repo_implement.dart';
+import 'features/charts/presentation/view_model/statistics_provider.dart';
 import 'features/layout/presentation/view_model/layout_provider.dart';
 import 'features/splash/splash_screen.dart';
 import 'lang/codegen_loader.g.dart';
@@ -46,6 +48,9 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (_) => LoginProvider( getIt.get<LoginRepoImpl>()),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => StatisticsProvider( getIt.get<StatisticsRepoImpl>()),
         ),
         ChangeNotifierProvider(
           create: (_) => RegisterProvider(),

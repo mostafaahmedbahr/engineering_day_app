@@ -5,13 +5,13 @@ import '../utils/app_colors/app_colors.dart';
 
 
 class CustomLoading extends StatelessWidget {
-  const CustomLoading({Key? key}) : super(key: key);
-
+    CustomLoading({Key? key , this.color}) : super(key: key);
+   Color? color;
   @override
   Widget build(BuildContext context) {
     return Center(
       child: LoadingAnimationWidget.threeArchedCircle(
-        size: 50, color: AppColors.mainColor,
+        size: 50, color:color ?? AppColors.mainColor,
       ),
     );
   }

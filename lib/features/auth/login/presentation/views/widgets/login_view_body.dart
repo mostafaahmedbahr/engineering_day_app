@@ -72,7 +72,7 @@ class LoginViewBody extends StatelessWidget {
             ConditionalBuilder(
               condition: loginProvider.isLoading!=true,
               fallback: (context){
-                return const CustomLoading();
+                return   CustomLoading();
               },
               builder: (context){
                 return  CustomButton(
