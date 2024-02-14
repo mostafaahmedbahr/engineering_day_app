@@ -1,0 +1,71 @@
+class AppStrings{
+
+  static const String ourWorks = "Our Works";
+  static const String newOffers = "New Offers";
+  static const String ourProducts  = "Our Products";
+  static const String ourCategories  = "Our Categories";
+  static const String ourProductsDes  = "All your business needs";
+  static const String seeAll = "See All";
+  static const String des = "Best of the today food list update";
+  static const String popMix = "Pop Mix";
+  static const String sEOSEM = "SEO & SEM";
+  static const String bePartner = "Be Partner";
+  static const String blogs = "Blogs";
+  static const String hireMe = "Hire Me";
+  static const String courses = "Courses";
+  static const String search = "Search";
+  static const String accountName = "Account name";
+  static const String contactUs = "Contact Us";
+  static const String ourPackages = "Our Packages";
+  static const String about  = "About";
+  static const String handOnHand  = "Hand On Hand";
+  static const String notification  = "Notification";
+  static const String yourTopGenres  = "Your Top Genres";
+  static const String freeConsultation  = "Free Consultation";
+  static const String bookNow  = "Book Now";
+  static const String favorite  = "Favorite";
+  static const String favoriteDes  = "Best of the today food list update";
+  static const String ourLatestProject  = "Our latest project";
+  static const String helpful  = "Helpful";
+  static const String getYourQuoteToday  = "get your quote today";
+  static const String getYourQuoteTodayDes  = "Complete the form to get an estimated price. Our team will be in touch to help you make the best decision for your project";
+  static const String getQute  = "Get a qute";
+  static const String firstName  = "First Name*";
+  static const String lastName  = "Last Name*";
+  static const String businessEmail  = "Business Email*";
+  static const String phone  = "Phone* ex. +971";
+  static const String typeYourMessage  = "Type Your Message";
+  static const String tellUsAboutYourProject   = "Tell us about your project ";
+  static const String ourLecturers   = "Our Lecturers";
+  static const String ourCourses   = "Our Courses";
+  static const String ourBestCourses   = "Best Courses";
+  static const String description   = "Description";
+  static const String ourPartner   = "Our partner";
+  static const String getInTouch   = "Get In Touch";
+  static const String achieveMoreWithVideo   = "Achieve more with video";
+  static const String contactNow   = "Contact Now";
+  static const String contactOurVideoExpert  = "Contact our video experts";
+  static const String recentPost  = "Recent Post";
+  static const String marketing  = "360° Marketing";
+  static const String skip  = "Skip";
+  static const String finish  = "Finish";
+  static const String onBoardingTitle1  = "App Marketing Expertise";
+  static const String onBoardingTitle2  = "Grow your business";
+  static const String onBoardingTitle3  = "Digital Marketing Experts";
+  static const String onBoardingDes1  = "If you have a business or are an influencer,you are looking to boost engagementand reduce the time spent managing your accounts.";
+  static const String onBoardingDes2  =  "Experts on marketing strategies to grow your audience,reach more customers, build brand awareness, and increase sales to boost revenue";
+  static const String onBoardingDes3  =  "Marketing strategist · Branding specialist · Web developer · Digital marketing expert · Social media manager · Graphic designer · Photographer. App Developers";
+  static const String ourTeam  = "Our Team";
+  static const String aboutMe  = "About Me";
+  static const String languages  = "Languages";
+  static const String portfolio  = "Portfolio";
+  static const String allArticles  = "All Articles";
+  static const String logout  = "LOG OUT";
+  static const String getQuote  = "Get a quote";
+  static const String allWorks  = "All Works";
+  static const String bestVideos  = "Best Videos";
+  static const String location  = "Location";
+
+
+
+}
