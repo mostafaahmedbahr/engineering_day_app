@@ -7,9 +7,11 @@ import '../../../../../core/utils/app_images/app_images.dart';
 import '../../../../../core/utils/app_styles/app_styles.dart';
 
 class ChartsListItem extends StatelessWidget {
-  const ChartsListItem({super.key, required this.name, required this.visitorsNumbers});
+  const ChartsListItem({super.key, required this.name, required this.visitorsNumbers, required this.title, required this.image});
  final String name;
  final int visitorsNumbers;
+ final String title;
+ final String image;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -27,11 +29,11 @@ class ChartsListItem extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           const CustomSizedBox(height: 10,),
-          SvgPicture.asset(AppImages.profile,
+          SvgPicture.asset(image,
           ),
           const Text("52",
             style: AppStyles.textStyle25WhiteW900,),
-          const Text("زوار التطبيق",
+            Text(title,
             style: AppStyles.textStyle12WhiteW500,),
           const CustomSizedBox(height: 10,),
         ],
