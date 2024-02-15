@@ -23,6 +23,11 @@ class AppImages {
   static const String male = "assets/images/svgs/svgexport-17 (21) 1.svg";
   static const String female = "assets/images/svgs/female.svg";
 
+
+  static const String cvUploaded = "assets/images/svgs/svgexport-17 (5) 1.svg";
+
+  static const String userCheck = "assets/images/svgs/users-check.svg";
+
   /// pngs
   static const String cutLogo =
       "assets/images/pngs/اليوم_الهندسي__1___1__page-0002-removebg-preview 6.png";
@@ -38,6 +43,17 @@ class AppImages {
   static const String userImage = "assets/images/pngs/user_image.png";
   static const String mainLogo =
       "assets/images/pngs/اليوم_الهندسي__1___1__page-0002-removebg-preview 9.png";
+
+
+
+  static const String userProfile = "assets/images/pngs/profile.png";
+  static const String checkCvUser = "assets/images/pngs/profile4.png";
+  static const String checkUser2 = "assets/images/pngs/profile3.png";
+  static const String checkUser = "assets/images/pngs/profile2.png";
+  static const String documents = "assets/images/pngs/documents.png";
+
+
+
 }
 
 class AppVideo {
