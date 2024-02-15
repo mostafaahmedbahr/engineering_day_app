@@ -10,7 +10,6 @@ import 'package:engineering_day_app/core/utils/app_styles/app_styles.dart';
 import 'package:engineering_day_app/core/utils/app_validator/app_validator.dart';
 import 'package:engineering_day_app/features/auth/login/presentation/view_model/login_provider.dart';
 import 'package:engineering_day_app/features/auth/register/presentation/views/register_view.dart';
-import 'package:engineering_day_app/features/layout/presentation/views/layout_view.dart';
 import 'package:engineering_day_app/lang/locale_keys.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

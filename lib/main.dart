@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:engineering_day_app/core/utils/app_colors/theme.dart';
 import 'package:engineering_day_app/features/auth/login/presentation/view_model/login_provider.dart';
 import 'package:engineering_day_app/features/auth/login/presentation/views/login_view.dart';
+import 'package:engineering_day_app/features/home/presentation/views/home_view.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_framework/responsive_wrapper.dart';
@@ -17,7 +18,7 @@ import 'features/splash/splash_screen.dart';
 import 'lang/codegen_loader.g.dart';
 
 void main() async {
-  setup();
+  await setup();
   runApp(
     EasyLocalization(
       startLocale: const Locale('ar', ""),
@@ -47,10 +48,10 @@ class MyApp extends StatelessWidget {
           create: (_) => LayoutProvider(),
         ),
         ChangeNotifierProvider(
-          create: (_) => LoginProvider( getIt.get<LoginRepoImpl>()),
+          create: (_) => LoginProvider(getIt.get<LoginRepoImpl>()),
         ),
         ChangeNotifierProvider(
-          create: (_) => StatisticsProvider( getIt.get<StatisticsRepoImpl>()),
+          create: (_) => StatisticsProvider(getIt.get<StatisticsRepoImpl>()),
         ),
         ChangeNotifierProvider(
           create: (_) => RegisterProvider(),
@@ -63,8 +64,8 @@ class MyApp extends StatelessWidget {
         locale: context.locale,
         supportedLocales: context.supportedLocales,
         localizationsDelegates: context.localizationDelegates,
-        home: const SplashScreen(
-          home: LoginView(),
+        home: SplashScreen(
+          home: currentUser.value.auth == true ? HomeView() : LoginView(),
         ),
         builder: (context, child) => ResponsiveWrapper.builder(
           BouncingScrollWrapper.builder(context, child!),

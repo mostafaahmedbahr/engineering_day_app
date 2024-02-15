@@ -2,6 +2,7 @@ import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:engineering_day_app/core/utils/app_colors/app_colors.dart';
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class DropdownField extends StatelessWidget {
     DropdownField({super.key, required this.value,required this.onChanged,  this.items, required this.title});
   final dynamic value;

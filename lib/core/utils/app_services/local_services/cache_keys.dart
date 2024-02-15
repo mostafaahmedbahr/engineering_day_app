@@ -20,4 +20,7 @@ class CacheKeysManger {
   static String? getUserLanguageFromCache() =>
       CacheHelper.getData(key: 'language')?? "";
 
+
+  static String userTokens="userTokens";
+
 }

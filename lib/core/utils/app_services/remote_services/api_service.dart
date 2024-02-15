@@ -12,13 +12,12 @@ class ApiService {
     required String endPoint,
     bool sendCode = false,
     dynamic data,
-    Map<String,dynamic>? query,
+    Map<String, dynamic>? query,
   }) async {
     _dio.options.headers = {
-      "Accept":"application/json",
+      "Accept": "application/json",
       "Content-Type": "application/json",
-      if (sendCode)
-        "code": "${CacheKeysManger.getUserCodeFromCache()}"
+      if (sendCode) "code": "${CacheKeysManger.getUserCodeFromCache()}"
     };
     var response = await _dio.post(
       "${EndPoints.baseUrl}$endPoint",
@@ -28,8 +27,6 @@ class ApiService {
     return response;
   }
 
-
-
   Future<Response> get({
     required String endPoint,
     bool sendCode = false,
@@ -37,8 +34,7 @@ class ApiService {
   }) async {
     _dio.options.headers = {
       "Content-Type": "application/json",
-      if (sendCode)
-        "code": "${CacheKeysManger.getUserCodeFromCache()}"
+      if (sendCode) "code": "${CacheKeysManger.getUserCodeFromCache()}"
     };
     var response = await _dio.get(
       '${EndPoints.baseUrl}$endPoint',
@@ -46,13 +42,14 @@ class ApiService {
     );
     return response;
   }
+
   Future<Response> putData({
     required String endPoint,
     bool sendAuthToken = false,
     required FormData data,
   }) async {
     _dio.options.headers = {
-      "accept":"*/*",
+      "accept": "*/*",
       "Content-Type": "multipart/form-data",
     };
     var response = await _dio.put(
@@ -62,19 +59,16 @@ class ApiService {
     return response;
   }
 
-
-
   Future<Response> deleteData({
     required String endPoint,
     bool sendCode = false,
     dynamic data,
-    Map<String,dynamic>? query,
+    Map<String, dynamic>? query,
   }) async {
     _dio.options.headers = {
-      "Accept":"application/json",
+      "Accept": "application/json",
       "Content-Type": "application/json",
-      if (sendCode)
-        "code": "${CacheKeysManger.getUserCodeFromCache()}"
+      if (sendCode) "code": "${CacheKeysManger.getUserCodeFromCache()}"
     };
     var response = await _dio.delete(
       "${EndPoints.baseUrl}$endPoint",
@@ -83,5 +77,4 @@ class ApiService {
     );
     return response;
   }
-
 }
