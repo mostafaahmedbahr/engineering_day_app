@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:dartz/dartz.dart';
@@ -28,6 +29,17 @@ class RegisterRepoImpl extends BaseRepositoryImpl implements RegisterRepo {
       required XFile file,
       required BuildContext context}) {
     {
+      print(jsonEncode({
+        "profile_image":
+         "asas",
+        "email": email,
+        "password": password,
+        "username": userName,
+        "name_in_certificate": userNameCert,
+        "gender": gender,
+        "national_id": national,
+        "phone": phone,
+      }));
       return request(() async {
         String fileName = file.path.split('/').last;
         FormData formData = FormData.fromMap({
@@ -42,7 +54,7 @@ class RegisterRepoImpl extends BaseRepositoryImpl implements RegisterRepo {
           "phone": phone,
         });
         var response = await apiService!
-            .postData(endPoint: EndPoints.loginUrl, data: formData);
+            .postData2(endPoint: EndPoints.register1, data: formData);
         var result = Register1Model.fromJson(response.data);
         return Right(result);
       });

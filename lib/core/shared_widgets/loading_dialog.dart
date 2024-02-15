@@ -5,12 +5,15 @@ showCustomDialog(context, {required child,bool isDismissible=true}){
 }
 showLoaderDialog(context){
   return   showCustomDialog(
-      isDismissible: false,
-      context, child: const Center(
-    child: Stack(
-      children: [
-        CircularProgressIndicator(),
-      ],
+      // isDismissible: false,
+      context, child:  Center(
+    child: Container(
+      height: 100,
+      child: Stack(
+        children: [
+          CircularProgressIndicator(),
+        ],
+      ),
     ),
   )) ;
 }

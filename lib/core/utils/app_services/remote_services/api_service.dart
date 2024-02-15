@@ -19,7 +19,27 @@ class ApiService {
       "Accept": "application/json",
       "Content-Type": "application/json",
       'Authorization': 'Bearer ${currentUser.value.access}',
-      if (sendCode) "code": "${CacheKeysManger.getUserCodeFromCache()}",
+    };
+    var response = await _dio.post(
+      "${EndPoints.baseUrl}$endPoint",
+      data: data,
+      queryParameters: query,
+    );
+    print("response realUri  =======> : ${response.realUri}");
+    print("response data  =======>: ${response.data}");
+    print("response headers  =======> : ${response.headers}");
+    return response;
+  }
+  Future<Response> postData2({
+    required String endPoint,
+    bool sendCode = false,
+    dynamic data,
+    Map<String, dynamic>? query,
+  }) async {
+    _dio.options.headers = {
+      "Accept": "application/json",
+      "Content-Type": "application/json",
+      // 'Authorization': 'Bearer ${currentUser.value.access}',
     };
     var response = await _dio.post(
       "${EndPoints.baseUrl}$endPoint",
@@ -40,7 +60,6 @@ class ApiService {
     _dio.options.headers = {
       "Content-Type": "application/json",
       'Authorization': 'Bearer ${currentUser.value.access}',
-      if (sendCode) "code": "${CacheKeysManger.getUserCodeFromCache()}"
     };
     var response = await _dio.get(
       '${EndPoints.baseUrl}$endPoint',
@@ -80,7 +99,6 @@ class ApiService {
       "Accept": "application/json",
       'Authorization': 'Bearer ${currentUser.value.access}',
       "Content-Type": "application/json",
-      if (sendCode) "code": "${CacheKeysManger.getUserCodeFromCache()}"
     };
     var response = await _dio.delete(
       "${EndPoints.baseUrl}$endPoint",

@@ -1,6 +1,7 @@
 import 'package:engineering_day_app/core/shared_widgets/loading_dialog.dart';
 import 'package:engineering_day_app/core/utils/app_methods/app_methods.dart';
 import 'package:engineering_day_app/core/utils/new_toast/new_toast_2.dart';
+import 'package:engineering_day_app/features/auth/register/presentation/data/models/register1.dart';
 import 'package:engineering_day_app/features/auth/register/presentation/data/repos/register_repos.dart';
 import 'package:engineering_day_app/features/auth/register/presentation/views/widgets/register2.dart';
 import 'package:flutter/material.dart';
@@ -58,6 +59,8 @@ class RegisterProvider with ChangeNotifier {
     );
   }
 
+
+  Register1Model register1model=Register1Model();
   Future<void> register1({
     required BuildContext context,
   }) async {
@@ -68,7 +71,7 @@ class RegisterProvider with ChangeNotifier {
         NewToast.showNewErrorToast(
             msg: "الصوره الشخصيه مطلوبه", context: context);
       } else {
-        // await showLoaderDialog(context);
+         showLoaderDialog(context);
         // ignore: use_build_context_synchronously
         var result = await registerRepo!.register1(
             email: emailCtl.text,
@@ -82,19 +85,17 @@ class RegisterProvider with ChangeNotifier {
             context: context);
 
         return result.fold((failure) {
-          // Navigator.pop(context);
-
+          Navigator.pop(context);
           notifyListeners();
           NewToast.showNewErrorToast(msg: failure.errMessage, context: context);
         }, (data) {
-          // Navigator.pop(context);
-
+          register1model=data;
+          Navigator.pop(context);
           changePage(currentPage = 1);
           pageController.nextPage(
             duration: const Duration(milliseconds: 500),
             curve: Curves.ease,
           );
-
           notifyListeners();
         });
       }
