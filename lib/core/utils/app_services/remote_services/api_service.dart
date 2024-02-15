@@ -1,13 +1,12 @@
 import 'package:dio/dio.dart';
+import 'package:engineering_day_app/features/auth/login/presentation/view_model/login_provider.dart';
 
 import '../local_services/cache_keys.dart';
 import 'endpoints.dart';
 
 class ApiService {
   final Dio _dio;
-
   ApiService(this._dio);
-
   Future<Response> postData({
     required String endPoint,
     bool sendCode = false,
@@ -17,7 +16,8 @@ class ApiService {
     _dio.options.headers = {
       "Accept": "application/json",
       "Content-Type": "application/json",
-      if (sendCode) "code": "${CacheKeysManger.getUserCodeFromCache()}"
+      'Authorization': 'Bearer ${currentUser.value.access}',
+      if (sendCode) "code": "${CacheKeysManger.getUserCodeFromCache()}",
     };
     var response = await _dio.post(
       "${EndPoints.baseUrl}$endPoint",
@@ -34,6 +34,7 @@ class ApiService {
   }) async {
     _dio.options.headers = {
       "Content-Type": "application/json",
+      'Authorization': 'Bearer ${currentUser.value.access}',
       if (sendCode) "code": "${CacheKeysManger.getUserCodeFromCache()}"
     };
     var response = await _dio.get(
@@ -50,6 +51,7 @@ class ApiService {
   }) async {
     _dio.options.headers = {
       "accept": "*/*",
+      'Authorization': 'Bearer ${currentUser.value.access}',
       "Content-Type": "multipart/form-data",
     };
     var response = await _dio.put(
@@ -67,6 +69,7 @@ class ApiService {
   }) async {
     _dio.options.headers = {
       "Accept": "application/json",
+      'Authorization': 'Bearer ${currentUser.value.access}',
       "Content-Type": "application/json",
       if (sendCode) "code": "${CacheKeysManger.getUserCodeFromCache()}"
     };

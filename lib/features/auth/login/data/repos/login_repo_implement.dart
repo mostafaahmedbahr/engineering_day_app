@@ -25,7 +25,18 @@ class LoginRepoImpl extends BaseRepositoryImpl implements LoginRepo {
         "password": password,
       });
       var result = TokenModel.fromJson(response.data);
+      await loginVerify(token: result.access ?? '');
       return Right(result);
+    });
+  }
+
+  @override
+  Future<Either<Failure, Unit>> loginVerify({required String token}) {
+    return request(() async {
+          await apiService!.postData(endPoint: EndPoints.loginVerify, data: {
+        "token": token,
+      });
+      return const Right(unit);
     });
   }
 }

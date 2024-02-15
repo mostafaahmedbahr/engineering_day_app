@@ -2,7 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:engineering_day_app/core/utils/app_colors/theme.dart';
 import 'package:engineering_day_app/features/auth/login/presentation/view_model/login_provider.dart';
 import 'package:engineering_day_app/features/auth/login/presentation/views/login_view.dart';
-import 'package:engineering_day_app/features/home/presentation/views/home_view.dart';
+import 'package:engineering_day_app/features/layout/presentation/views/layout_view.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_framework/responsive_wrapper.dart';
@@ -65,7 +65,7 @@ class MyApp extends StatelessWidget {
         supportedLocales: context.supportedLocales,
         localizationsDelegates: context.localizationDelegates,
         home: SplashScreen(
-          home: currentUser.value.auth == true ? HomeView() : LoginView(),
+          home: currentUser.value.auth == true ? LayoutView() : LoginView(),
         ),
         builder: (context, child) => ResponsiveWrapper.builder(
           BouncingScrollWrapper.builder(context, child!),

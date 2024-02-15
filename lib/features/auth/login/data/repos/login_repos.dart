@@ -6,5 +6,5 @@ import '../../../../../core/errors/failure.dart';
 
 abstract class LoginRepo{
   Future<Either<Failure,TokenModel>> login({required String email , required String password ,  required BuildContext context});
-  // Future<Either<Failure,UserModel>> loginVerify({required String email , required String password ,  required BuildContext context});
+  Future<Either<Failure,void>> loginVerify({required String token});
 }

@@ -50,7 +50,6 @@ class LoginProvider with ChangeNotifier {
           context: context, screen: const LayoutView(), finish: true);
 
       setCurrentUser(data.toJson());
-      NewToast.showNewSuccessToast(msg: "${data.access}", context: context);
       _isLoading = false;
       notifyListeners();
     });
