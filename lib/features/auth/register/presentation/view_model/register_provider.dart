@@ -10,6 +10,9 @@ import '../views/widgets/register1.dart';
 import '../views/widgets/register3.dart';
 
 class RegisterProvider with ChangeNotifier {
+  RegisterProvider(this.registerRepo);
+  RegisterRepo? registerRepo;
+
   final PageController pageController = PageController();
   int currentPage = 0;
 
@@ -24,7 +27,7 @@ class RegisterProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  RegisterRepo? registerRepo;
+
   XFile? pickedImage;
   final formKey = GlobalKey<FormState>();
   bool isMan = true;

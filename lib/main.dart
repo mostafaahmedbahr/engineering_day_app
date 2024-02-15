@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:engineering_day_app/core/utils/app_colors/theme.dart';
 import 'package:engineering_day_app/features/auth/login/presentation/view_model/login_provider.dart';
 import 'package:engineering_day_app/features/auth/login/presentation/views/login_view.dart';
+import 'package:engineering_day_app/features/auth/register/presentation/data/repos/register_repo_implement.dart';
 import 'package:engineering_day_app/features/layout/presentation/views/layout_view.dart';
 import 'package:engineering_day_app/features/tickets/data/repos/ticket_repo_implement.dart';
 import 'package:engineering_day_app/features/tickets/presentation/view_model/ticket_provider.dart';
@@ -59,7 +60,7 @@ class MyApp extends StatelessWidget {
           create: (_) => TicketProvider(getIt.get<TicketRepoImpl>()),
         ),
         ChangeNotifierProvider(
-          create: (_) => RegisterProvider(),
+          create: (_) => RegisterProvider(getIt.get<RegisterRepoImpl>()),
         ),
       ],
       child: MaterialApp(

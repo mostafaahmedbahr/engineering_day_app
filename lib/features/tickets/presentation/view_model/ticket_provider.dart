@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 
 class TicketProvider with ChangeNotifier {
   TicketProvider(this.ticketRepo);
+  TicketRepo? ticketRepo;
 
   static TicketProvider get(context, {listen = true}) =>
       Provider.of<TicketProvider>(context, listen: listen);
@@ -17,7 +18,6 @@ class TicketProvider with ChangeNotifier {
 
   bool get isLoading => _isLoading;
 
-  TicketRepo? ticketRepo;
   GetTicketModel ticket = GetTicketModel();
 
   Future<void> getTicket(
