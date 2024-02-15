@@ -5,13 +5,13 @@ import 'package:flutter/material.dart';
 class ConditionBuilderWidget extends StatelessWidget {
   const ConditionBuilderWidget({
     super.key,
-    required this.widget,
+    required this.child,
     this.loaderWidget,
-    this.loaderColor = AppColors.whiteColor,
+    this.loaderColor = AppColors.mainColor2,
     required this.isLoading,
   });
 
-  final Widget widget;
+  final Widget child;
 
   final Widget? loaderWidget;
   final bool isLoading;
@@ -24,6 +24,6 @@ class ConditionBuilderWidget extends StatelessWidget {
             CustomLoading(
               color: loaderColor,
             ))
-        : widget;
+        : child;
   }
 }

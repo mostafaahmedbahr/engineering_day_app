@@ -3,12 +3,14 @@ import 'package:engineering_day_app/core/utils/app_colors/theme.dart';
 import 'package:engineering_day_app/features/auth/login/presentation/view_model/login_provider.dart';
 import 'package:engineering_day_app/features/auth/login/presentation/views/login_view.dart';
 import 'package:engineering_day_app/features/layout/presentation/views/layout_view.dart';
+import 'package:engineering_day_app/features/tickets/data/repos/ticket_repo_implement.dart';
+import 'package:engineering_day_app/features/tickets/presentation/view_model/ticket_provider.dart';
+import 'package:engineering_day_app/injection_repo.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_framework/responsive_wrapper.dart';
 import 'package:responsive_framework/utils/scroll_behavior.dart';
 
-import 'core/utils/app_services/remote_services/service_locator.dart';
 import 'features/auth/login/data/repos/login_repo_implement.dart';
 import 'features/auth/register/presentation/view_model/register_provider.dart';
 import 'features/charts/data/repos/statistics_repo_implement.dart';
@@ -52,6 +54,9 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (_) => StatisticsProvider(getIt.get<StatisticsRepoImpl>()),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => TicketProvider(getIt.get<TicketRepoImpl>()),
         ),
         ChangeNotifierProvider(
           create: (_) => RegisterProvider(),

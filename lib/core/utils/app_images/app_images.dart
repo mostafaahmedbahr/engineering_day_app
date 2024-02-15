@@ -39,6 +39,7 @@ class AppImages {
   static const String splash = "assets/images/pngs/splash.png";
   static const String login = "assets/images/pngs/Rectangle 146.png";
   static const String ticketImage = "assets/images/pngs/ticket.png";
+  static const String attendTicketImage = "assets/images/pngs/attend_ticket.png";
   static const String ticketDialog = "assets/images/pngs/ticket_dialog.png";
   static const String userImage = "assets/images/pngs/user_image.png";
   static const String mainLogo =

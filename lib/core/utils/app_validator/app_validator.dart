@@ -1,10 +1,10 @@
 class MyValidators {
   static String? displayNameValidator(String? displayName) {
     if (displayName == null || displayName.isEmpty) {
-      return 'Display name cannot be empty';
+      return 'الحقل مطلوب';
     }
-    if (displayName.length < 3 || displayName.length > 20) {
-      return 'Display name must be between 3 and 20 characters';
+    if (displayName.length < 3) {
+      return 'عدد الحروف يجب ان يكون اكبر من ٣ حروف';
     }
 
     return null; // Return null if display name is valid
@@ -12,32 +12,31 @@ class MyValidators {
 
   static String? emailValidator(String? value) {
     if (value!.isEmpty) {
-      return 'Please enter an email';
+      return 'يرجي ادخال البريد الالكتروني';
     }
     if (!RegExp(r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b')
         .hasMatch(value)) {
-      return 'Please enter a valid email';
+      return 'يرجي ادخال بريد الكتروني صالح';
     }
     return null;
   }
 
   static String? passwordValidator(String? value) {
     if (value!.isEmpty) {
-      return 'Please enter a password';
+      return 'كلمة المرور مطلوبه';
     }
     if (value.length < 6) {
-      return 'Password must be at least 6 characters long';
+      return 'الرقم السري يجب الا يقل عن 6 احرف';
     }
     return null;
   }
 
   static String? repeatPasswordValidator({String? value, String? password}) {
     if (value != password) {
-      return 'Passwords do not match';
+      return 'كبمة المرورغير متطابقه';
     }
     return null;
   }
-
 
   static String? phoneValidator(String? value) {
     if (value!.isEmpty) {

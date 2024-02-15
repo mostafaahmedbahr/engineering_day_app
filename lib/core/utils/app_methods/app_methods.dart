@@ -1,9 +1,9 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:engineering_day_app/core/utils/app_colors/app_colors.dart';
 import 'package:engineering_day_app/core/utils/app_images/app_images.dart';
+import 'package:engineering_day_app/core/utils/app_styles/app_styles.dart';
 import 'package:engineering_day_app/lang/locale_keys.dart';
 import 'package:flutter/material.dart';
-
-
 
 class MyAppMethods {
   static Future<void> showErrorORWarningDialog({
@@ -64,8 +64,6 @@ class MyAppMethods {
         });
   }
 
-
-
   static Future<void> imagePickerDialog({
     required BuildContext context,
     required Function cameraFCT,
@@ -86,9 +84,14 @@ class MyAppMethods {
                       Navigator.pop(context);
                     }
                   },
-                  icon: const Icon(Icons.camera),
-                  label:   Text(
+                  icon: const Icon(
+                    Icons.camera,
+                    color: AppColors.whiteColor,
+                  ),
+                  label: Text(
                     LocaleKeys.camera.tr(),
+                    style: AppStyles.textStyle16DarkMainColorW800
+                        .copyWith(color: AppColors.whiteColor),
                   ),
                 ),
                 TextButton.icon(
@@ -98,9 +101,12 @@ class MyAppMethods {
                       Navigator.pop(context);
                     }
                   },
-                  icon: const Icon(Icons.image),
-                  label:   Text(
+                  icon: const Icon(Icons.image, color: AppColors.whiteColor),
+                  label: Text(
+
                     LocaleKeys.gallery.tr(),
+                    style: AppStyles.textStyle16DarkMainColorW800
+                        .copyWith(color: AppColors.whiteColor),
                   ),
                 ),
                 TextButton.icon(
@@ -110,9 +116,11 @@ class MyAppMethods {
                       Navigator.pop(context);
                     }
                   },
-                  icon: const Icon(Icons.remove),
-                  label:   Text(
+                  icon: const Icon(Icons.remove, color: AppColors.whiteColor),
+                  label: Text(
                     LocaleKeys.remove.tr(),
+                    style: AppStyles.textStyle16DarkMainColorW800
+                        .copyWith(color: AppColors.whiteColor),
                   ),
                 ),
               ],

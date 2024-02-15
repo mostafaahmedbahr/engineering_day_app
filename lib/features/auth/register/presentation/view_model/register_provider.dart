@@ -1,74 +1,109 @@
-
+import 'package:engineering_day_app/core/shared_widgets/loading_dialog.dart';
 import 'package:engineering_day_app/core/utils/app_methods/app_methods.dart';
- import 'package:engineering_day_app/features/auth/register/presentation/views/widgets/register2.dart';
+import 'package:engineering_day_app/core/utils/new_toast/new_toast_2.dart';
+import 'package:engineering_day_app/features/auth/register/presentation/data/repos/register_repos.dart';
+import 'package:engineering_day_app/features/auth/register/presentation/views/widgets/register2.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../views/widgets/register1.dart';
 import '../views/widgets/register3.dart';
 
-
 class RegisterProvider with ChangeNotifier {
-
-
   final PageController pageController = PageController();
   int currentPage = 0;
 
   List<Widget> pages = const [
-     RegisterPartOne(),
-      RegisterPartTwo(),
-      RegisterPartThree(),
-
+    RegisterPartOne(),
+    RegisterPartTwo(),
+    RegisterPartThree(),
   ];
 
-  changePage(page){
+  changePage(page) {
     currentPage = page;
     notifyListeners();
   }
 
-
+  RegisterRepo? registerRepo;
   XFile? pickedImage;
+  final formKey = GlobalKey<FormState>();
+  bool isMan = true;
+
+  TextEditingController emailCtl = TextEditingController();
+  TextEditingController passwordCtl = TextEditingController();
+  TextEditingController userNameCtl = TextEditingController();
+  TextEditingController userNameCertCtl = TextEditingController();
+  TextEditingController nationalCrl = TextEditingController();
+  TextEditingController phoneCtrl = TextEditingController();
+
   Future<void> localImagePicker({required BuildContext context}) async {
     final ImagePicker picker = ImagePicker();
     await MyAppMethods.imagePickerDialog(
       context: context,
       cameraFCT: () async {
         pickedImage = await picker.pickImage(source: ImageSource.camera);
-      notifyListeners();
+        notifyListeners();
       },
       galleryFCT: () async {
         pickedImage = await picker.pickImage(source: ImageSource.gallery);
         notifyListeners();
       },
       removeFCT: () {
-          pickedImage = null;
-          notifyListeners();
+        pickedImage = null;
+        notifyListeners();
       },
     );
   }
 
-  late final formKey = GlobalKey<FormState>();
+  Future<void> register1({
+    required BuildContext context,
+  }) async {
+    print("asas");
+    notifyListeners();
+    if (formKey.currentState?.validate() ?? false) {
+      if (pickedImage == null) {
+        NewToast.showNewErrorToast(
+            msg: "الصوره الشخصيه مطلوبه", context: context);
+      } else {
+        // await showLoaderDialog(context);
+        // ignore: use_build_context_synchronously
+        var result = await registerRepo!.register1(
+            email: emailCtl.text,
+            password: passwordCtl.text,
+            userName: userNameCtl.text,
+            gender: isMan ? "male" : "female",
+            userNameCert: userNameCertCtl.text,
+            national: nationalCrl.text,
+            phone: phoneCtrl.text,
+            file: pickedImage!,
+            context: context);
 
-  Future<void> registerFct({required BuildContext context}) async {
-    final isValid = formKey.currentState!.validate();
-    FocusScope.of(context).unfocus();
-    if (pickedImage == null) {
-      MyAppMethods.showErrorORWarningDialog(
-          context: context,
-          subtitle: "Make sure to pick up an image",
-          fct: () {});
+        return result.fold((failure) {
+          // Navigator.pop(context);
+
+          notifyListeners();
+          NewToast.showNewErrorToast(msg: failure.errMessage, context: context);
+        }, (data) {
+          // Navigator.pop(context);
+
+          changePage(currentPage = 1);
+          pageController.nextPage(
+            duration: const Duration(milliseconds: 500),
+            curve: Curves.ease,
+          );
+
+          notifyListeners();
+        });
+      }
     }
-    if (isValid) {}
   }
 
-
   String? selectedCity;
-  changeSelectCity(val)
-  {
+
+  changeSelectCity(val) {
     selectedCity = val;
     notifyListeners();
   }
-
 
   final List<String> items = [
     'Item1',
@@ -92,16 +127,8 @@ class RegisterProvider with ChangeNotifier {
     );
 
     if (picked != null && picked != selectedDate) {
-        selectedDate = picked;
-        notifyListeners();
+      selectedDate = picked;
+      notifyListeners();
     }
   }
-
-
-
-
-
-
-
-
 }

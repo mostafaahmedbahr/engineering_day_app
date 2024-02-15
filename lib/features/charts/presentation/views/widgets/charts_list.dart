@@ -25,7 +25,8 @@ class ChartsList extends StatelessWidget {
         builder: (context, statisticsProvider, child) {
       return ConditionBuilderWidget(
           isLoading: statisticsProvider.isLoading == true,
-          widget: Column(
+          loaderColor:AppColors.whiteColor,
+          child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               InkWell(

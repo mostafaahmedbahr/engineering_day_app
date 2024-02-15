@@ -38,7 +38,8 @@ dependencies:
   cupertino_icons: ^1.0.2
   dio: ^5.4.0
   flash: ^3.0.5+1
-
+  screenshot: ^2.1.0
+  permission_handler: ^11.3.0
   shared_preferences: ^2.0.5
   conditional_builder_null_safety: ^0.0.6
   responsive_framework: ^0.2.0

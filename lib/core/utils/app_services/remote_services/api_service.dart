@@ -6,7 +6,9 @@ import 'endpoints.dart';
 
 class ApiService {
   final Dio _dio;
+
   ApiService(this._dio);
+
   Future<Response> postData({
     required String endPoint,
     bool sendCode = false,
@@ -24,6 +26,9 @@ class ApiService {
       data: data,
       queryParameters: query,
     );
+    print("response realUri  =======> : ${response.realUri}");
+    print("response data  =======>: ${response.data}");
+    print("response headers  =======> : ${response.headers}");
     return response;
   }
 
@@ -41,6 +46,7 @@ class ApiService {
       '${EndPoints.baseUrl}$endPoint',
       queryParameters: query,
     );
+
     return response;
   }
 
@@ -58,6 +64,9 @@ class ApiService {
       '${EndPoints.baseUrl}$endPoint',
       data: data,
     );
+    print("response realUri  =======> : ${response.realUri}");
+    print("response data  =======>: ${response.data}");
+    print("response headers  =======> : ${response.headers}");
     return response;
   }
 
@@ -78,6 +87,9 @@ class ApiService {
       data: data,
       queryParameters: query,
     );
+    print("response realUri  =======> : ${response.realUri}");
+    print("response data  =======>: ${response.data}");
+    print("response headers  =======> : ${response.headers}");
     return response;
   }
 }

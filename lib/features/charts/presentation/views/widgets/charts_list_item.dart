@@ -5,11 +5,15 @@ import '../../../../../core/utils/app_colors/app_colors.dart';
 import '../../../../../core/utils/app_styles/app_styles.dart';
 
 class ChartsListItem extends StatelessWidget {
-  ChartsListItem({super.key, required this.title, required this.count,required this.image});
+  const ChartsListItem(
+      {super.key,
+      required this.title,
+      required this.count,
+      required this.image});
 
-  String title;
-  String count;
-  String image;
+  final String title;
+  final String count;
+  final String image;
 
   @override
   Widget build(BuildContext context) {
@@ -34,12 +38,12 @@ class ChartsListItem extends StatelessWidget {
             height: 40,
             width: 40,
           ),
-           Text(
+          Text(
             "+${count}",
             style: AppStyles.textStyle25WhiteW900,
           ),
-            Text(
-           title,
+          Text(
+            title,
             style: AppStyles.textStyle12WhiteW500,
           ),
           const CustomSizedBox(
