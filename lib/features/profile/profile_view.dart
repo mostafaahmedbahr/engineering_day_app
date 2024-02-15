@@ -1,9 +1,11 @@
 import 'package:engineering_day_app/core/shared_widgets/custom_global_app_bar.dart';
 import 'package:engineering_day_app/core/utils/app_colors/app_colors.dart';
+import 'package:engineering_day_app/core/utils/app_nav/app_nav.dart';
 import 'package:engineering_day_app/core/utils/app_styles/app_styles.dart';
 import 'package:flutter/material.dart';
 
 import '../../core/utils/app_images/app_images.dart';
+import 'edit_profile_view.dart';
 
 class ProfileView extends StatelessWidget {
   const ProfileView({super.key});
@@ -14,11 +16,19 @@ class ProfileView extends StatelessWidget {
       appBar: CustomGlobalAppBar(
         title: 'انا',
         actions: [
-          Padding(
-            padding: const EdgeInsets.all(10),
-            child: Text(
-              "تعديل",
-              style: AppStyles.textStyle16DarkMainColorW800,
+          InkWell(
+            onTap: (){
+              AppNav.customNavigator(context: context,
+                  screen: const EditProfileView(),
+                  finish: false,
+              );
+            },
+            child: const Padding(
+              padding: EdgeInsets.all(10),
+              child: Text(
+                "تعديل",
+                style: AppStyles.textStyle16DarkMainColorW800,
+              ),
             ),
           ),
         ],

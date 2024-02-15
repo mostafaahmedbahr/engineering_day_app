@@ -4,6 +4,7 @@ import 'package:engineering_day_app/features/auth/login/presentation/view_model/
 import 'package:engineering_day_app/features/auth/login/presentation/views/login_view.dart';
 import 'package:engineering_day_app/features/auth/register/presentation/data/repos/register_repo_implement.dart';
 import 'package:engineering_day_app/features/layout/presentation/views/layout_view.dart';
+import 'package:engineering_day_app/features/profile/presentation/view_model/profile_provider.dart';
 import 'package:engineering_day_app/features/tickets/data/repos/ticket_repo_implement.dart';
 import 'package:engineering_day_app/features/tickets/presentation/view_model/ticket_provider.dart';
 import 'package:engineering_day_app/injection_repo.dart';
@@ -49,6 +50,9 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(
           create: (_) => LayoutProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => ProfileProvider(),
         ),
         ChangeNotifierProvider(
           create: (_) => LoginProvider(getIt.get<LoginRepoImpl>()),

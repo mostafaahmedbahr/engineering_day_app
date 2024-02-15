@@ -23,7 +23,7 @@ class PickImageWidget extends StatelessWidget {
               height: 115,
               width:  115,
               decoration: BoxDecoration(
-              color: AppColors.whiteColor,
+                color: const Color.fromRGBO(245, 248, 252, 1),
                 borderRadius: BorderRadius.circular(50.0),
                 border: Border.all(
                   color: AppColors.whiteColor
