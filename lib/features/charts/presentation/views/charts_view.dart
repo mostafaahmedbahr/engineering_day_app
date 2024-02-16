@@ -16,7 +16,7 @@ class _ChartsViewState extends State<ChartsView> {
   @override
   void initState() {
     StatisticsProvider.get(context, listen: false)
-        .getStatistics(context: context);
+        .getStatistics(context: context,listen:false);
     super.initState();
   }
 

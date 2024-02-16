@@ -32,9 +32,12 @@ class StatisticsProvider with ChangeNotifier {
 
   GetStatisticsModel static = GetStatisticsModel();
 
-  Future<void> getStatistics({required BuildContext context}) async {
+  Future<void> getStatistics(
+      {required BuildContext context, bool listen = true}) async {
     _isLoading = true;
-    notifyListeners();
+    if (listen == true) {
+      notifyListeners();
+    }
     var result = await statisticsRepo!.getStatistics(
       context: context,
     );
