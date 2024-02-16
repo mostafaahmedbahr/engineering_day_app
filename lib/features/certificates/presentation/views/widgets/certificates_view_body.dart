@@ -36,8 +36,8 @@ class _CertificatesViewBodyState extends State<CertificatesViewBody> {
                 child: ListView.separated(
                   itemBuilder:  (context , index ){
                     return   CertificatesViewBodyItem(
-                      name: certificatedProvider.certificatedModel.userCetificates![0].eventTitle.toString(),
-                      url: certificatedProvider.certificatedModel.userCetificates![0].url.toString(),
+                      name: certificatedProvider.certificatedModel.userCetificates![index].eventTitle.toString(),
+                      url: certificatedProvider.certificatedModel.userCetificates![index].url.toString(),
 
                     );
                   },
