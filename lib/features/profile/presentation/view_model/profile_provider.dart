@@ -1,4 +1,6 @@
+import 'package:dio/dio.dart';
 import 'package:engineering_day_app/core/utils/app_methods/app_methods.dart';
+import 'package:engineering_day_app/core/utils/app_nav/app_nav.dart';
 import 'package:engineering_day_app/core/utils/new_toast/new_toast_2.dart';
 import 'package:engineering_day_app/features/profile/data/models/get_profile_model.dart';
 import 'package:engineering_day_app/features/profile/data/repos/profile_repos.dart';
@@ -78,11 +80,62 @@ class ProfileProvider with ChangeNotifier {
   }
 
   var nameCon = TextEditingController();
-  var cityCon = TextEditingController();
-  var universityCon = TextEditingController();
-  var specalizationCon = TextEditingController();
+  var nationalIdCon = TextEditingController();
+  var phoneCon = TextEditingController();
+  var nameInCertificateCon = TextEditingController();
   var collegeCon = TextEditingController();
   var schoolLevelCon = TextEditingController();
   var oldPasswordCon = TextEditingController();
   var newPasswordCon = TextEditingController();
+
+
+
+  Future<void> editProfileData(
+      {required BuildContext context,
+        bool listen = true ,
+        required String username ,
+        required String gender ,
+        required String nationalId ,
+        required String phone ,
+        required String nameInCertificate ,
+        required MultipartFile? image ,
+      }) async {
+    _isLoading = true;
+    if (listen == true) {
+      notifyListeners();
+    }
+    var result = await profileRepo!.editProfileData(
+      context: context,
+      username: username,
+      gender: gender,
+      nationalId: nationalId,
+      phone: phone,
+      nameInCertificate: nameInCertificate,
+      image: image,
+    );
+    return result.fold((failure) {
+      _isLoading = false;
+      notifyListeners();
+      NewToast.showNewErrorToast(msg: failure.errMessage, context: context);
+    }, (data) {
+      getProfileModel = data;
+      _isLoading = false;
+      notifyListeners();
+      NewToast.showNewSuccessToast(msg: "تم التعديل بنجاح", context: context);
+      Navigator.pop(context);
+    });
+  }
+
+
+  String? selectedGender;
+  changeSelectGender(val)
+  {
+    selectedGender = val;
+    notifyListeners();
+  }
+
+  List<String> gender = [
+    "male",
+    "female",
+  ];
 }

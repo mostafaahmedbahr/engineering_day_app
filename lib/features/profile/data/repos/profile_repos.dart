@@ -6,4 +6,14 @@ import 'package:flutter/material.dart';
 abstract class ProfileRepo {
   Future<Either<Failure, GetProfileModel>> getProfile(
       {required BuildContext context});
+
+  Future<Either<Failure, GetProfileModel>> editProfileData(
+      {required BuildContext context ,
+        required dynamic image,
+        required String username ,
+        required String gender ,
+        required String nationalId ,
+        required String phone ,
+        required String nameInCertificate ,
+      });
 }
