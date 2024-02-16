@@ -1,4 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:engineering_day_app/core/utils/app_nav/app_nav.dart';
+import 'package:engineering_day_app/features/home/presentation/view_model/home_provider.dart';
+import 'package:engineering_day_app/features/home/presentation/views/details_screen.dart';
  import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -59,7 +62,19 @@ class HomeListItem extends StatelessWidget {
               ),
               const CustomSizedBox(height: 13,),
               InkWell(
-                onTap: (){},
+                onTap: (){
+                  //getStatisticsModel:
+                  //                       StatisticsProvider.get(context, listen: false).static,
+                  AppNav.customNavigator(context: context,
+                      screen: DetailsScreen(
+                        image: image,
+                        type: "eng_talks",
+                           getEventsDetailsHomeModel:
+                           HomeProvider.get(context, listen: false).eventsModel!,
+                      ),
+                      finish: false,
+                  );
+                },
                 child: Container(
                   height: 24,
                   width: 130,

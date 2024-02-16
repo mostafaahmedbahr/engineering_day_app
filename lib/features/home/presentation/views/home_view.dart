@@ -72,14 +72,14 @@ class HomeView extends StatelessWidget {
                 },
                 elevation: 2.0,
                 fillColor: AppColors.mainColor3,
+                padding: const EdgeInsets.all(0.0),
+                shape: const CircleBorder(),
+                constraints:
+                    const BoxConstraints(minWidth: 60.0, minHeight: 25.0),
                 child: SvgPicture.asset(
                   AppImages.chart,
                   color: AppColors.whiteColor,
                 ),
-                padding: EdgeInsets.all(0.0),
-                shape: CircleBorder(),
-                constraints:
-                    const BoxConstraints(minWidth: 60.0, minHeight: 25.0),
               ))
         ],
       ),

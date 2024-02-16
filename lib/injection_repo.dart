@@ -4,6 +4,7 @@ import 'package:engineering_day_app/core/utils/app_services/remote_services/api_
 import 'package:engineering_day_app/features/auth/login/data/repos/login_repo_implement.dart';
 import 'package:engineering_day_app/features/auth/register/presentation/data/repos/register_repo_implement.dart';
 import 'package:engineering_day_app/features/charts/data/repos/statistics_repo_implement.dart';
+import 'package:engineering_day_app/features/home/data/repos/home_repo_impl.dart';
 import 'package:engineering_day_app/features/tickets/data/repos/ticket_repo_implement.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
@@ -34,6 +35,10 @@ setup() async {
     getIt.get<ApiService>(),
   ));
   getIt.registerSingleton<RegisterRepoImpl>(RegisterRepoImpl(
+    getIt.get<ApiService>(),
+  ));
+
+  getIt.registerSingleton<HomeRepoImpl>(HomeRepoImpl(
     getIt.get<ApiService>(),
   ));
 }

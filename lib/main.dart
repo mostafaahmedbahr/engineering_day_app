@@ -3,6 +3,8 @@ import 'package:engineering_day_app/core/utils/app_colors/theme.dart';
 import 'package:engineering_day_app/features/auth/login/presentation/view_model/login_provider.dart';
 import 'package:engineering_day_app/features/auth/login/presentation/views/login_view.dart';
 import 'package:engineering_day_app/features/auth/register/presentation/data/repos/register_repo_implement.dart';
+import 'package:engineering_day_app/features/home/data/repos/home_repo_impl.dart';
+import 'package:engineering_day_app/features/home/presentation/view_model/home_provider.dart';
 import 'package:engineering_day_app/features/layout/presentation/views/layout_view.dart';
 import 'package:engineering_day_app/features/profile/presentation/view_model/profile_provider.dart';
 import 'package:engineering_day_app/features/tickets/data/repos/ticket_repo_implement.dart';
@@ -53,6 +55,9 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (_) => ProfileProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => HomeProvider(getIt.get<HomeRepoImpl>()),
         ),
         ChangeNotifierProvider(
           create: (_) => LoginProvider(getIt.get<LoginRepoImpl>()),
