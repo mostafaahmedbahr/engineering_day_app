@@ -22,6 +22,8 @@ import 'features/auth/register/presentation/view_model/register_provider.dart';
 import 'features/charts/data/repos/statistics_repo_implement.dart';
 import 'features/charts/presentation/view_model/statistics_provider.dart';
 import 'features/layout/presentation/view_model/layout_provider.dart';
+import 'features/profile/data/repos/profile_repo_implement.dart';
+import 'features/profile/data/repos/profile_repos.dart';
 import 'features/splash/splash_screen.dart';
 import 'lang/codegen_loader.g.dart';
 
@@ -56,7 +58,7 @@ class MyApp extends StatelessWidget {
           create: (_) => LayoutProvider(),
         ),
         ChangeNotifierProvider(
-          create: (_) => ProfileProvider(),
+          create: (_) => ProfileProvider(getIt.get<ProfileRepo>()),
         ),
         ChangeNotifierProvider(
           create: (_) => HomeProvider(getIt.get<HomeRepoImpl>()),
@@ -76,6 +78,9 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (_) =>
               RecruitmentCVProvider(getIt.get<GetRecruitmentCvRepoImpl>()),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => ProfileProvider(getIt.get<ProfileRepoImpl>()),
         ),
       ],
       child: MaterialApp(

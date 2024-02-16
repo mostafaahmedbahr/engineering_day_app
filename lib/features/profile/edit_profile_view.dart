@@ -1,4 +1,4 @@
- import 'package:easy_localization/easy_localization.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:engineering_day_app/core/shared_widgets/custom_sized_box.dart';
 import 'package:engineering_day_app/core/shared_widgets/custom_text_form_filed.dart';
 import 'package:engineering_day_app/core/utils/app_colors/app_colors.dart';
@@ -17,7 +17,8 @@ class EditProfileView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(child: Scaffold(
-      body: Consumer<ProfileProvider>(builder: (context, profileProvider, child){
+      body:
+          Consumer<ProfileProvider>(builder: (context, profileProvider, child) {
         return ListView(
           children: [
             Stack(
@@ -25,11 +26,11 @@ class EditProfileView extends StatelessWidget {
               children: [
                 Container(
                   height: 200,
-                  decoration:   const BoxDecoration(
+                  decoration: const BoxDecoration(
                     gradient: LinearGradient(
                       begin: Alignment.topCenter,
                       end: Alignment.bottomCenter,
-                      colors:   [
+                      colors: [
                         Color.fromRGBO(65, 147, 182, 0.53),
                         Color.fromRGBO(133, 209, 205, 0),
                       ],
@@ -44,20 +45,26 @@ class EditProfileView extends StatelessWidget {
                           Row(
                             children: [
                               IconButton(
-                                onPressed: (){
+                                onPressed: () {
                                   Navigator.pop(context);
                                 },
-                                icon: const Icon(Icons.arrow_back_rounded,
-                                  color: AppColors.darkMainColor,),
+                                icon: const Icon(
+                                  Icons.arrow_back_rounded,
+                                  color: AppColors.darkMainColor,
+                                ),
                               ),
-                              const  Text("تعديل الملف الشخصي",
-                                style: AppStyles.textStyle16DarkMainColorW800,),
+                              const Text( 
+                                "تعديل الملف الشخصي",
+                                style: AppStyles.textStyle16DarkMainColorW800,
+                              ),
                             ],
                           ),
                           TextButton(
-                            onPressed: (){},
-                            child: const Text("حفظ",
-                              style: AppStyles.textStyle16DarkMainColorW800,),
+                            onPressed: () {},
+                            child: const Text(
+                              "حفظ",
+                              style: AppStyles.textStyle16DarkMainColorW800,
+                            ),
                           ),
                         ],
                       ),
@@ -72,7 +79,8 @@ class EditProfileView extends StatelessWidget {
                     child: PickImageWidget(
                       pickedImage: profileProvider.pickedImage,
                       function: () async {
-                        await profileProvider.localImagePicker(context: context);
+                        await profileProvider.localImagePicker(
+                            context: context);
                       },
                     ),
                   ),
@@ -85,7 +93,7 @@ class EditProfileView extends StatelessWidget {
                 children: [
                   /// name
                   CustomTextFormField(
-                  controller: profileProvider.nameCon,
+                    controller: profileProvider.nameCon,
                     keyboardType: TextInputType.name,
                     validator: (String? value) {
                       MyValidators.displayNameValidator(value);
@@ -105,7 +113,7 @@ class EditProfileView extends StatelessWidget {
                           : '',
                     ),
                     readOnly: true,
-                    onPressed: (){
+                    onPressed: () {
                       profileProvider.selectDateFunction(context);
                     },
                     hintText: "20/07/1999",
@@ -116,7 +124,7 @@ class EditProfileView extends StatelessWidget {
 
                   /// city
                   CustomTextFormField(
-                   controller: profileProvider.cityCon,
+                    controller: profileProvider.cityCon,
                     keyboardType: TextInputType.text,
                     validator: (String? value) {
                       MyValidators.displayNameValidator(value);
@@ -130,7 +138,7 @@ class EditProfileView extends StatelessWidget {
 
                   /// university
                   CustomTextFormField(
-                  controller: profileProvider.universityCon,
+                    controller: profileProvider.universityCon,
                     keyboardType: TextInputType.text,
                     validator: (String? value) {
                       MyValidators.displayNameValidator(value);
@@ -172,7 +180,7 @@ class EditProfileView extends StatelessWidget {
 
                   /// schoolLeve
                   CustomTextFormField(
-                   controller: profileProvider.schoolLevelCon,
+                    controller: profileProvider.schoolLevelCon,
                     keyboardType: TextInputType.text,
                     validator: (String? value) {
                       MyValidators.displayNameValidator(value);
@@ -184,9 +192,8 @@ class EditProfileView extends StatelessWidget {
                     height: 16,
                   ),
 
-
                   CustomTextFormField(
-                     controller: profileProvider.oldPasswordCon,
+                    controller: profileProvider.oldPasswordCon,
                     keyboardType: TextInputType.visiblePassword,
                     validator: (String? value) {
                       MyValidators.passwordValidator(value);
@@ -203,7 +210,7 @@ class EditProfileView extends StatelessWidget {
                     keyboardType: TextInputType.visiblePassword,
                     validator: (String? value) {
                       MyValidators.repeatPasswordValidator(
-                          value : value ,
+                        value: value,
                         password: profileProvider.oldPasswordCon.text,
                       );
                       return null;
@@ -216,11 +223,9 @@ class EditProfileView extends StatelessWidget {
                 ],
               ),
             ),
-
           ],
         );
-      }
-      ),
+      }),
     ));
   }
 }

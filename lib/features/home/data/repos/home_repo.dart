@@ -6,5 +6,6 @@ import 'package:engineering_day_app/features/home/data/models/get_events_details
 abstract class HomeRepo {
   Future<Either<Failure, GetEventsDetailsHomeModel>> getEvents(
       {required BuildContext context , required String type});
+  Future<Either<Failure, void>> joinEvent({required String id});
 
 }

@@ -3,14 +3,12 @@ import 'package:engineering_day_app/core/shared_widgets/custom_button.dart';
 import 'package:engineering_day_app/core/shared_widgets/custom_text_form_filed.dart';
 import 'package:engineering_day_app/core/utils/app_colors/app_colors.dart';
 import 'package:engineering_day_app/core/utils/app_images/app_images.dart';
-import 'package:engineering_day_app/core/utils/app_navigatiion/navigator.dart';
 import 'package:engineering_day_app/core/utils/app_styles/app_styles.dart';
 import 'package:engineering_day_app/core/utils/app_validator/app_validator.dart';
 import 'package:engineering_day_app/features/job_fair/presentation/view_model/get_recruitment_cv_provider.dart';
-import 'package:engineering_day_app/features/job_fair/presentation/views/job_fair_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
+// ignore: must_be_immutable
 class NoCvWidget extends StatelessWidget {
   RecruitmentCVProvider provider;
 
@@ -94,49 +92,71 @@ class NoCvWidget extends StatelessWidget {
                         child: Container(
                           height: 171,
                           width: double.infinity,
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              SvgPicture.asset(
-                                AppImages.upload,
-                                height: 40,
-                                width: 40,
-                                fit: BoxFit.cover,
-                              ),
-                              const Text.rich(
-                                TextSpan(
+                          child: provider.pdfLink != null
+                              ? Center(
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        provider.pdfLink ?? '',
+                                        textAlign: TextAlign.center,
+                                      ),
+                                      const SizedBox(
+                                        height: 10,
+                                      ),
+                                      const Text(
+                                        "تعديل السيرخ الذاتيه" ,
+                                        style: AppStyles
+                                            .textStyle16DarkMainColorW800,
+                                      ),
+                                    ],
+                                  ),
+                                )
+                              : Column(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
                                   children: [
-                                    TextSpan(
-                                      text: 'اضغط هنا ',
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          color: AppColors.mainColor2),
+                                    SvgPicture.asset(
+                                      AppImages.upload,
+                                      height: 40,
+                                      width: 40,
+                                      fit: BoxFit.cover,
                                     ),
-                                    TextSpan(
-                                      text: 'لتحميل سيرتك الذاتية',
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              Text.rich(
-                                TextSpan(
-                                  children: [
-                                    const TextSpan(
-                                      text: 'قم برفع السيرة الذاتية بصيغة pdf',
-                                    ),
-                                    WidgetSpan(
-                                      child: SvgPicture.asset(
-                                        AppImages.pdfIcon,
-                                        height: 16,
-                                        width: 16,
-                                        fit: BoxFit.cover,
+                                    const Text.rich(
+                                      TextSpan(
+                                        children: [
+                                          TextSpan(
+                                            text: 'اضغط هنا ',
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                color: AppColors.mainColor2),
+                                          ),
+                                          TextSpan(
+                                            text: 'لتحميل سيرتك الذاتية',
+                                          ),
+                                        ],
                                       ),
                                     ),
+                                    Text.rich(
+                                      TextSpan(
+                                        children: [
+                                          const TextSpan(
+                                            text:
+                                                'قم برفع السيرة الذاتية بصيغة pdf',
+                                          ),
+                                          WidgetSpan(
+                                            child: SvgPicture.asset(
+                                              AppImages.pdfIcon,
+                                              height: 16,
+                                              width: 16,
+                                              fit: BoxFit.cover,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    )
                                   ],
                                 ),
-                              )
-                            ],
-                          ),
                         ),
                       ),
                     ],

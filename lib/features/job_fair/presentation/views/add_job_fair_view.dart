@@ -22,20 +22,19 @@ class _AddJobFairViewState extends State<AddJobFairView> {
         RecruitmentCVProvider.get(context, listen: false);
 
     prov.getRecruitmentCV(context: context, listen: false).then((value) {
-      setState(() {
-
-      });
+      setState(() {});
       prov.linkedInCon =
           TextEditingController(text: prov.recruitmentCv?.linkedin ?? '');
       prov.cvLinkCon =
           TextEditingController(text: prov.recruitmentCv?.cvLink ?? '');
       prov.pdfLink =
-          (prov.recruitmentCv?.cv?.isEmpty ?? true) ? null : prov.pdfLink;
+          (prov.recruitmentCv?.cv?.isEmpty ?? true) ? null : prov.recruitmentCv?.cv;
+
+   print("prov.pdfLinkprov.pdfLink ${prov.recruitmentCv?.cv}");
     });
 
     super.initState();
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -69,7 +68,9 @@ class _AddJobFairViewState extends State<AddJobFairView> {
                         child: Padding(
                           padding: EdgeInsets.all(10),
                           child: Text(
-                            (provider.showAddCv == true) ? "" : "تعديل السيره الذاتية",
+                            (provider.showAddCv == true)
+                                ? ""
+                                : "تعديل السيره الذاتية",
                             style: AppStyles.textStyle16DarkMainColorW800,
                           ),
                         ),
@@ -96,7 +97,9 @@ class _AddJobFairViewState extends State<AddJobFairView> {
                                         true) &&
                                     (provider.recruitmentCv?.cvLink?.isEmpty ??
                                         true))) ||
-                            provider.showAddCv==true) ...[NoCvWidget(provider: provider)] else
+                            provider.showAddCv == true) ...[
+                          NoCvWidget(provider: provider)
+                        ] else
                           QrWidgetImage(
                               getRecruitmentCvModel: provider.recruitmentCv),
                       ],

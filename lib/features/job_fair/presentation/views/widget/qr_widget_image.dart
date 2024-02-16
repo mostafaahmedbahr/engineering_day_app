@@ -3,6 +3,7 @@ import 'package:engineering_day_app/features/job_fair/data/models/get_recruitmen
 import 'package:flutter/material.dart';
 import 'package:qr_flutter_new/qr_flutter.dart';
 
+// ignore: must_be_immutable
 class QrWidgetImage extends StatelessWidget {
   GetRecruitmentCvModel? getRecruitmentCvModel;
 

@@ -20,7 +20,7 @@ class ApiService {
       "Content-Type": "application/json",
       'Authorization': 'Bearer ${currentUser.value.access}',
     };
-    var response = await _dio.post(
+     var response = await _dio.post(
       "${EndPoints.baseUrl}$endPoint",
       data: data,
       queryParameters: query,

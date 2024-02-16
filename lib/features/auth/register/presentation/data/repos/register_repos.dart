@@ -23,4 +23,9 @@ abstract class RegisterRepo {
     required String userType,
     required Map<String, dynamic> header,
   });
+
+  Future<Either<Failure, Register2Model>> register3({
+    required Map<String, dynamic> header,
+    required Map<String, dynamic> requestBody,
+  });
 }

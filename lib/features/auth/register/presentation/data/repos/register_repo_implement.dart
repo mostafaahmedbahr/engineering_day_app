@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:engineering_day_app/core/errors/failure.dart';
@@ -30,16 +28,6 @@ class RegisterRepoImpl extends BaseRepositoryImpl implements RegisterRepo {
       required Map<String, dynamic> header,
       required BuildContext context}) {
     {
-      print(jsonEncode({
-        "profile_image": "asas",
-        "email": email,
-        "password": password,
-        "username": userName,
-        "name_in_certificate": userNameCert,
-        "gender": gender,
-        "national_id": national,
-        "phone": phone,
-      }));
       return request(() async {
         String fileName = file.path.split('/').last;
         FormData formData = FormData.fromMap({
@@ -74,6 +62,20 @@ class RegisterRepoImpl extends BaseRepositoryImpl implements RegisterRepo {
           data: {
             "user_type": userType,
           },
+          headers: header);
+      var result = Register2Model.fromJson(response.data);
+
+
+      return Right(result);
+    });
+  }
+
+  @override
+  Future<Either<Failure, Register2Model>> register3({required Map<String, dynamic> header, required Map<String, dynamic> requestBody}) {
+    return request(() async {
+      var response = await apiService!.postData2(
+          endPoint: EndPoints.register3,
+          data: requestBody,
           headers: header);
       var result = Register2Model.fromJson(response.data);
 

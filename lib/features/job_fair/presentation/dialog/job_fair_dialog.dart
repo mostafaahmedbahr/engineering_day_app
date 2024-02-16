@@ -5,8 +5,12 @@ import 'package:engineering_day_app/core/utils/app_styles/app_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:qr_flutter_new/qr_flutter.dart';
 
+// ignore: must_be_immutable
 class JobCvQrDialog extends StatelessWidget {
-  const JobCvQrDialog({super.key});
+  String name;
+  String  cvLink;
+
+   JobCvQrDialog({super.key,required this.name,required this.cvLink});
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +38,7 @@ class JobCvQrDialog extends StatelessWidget {
               height: 16,
             ),
             Text(
-              "عبد الله محمد",
+              name,
               style: AppStyles.textStyle16DarkMainColorW800
                   .copyWith(color: AppColors.whiteColor),
             ),
@@ -59,7 +63,7 @@ class JobCvQrDialog extends StatelessWidget {
             Center(
               child: QrImageView(
                 foregroundColor: AppColors.lightMainColor,
-                data: 'Rainbow after the rain',
+                data: cvLink,
                 version: QrVersions.auto,
                 size: 130,
                 eyeStyle: const QrEyeStyle(

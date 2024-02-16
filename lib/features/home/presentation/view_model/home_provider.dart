@@ -1,3 +1,4 @@
+import 'package:engineering_day_app/core/shared_widgets/loading_dialog.dart';
 import 'package:engineering_day_app/core/utils/new_toast/new_toast_2.dart';
 import 'package:engineering_day_app/features/home/data/models/get_events_details_model.dart';
 import 'package:engineering_day_app/features/home/data/repos/home_repo.dart';
@@ -34,6 +35,15 @@ class HomeProvider with ChangeNotifier {
   String? selectedEventDay;
   List<DateDetails>? eventDetails;
 
+  initializeselectedEventDay() {
+    if (eventsModel.dayList?.isNotEmpty ?? false) {
+      selectedEventDay = eventsModel.dayList?.first;
+    } else {
+      selectedEventDay = null;
+    }
+    notifyListeners();
+  }
+
   get getSelectItemList {
     if (eventsModel.dayList?.isNotEmpty ?? false) {
       selectedEventDay = selectedEventDay ?? eventsModel.dayList?.first;
@@ -61,6 +71,24 @@ class HomeProvider with ChangeNotifier {
     notifyListeners();
   }
 
+  Future<void> joinEvent(
+      {required String id, required BuildContext context}) async {
+    // notifyListeners();
+    showLoaderDialog(context);
+    var result = await homeRepo!.joinEvent(id: id);
+    return result.fold((failure) {
+      _isLoading = false;
+      Navigator.pop(context);
+      notifyListeners();
+      NewToast.showNewErrorToast(msg: failure.errMessage, context: context);
+    }, (data) {
+      NewToast.showNewSuccessToast(msg: "تم الاشتراك بنجاح", context: context);
+      Navigator.pop(context);
+      _isLoading = false;
+      notifyListeners();
+    });
+  }
+
   Future<void> getEvents(
       {required BuildContext context,
       required String type,
@@ -78,6 +106,7 @@ class HomeProvider with ChangeNotifier {
       notifyListeners();
       NewToast.showNewErrorToast(msg: failure.errMessage, context: context);
     }, (data) {
+      initializeselectedEventDay();
       // print(data.toJson());
       eventsModel = data;
       _isLoading = false;

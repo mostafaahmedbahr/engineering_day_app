@@ -10,7 +10,11 @@ abstract class RecruitmentCVRepo {
 
   Future<Either<Failure, void>> updateRecruitmentCv(
       {required BuildContext context,
-        required  String linkedInLink,
-        required  String cvLink,
-        required XFile ?pdfFile});
+      required String linkedInLink,
+      required String cvLink,
+      required XFile? pdfFile});
+
+// Future<Either<Failure, void>> deleteRecruitmentCv({
+//   required BuildContext context,
+// });
 }

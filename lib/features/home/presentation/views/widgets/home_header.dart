@@ -1,6 +1,8 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:engineering_day_app/core/shared_widgets/custom_sized_box.dart';
+import 'package:engineering_day_app/core/utils/app_navigatiion/navigator.dart';
 import 'package:engineering_day_app/core/utils/app_styles/app_styles.dart';
+import 'package:engineering_day_app/features/home/presentation/views/web_view_page.dart';
 import 'package:engineering_day_app/lang/locale_keys.dart';
 import 'package:flutter/material.dart';
 
@@ -15,40 +17,49 @@ class HomeHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     final GlobalKey<ScaffoldState> sKey = GlobalKey();
     return Form(
-      key: sKey,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        key: sKey,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+        Row(
         children: [
-          DrawerIcon(
-            sKey: sKey,
-          ),
-          const CustomSizedBox(
-            height: 23,
-          ),
-          Text(
-            LocaleKeys.reserve.tr(),
-            style: AppStyles.textStyle32WhiteW700,
-          ),
-          const CustomSizedBox(
-            height: 22,
-          ),
-          Text(
-            LocaleKeys.homeDes.tr(),
-            style: AppStyles.textStyle16WhiteW400,
-          ),
-          const CustomSizedBox(
-            height: 33,
-          ),
-          const HomeTwoButtons(),
-          const CustomSizedBox(
-            height: 48,
-          ),
-          const IntroVideo(),
-          const CustomSizedBox(
-            height: 64,
-          ),
-        ],
-      ),
+        DrawerIcon(
+        sKey: sKey,
+        ),
+
+        IconButton(onPressed: () {
+          AppNavigator.navigateTo(context, WebViewPage());
+        }, icon: Icon(Icons.qr_code_scanner_outlined))
+    ]),
+    const CustomSizedBox(
+    height: 23,
+    ),
+    Text(
+    LocaleKeys.reserve.tr(),
+    style: AppStyles.textStyle32WhiteW700,
+    ),
+    const CustomSizedBox(
+    height: 22,
+    ),
+    Text(
+    LocaleKeys.homeDes.tr(),
+    style: AppStyles.textStyle16WhiteW400,
+    ),
+    const CustomSizedBox(
+    height: 33,
+    ),
+    const HomeTwoButtons(),
+    const CustomSizedBox(
+    height: 48,
+    ),
+    const IntroVideo(),
+    const CustomSizedBox(
+    height: 64,
+    ),
+    ]
+    ,
+    )
+    ,
     );
   }
 }

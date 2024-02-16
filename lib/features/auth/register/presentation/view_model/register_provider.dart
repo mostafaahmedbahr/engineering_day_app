@@ -1,6 +1,7 @@
 import 'package:engineering_day_app/core/shared_widgets/loading_dialog.dart';
 import 'package:engineering_day_app/core/utils/app_methods/app_methods.dart';
 import 'package:engineering_day_app/core/utils/new_toast/new_toast_2.dart';
+import 'package:engineering_day_app/features/auth/register/presentation/data/enum/user_type_enum.dart';
 import 'package:engineering_day_app/features/auth/register/presentation/data/models/register1.dart';
 import 'package:engineering_day_app/features/auth/register/presentation/data/models/user_type_model.dart';
 import 'package:engineering_day_app/features/auth/register/presentation/data/repos/register_repos.dart';
@@ -142,6 +143,59 @@ class RegisterProvider with ChangeNotifier {
     }
   }
 
+  Future<void> register3({
+    required BuildContext context,
+  }) async {
+    notifyListeners();
+    if (userType == null) {
+      NewToast.showNewErrorToast(msg: "يرجي اختيار الفئة", context: context);
+    } else {
+      Map<String, dynamic> dataToSend = {};
+
+      if (userType?.value == UserTypeEnum.graduated.name) {
+        dataToSend = {
+          "university": "University of Example",
+          "college": "College of Engineering",
+          "department": "Computer Science",
+          "graduate_year": "2023"
+        };
+      }
+
+      if (userType?.value == UserTypeEnum.student.name) {
+        dataToSend = {
+          "university": "University of Example",
+          "college": "College of Science",
+          "department": "Biology",
+          "level": "3"
+        };
+      }
+      if (userType?.value == UserTypeEnum.visitor.name) {
+        dataToSend = {"visit_purpose": "Tour the campus"};
+      }
+      if (userType?.value == UserTypeEnum.universityEmployees.name) {
+        dataToSend = {"visit_purpose": "Attend a meeting", "type": "Employee"};
+      }
+
+      showLoaderDialog(context);
+      var result = await registerRepo!.register3(
+          header: {'Cookie': 'sessionid=${register1model.sessionid}'},
+          requestBody: dataToSend);
+      return result.fold((failure) {
+        Navigator.pop(context);
+        notifyListeners();
+        NewToast.showNewErrorToast(msg: failure.errMessage, context: context);
+      }, (data) {
+        Navigator.pop(context);
+        changePage(currentPage = 2);
+        pageController.nextPage(
+          duration: const Duration(milliseconds: 500),
+          curve: Curves.ease,
+        );
+        notifyListeners();
+      });
+    }
+  }
+
   List<String> graduateYears = [];
 
   onSelectGraduateYear(year) {
@@ -192,6 +246,7 @@ class RegisterProvider with ChangeNotifier {
     visitReason = year;
     notifyListeners();
   }
+
   onSelectWhoYou(you) {
     whoYou = you;
     notifyListeners();

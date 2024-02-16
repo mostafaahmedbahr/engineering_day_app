@@ -1,14 +1,12 @@
 import 'package:easy_localization/easy_localization.dart';
-import 'package:engineering_day_app/core/shared_widgets/custom_sized_box.dart';
 import 'package:engineering_day_app/core/utils/app_colors/app_colors.dart';
 import 'package:engineering_day_app/core/utils/app_images/app_images.dart';
 import 'package:engineering_day_app/lang/locale_keys.dart';
 import 'package:flutter/cupertino.dart';
 
 import '../../../../certificates/presentation/views/certificates_view.dart';
-import '../../../../gifts/presentation/views/gifts_view.dart';
 import 'certificates_and_gifts_view_body_item.dart';
-
+// ignore: must_be_immutable
 class CertificatesAndGiftsViewBody extends StatelessWidget {
   const CertificatesAndGiftsViewBody({super.key});
 

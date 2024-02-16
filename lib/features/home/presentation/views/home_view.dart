@@ -20,7 +20,7 @@ class HomeView extends StatelessWidget {
     return Scaffold(
       key: sKey,
       backgroundColor: AppColors.whiteColor,
-      drawer: const Drawer(),
+      // drawer: const Drawer(),
       body: Stack(
         children: [
           ListView(

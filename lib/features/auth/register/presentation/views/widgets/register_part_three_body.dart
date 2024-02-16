@@ -69,12 +69,6 @@ class _RegisterPartThreeBodyState extends State<RegisterPartThreeBody> {
                         ),
                         finish: true,
                       );
-                      // registerProvider
-                      //     .changePage(registerProvider.currentPage = 2);
-                      // registerProvider.pageController.nextPage(
-                      //   duration: const Duration(milliseconds: 500),
-                      //   curve: Curves.ease,
-                      // );
                     },
                     height: 52,
                     transparent: true,
@@ -88,12 +82,11 @@ class _RegisterPartThreeBodyState extends State<RegisterPartThreeBody> {
                 Expanded(
                   child: CustomButton(
                     onTap: () {
-                      // registerProvider
-                      //     .changePage(registerProvider.currentPage = 1);
-                      // registerProvider.pageController.previousPage(
-                      //   duration: const Duration(milliseconds: 500),
-                      //   curve: Curves.ease,
-                      // );
+                      provider.changePage(provider.currentPage = 1);
+                      provider.pageController.previousPage(
+                        duration: const Duration(milliseconds: 500),
+                        curve: Curves.ease,
+                      );
                     },
                     height: 52,
                     transparent: false,
@@ -122,6 +115,7 @@ class _RegisterPartThreeBodyState extends State<RegisterPartThreeBody> {
   }
 }
 
+// ignore: must_be_immutable
 class GraduateList extends StatelessWidget {
   RegisterProvider provider;
 
@@ -172,6 +166,7 @@ class GraduateList extends StatelessWidget {
   }
 }
 
+// ignore: must_be_immutable
 class StudentList extends StatelessWidget {
   RegisterProvider provider;
 
@@ -220,6 +215,7 @@ class StudentList extends StatelessWidget {
   }
 }
 
+// ignore: must_be_immutable
 class VisitorList extends StatelessWidget {
   RegisterProvider provider;
 
@@ -244,6 +240,7 @@ class VisitorList extends StatelessWidget {
   }
 }
 
+// ignore: must_be_immutable
 class UniversityEmployees extends StatelessWidget {
   RegisterProvider provider;
 

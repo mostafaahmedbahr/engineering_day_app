@@ -8,6 +8,7 @@ import 'package:engineering_day_app/features/auth/register/presentation/data/rep
 import 'package:engineering_day_app/features/charts/data/repos/statistics_repo_implement.dart';
 import 'package:engineering_day_app/features/home/data/repos/home_repo_impl.dart';
 import 'package:engineering_day_app/features/job_fair/data/repos/get_recruitment_repo_implement.dart';
+import 'package:engineering_day_app/features/profile/data/repos/profile_repo_implement.dart';
 import 'package:engineering_day_app/features/tickets/data/repos/ticket_repo_implement.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
@@ -50,6 +51,9 @@ setup() async {
     getIt.get<ApiService>(),
   ));
   getIt.registerSingleton<GetRecruitmentCvRepoImpl>(GetRecruitmentCvRepoImpl(
+    getIt.get<ApiService>(),
+  ));
+  getIt.registerSingleton<ProfileRepoImpl>(ProfileRepoImpl(
     getIt.get<ApiService>(),
   ));
 }
