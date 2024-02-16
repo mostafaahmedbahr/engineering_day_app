@@ -1,4 +1,7 @@
- import 'package:engineering_day_app/core/utils/app_methods/app_methods.dart';
+ import 'dart:io';
+
+import 'package:engineering_day_app/core/utils/app_methods/app_methods.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -54,4 +57,18 @@ class ProfileProvider with ChangeNotifier
   var newPasswordCon = TextEditingController();
 
 
+
+  var cvLinkCon = TextEditingController();
+  var linkedInCon = TextEditingController();
+
+  File? filePdf;
+  Future uploadPdf() async {
+    FilePickerResult? result = await FilePicker.platform.pickFiles(
+      allowedExtensions: ["jpg", "png", "jpeg"],
+      type: FileType.custom,
+    );
+    filePdf = File(result?.files.single.path ?? "");
+    debugPrint("---------- upload is done ------------");
+    notifyListeners();
+  }
 }
