@@ -29,7 +29,6 @@ class ServerFailure extends Failure {
           {
             return ServerFailure("unexpectedError");
           }
-
       default:
         return ServerFailure("Something went Error Try Again");
     }

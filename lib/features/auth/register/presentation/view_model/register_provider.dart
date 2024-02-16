@@ -7,6 +7,7 @@ import 'package:engineering_day_app/features/auth/register/presentation/data/rep
 import 'package:engineering_day_app/features/auth/register/presentation/views/widgets/register2.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:provider/provider.dart';
 import 'package:uuid/uuid.dart';
 
 import '../views/widgets/register1.dart';
@@ -16,6 +17,9 @@ class RegisterProvider with ChangeNotifier {
   RegisterProvider(this.registerRepo);
 
   RegisterRepo? registerRepo;
+
+  static RegisterProvider get(context, {listen = true}) =>
+      Provider.of<RegisterProvider>(context, listen: listen);
 
   final PageController pageController = PageController();
   int currentPage = 0;
@@ -67,7 +71,6 @@ class RegisterProvider with ChangeNotifier {
   Future<void> register1({
     required BuildContext context,
   }) async {
-    print("asas");
     notifyListeners();
     if (formKey.currentState?.validate() ?? false) {
       if (pickedImage == null) {
@@ -75,8 +78,6 @@ class RegisterProvider with ChangeNotifier {
             msg: "الصوره الشخصيه مطلوبه", context: context);
       } else {
         showLoaderDialog(context);
-        String sessionid = uuid.v1();
-        print("sessionidsessionid ${sessionid}");
         var result = await registerRepo!.register1(
             email: emailCtl.text,
             password: passwordCtl.text,
@@ -86,19 +87,17 @@ class RegisterProvider with ChangeNotifier {
             national: nationalCrl.text,
             phone: phoneCtrl.text,
             file: pickedImage!,
-            header: {'Cookie': 'sessionid="aasaasasasasasasasasas"'},
+            header: {},
             context: context);
         return result.fold((failure) {
           Navigator.pop(context);
           notifyListeners();
           NewToast.showNewErrorToast(msg: failure.errMessage, context: context);
         }, (data) {
-          print("datadatadata ${data.toJson()}");
-          if(data.sessionid==null){
+          if (data.sessionid == null) {
             Navigator.pop(context);
             register1(context: context);
-          }else{
-
+          } else {
             register1model = data;
             Navigator.pop(context);
             changePage(currentPage = 1);
@@ -107,7 +106,6 @@ class RegisterProvider with ChangeNotifier {
               curve: Curves.ease,
             );
           }
-
 
           notifyListeners();
         });
@@ -124,16 +122,11 @@ class RegisterProvider with ChangeNotifier {
     if (userType == null) {
       NewToast.showNewErrorToast(msg: "يرجي اختيار الفئة", context: context);
     } else {
-      print("register1model.sessionid ${register1model.sessionid}");
       showLoaderDialog(context);
-      print({'Cookie': 'sessionid=${register1model.sessionid}   zxsdsdsdsd'});
-      print({'Cookie': 'sessionid=${register1model.sessionid}   zxsdsdsdsd ${userType?.value}' });
       var result = await registerRepo!.register2(
           header: {'Cookie': 'sessionid=${register1model.sessionid}'},
           userType: userType!.value.toString());
-
       return result.fold((failure) {
-        print(failure.errMessage);
         Navigator.pop(context);
         notifyListeners();
         NewToast.showNewErrorToast(msg: failure.errMessage, context: context);
@@ -145,36 +138,70 @@ class RegisterProvider with ChangeNotifier {
           curve: Curves.ease,
         );
         notifyListeners();
-      }
-
-      );
+      });
     }
   }
 
-  String? selectedCity;
+  List<String> graduateYears = [];
 
-  changeSelectCity(val) {
-    selectedCity = val;
+  onSelectGraduateYear(year) {
+    selectYear = year;
+    notifyListeners();
+  }
+
+  void getGenerateYears() {
+    graduateYears = [];
+    int currentYear = DateTime.now().year;
+    for (int i = 0; i < 50; i++) {
+      graduateYears.add((currentYear - i).toString());
+    }
+  }
+
+  List<String> academicYear = [];
+
+  void getAcademicYears() {
+    academicYear = [];
+    int currentYear = 10;
+    for (int i = 0; i < 10; i++) {
+      academicYear.add((currentYear - i).toString());
+    }
+  }
+
+  onSelectAcademicYear(year) {
+    selectYear = year;
+    notifyListeners();
+  }
+
+  List<String> visitReasonList = [
+    "التعرف على فعاليات اليوم الهندسي",
+    "التقديم على وظيفة أو فرصة تدريبية",
+    "أخرى"
+  ];
+
+  List<String> whoYouList = [
+    "عضو هيئة تدريس",
+    "موظف",
+    "مشارك",
+    "غير ذلك",
+  ];
+
+  String? visitReason;
+  String? whoYou;
+
+  onSelectVisitReason(year) {
+    visitReason = year;
+    notifyListeners();
+  }
+  onSelectWhoYou(you) {
+    whoYou = you;
     notifyListeners();
   }
 
 //   final List<String> items = [
 // UserTypeEnum.values
 //   ];
-
-  DateTime? selectedDate;
-
-  Future<void> selectDateFunction(BuildContext context) async {
-    final DateTime? picked = await showDatePicker(
-      context: context,
-      initialDate: DateTime.now(),
-      firstDate: DateTime(1900),
-      lastDate: DateTime(2100),
-    );
-
-    if (picked != null && picked != selectedDate) {
-      selectedDate = picked;
-      notifyListeners();
-    }
-  }
+  String? selectYear;
+  TextEditingController collegeCtr = TextEditingController();
+  TextEditingController sectionCtr = TextEditingController();
+  TextEditingController universityCtr = TextEditingController();
 }

@@ -1,1 +1,1 @@
-enum UserTypeEnum { graduated, student, visitor }
+enum UserTypeEnum { graduated, student, visitor, universityEmployees }

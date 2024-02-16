@@ -25,8 +25,8 @@ class MyValidators {
     if (value!.isEmpty) {
       return 'كلمة المرور مطلوبه';
     }
-    if (value.length < 6) {
-      return 'الرقم السري يجب الا يقل عن 6 احرف';
+    if (value.length < 8) {
+      return 'الرقم السري يجب الا يقل عن 8 احرف';
     }
     return null;
   }

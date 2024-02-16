@@ -16,7 +16,7 @@ class BaseRepositoryImpl implements BaseRepository {
       return await body();
     } catch (e) {
       if (e is DioException) {
-        print(e);
+        print("eeee ${e.response}");
         return left(ServerFailure.fromDioError(e));
       } else {
         print(e);

@@ -8,6 +8,7 @@ import 'package:engineering_day_app/features/auth/register/presentation/views/wi
 import 'package:engineering_day_app/lang/locale_keys.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
 class RegisterPartTwoBody extends StatefulWidget {
   RegisterPartTwoBody({super.key});
 
@@ -23,6 +24,8 @@ class _RegisterPartTwoBodyState extends State<RegisterPartTwoBody> {
     UserTypeModel(value: UserTypeEnum.graduated.name, title: "خريج"),
     UserTypeModel(value: UserTypeEnum.student.name, title: "طالب"),
     UserTypeModel(value: UserTypeEnum.visitor.name, title: "زائر"),
+    UserTypeModel(
+        value: UserTypeEnum.universityEmployees.name, title: "منسوبي الجامعة"),
   ];
 
   @override
@@ -54,7 +57,7 @@ class _RegisterPartTwoBodyState extends State<RegisterPartTwoBody> {
                   Expanded(
                     child: CustomButton(
                       onTap: () {
-                          registerProvider.register2(context: context);
+                        registerProvider.register2(context: context);
                       },
                       height: 52,
                       transparent: true,
