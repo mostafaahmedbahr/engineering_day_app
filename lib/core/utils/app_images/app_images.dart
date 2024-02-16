@@ -49,6 +49,7 @@ class AppImages {
 
   static const String userProfile = "assets/images/pngs/profile.png";
   static const String checkCvUser = "assets/images/pngs/profile4.png";
+  static const String nobacgroundCard = "assets/images/pngs/nobacgroundCard.png";
   static const String checkUser2 = "assets/images/pngs/profile3.png";
   static const String checkUser = "assets/images/pngs/profile2.png";
   static const String documents = "assets/images/pngs/documents.png";

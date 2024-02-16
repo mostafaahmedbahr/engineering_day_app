@@ -1,23 +1,21 @@
 import 'package:engineering_day_app/core/utils/new_toast/new_toast_2.dart';
 import 'package:engineering_day_app/features/home/data/models/get_events_details_model.dart';
 import 'package:engineering_day_app/features/home/data/repos/home_repo.dart';
- import 'package:flutter/cupertino.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
 
 class HomeProvider with ChangeNotifier {
-   HomeProvider(this.homeRepo);
+  HomeProvider(this.homeRepo);
 
   static HomeProvider get(context, {listen = true}) =>
       Provider.of<HomeProvider>(context, listen: listen);
 
   bool showTickets = false;
 
-  changeShowTicketsValue()
-  {
+  changeShowTicketsValue() {
     showTickets = !showTickets;
     notifyListeners();
   }
-
 
   bool _isLoading = false;
   bool _isLoggedIn = false;
@@ -33,10 +31,44 @@ class HomeProvider with ChangeNotifier {
 
   GetEventsDetailsHomeModel eventsModel = GetEventsDetailsHomeModel();
 
-  Future<void> getEvents({required BuildContext context
-    , required String type }) async {
-    _isLoading = true;
+  String? selectedEventDay;
+  List<DateDetails>? eventDetails;
+
+  get getSelectItemList {
+    if (eventsModel.dayList?.isNotEmpty ?? false) {
+      selectedEventDay = selectedEventDay ?? eventsModel.dayList?.first;
+    } else {
+      selectedEventDay = null;
+    }
+
+    if (selectedEventDay != null) {
+      eventDetails = eventsModel.dateDetails
+          ?.where((element) =>
+              (element.startTime?.contains(selectedEventDay!) ?? false))
+          .toList();
+    } else {
+      eventDetails = [];
+    }
+    return eventDetails;
+  }
+
+  getSelectedItem(selectedEventDay) {
+    eventDetails = eventsModel.dateDetails
+        ?.where((element) =>
+            (element.startTime?.contains(selectedEventDay!) ?? false))
+        .toList();
+    print(eventDetails);
     notifyListeners();
+  }
+
+  Future<void> getEvents(
+      {required BuildContext context,
+      required String type,
+      isLoad = true}) async {
+    _isLoading = true;
+    if (isLoad == true) {
+      notifyListeners();
+    }
     var result = await homeRepo!.getEvents(
       context: context,
       type: type,
@@ -46,10 +78,10 @@ class HomeProvider with ChangeNotifier {
       notifyListeners();
       NewToast.showNewErrorToast(msg: failure.errMessage, context: context);
     }, (data) {
+      // print(data.toJson());
       eventsModel = data;
       _isLoading = false;
       notifyListeners();
     });
   }
-
 }

@@ -25,8 +25,8 @@ class BottomNavBarItems extends StatelessWidget {
           type: BottomNavigationBarType.fixed,
           currentIndex: layoutProvider.layoutIndex,
           onTap: (index) {
-            print("indexindexindex ${index}");
-            layoutProvider.changeLayoutIndex(0);
+            // print("indexindexindex ${index}");
+            layoutProvider.changeLayoutIndex(index);
             log(index.toString());
           },
           items: <BottomNavigationBarItem>[

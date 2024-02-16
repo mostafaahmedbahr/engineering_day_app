@@ -7,5 +7,5 @@ class EndPoints {
   static const loginVerify = "auth/jwt/verify/";
   static const statisticsUrl = "api/get_statistics/";
   static const ticketUrl = "newsletter/qrcodes/";
-  static const eventsUrl = "api/events";
+  static const eventsUrl = "api/events/";
 }
