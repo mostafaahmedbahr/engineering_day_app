@@ -5,14 +5,22 @@ import 'package:engineering_day_app/core/utils/app_styles/app_styles.dart';
 import 'package:engineering_day_app/lang/locale_keys.dart';
  import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../../core/utils/app_images/app_images.dart';
 
 class CertificatesViewBodyItem extends StatelessWidget {
-  const CertificatesViewBodyItem({super.key});
-
+  const CertificatesViewBodyItem({super.key, required this.name, required this.url});
+ final String name;
+ final String url;
   @override
   Widget build(BuildContext context) {
+    final Uri _url = Uri.parse(url);
+    Future<void> _launchUrl() async {
+      if (!await launchUrl(_url)) {
+        throw Exception('Could not launch $_url');
+      }
+    }
     return Stack(
       children: [
 
@@ -26,13 +34,15 @@ class CertificatesViewBodyItem extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text("اسم الشهادة",
+              Text(name,
               style: AppStyles.textStyle14WhiteW800.copyWith(
                 fontSize: 20,
               ),),
               const CustomSizedBox(height: 27,),
               InkWell(
-                onTap: (){},
+                onTap: (){
+                  _launchUrl();
+                },
                 child: Container(
                   height: 40,
                   width: 153,

@@ -17,6 +17,13 @@
         <string>en</string>
         <string>ar</string>
     </array>
+    <key>LSApplicationQueriesSchemes</key>
+    <array>
+      <string>sms</string>
+      <string>tel</string>
+      <string>https</string>
+      <string>http</string>
+    </array>
 	<key>CFBundleName</key>
 	<string>engineering_day_app</string>
 	<key>CFBundlePackageType</key>

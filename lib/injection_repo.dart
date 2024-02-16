@@ -5,6 +5,7 @@ import 'package:engineering_day_app/core/utils/app_services/local_services/cache
 import 'package:engineering_day_app/core/utils/app_services/remote_services/api_service.dart';
 import 'package:engineering_day_app/features/auth/login/data/repos/login_repo_implement.dart';
 import 'package:engineering_day_app/features/auth/register/presentation/data/repos/register_repo_implement.dart';
+import 'package:engineering_day_app/features/certificates_and_gifts/data/repos/certificated_repo_impl.dart';
 import 'package:engineering_day_app/features/charts/data/repos/statistics_repo_implement.dart';
 import 'package:engineering_day_app/features/home/data/repos/home_repo_impl.dart';
 import 'package:engineering_day_app/features/job_fair/data/repos/get_recruitment_repo_implement.dart';
@@ -54,6 +55,10 @@ setup() async {
     getIt.get<ApiService>(),
   ));
   getIt.registerSingleton<ProfileRepoImpl>(ProfileRepoImpl(
+    getIt.get<ApiService>(),
+  ));
+
+  getIt.registerSingleton<CertificatedRepoImpl>(CertificatedRepoImpl(
     getIt.get<ApiService>(),
   ));
 }

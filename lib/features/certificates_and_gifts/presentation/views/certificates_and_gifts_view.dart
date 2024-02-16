@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../core/shared_widgets/custom_global_app_bar.dart';
 import '../../../../core/utils/app_colors/app_colors.dart';
+import '../../../certificates/presentation/views/widgets/certificates_view_body.dart';
 
 class CertificatesAndGiftsView extends StatelessWidget {
   const CertificatesAndGiftsView({super.key});
@@ -16,7 +17,7 @@ class CertificatesAndGiftsView extends StatelessWidget {
       appBar: CustomGlobalAppBar(
         title: LocaleKeys.awards.tr(),
       ),
-      body: const CertificatesAndGiftsViewBody(),
+      body: const CertificatesViewBody(),
     ));
   }
 }

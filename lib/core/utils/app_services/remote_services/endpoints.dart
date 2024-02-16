@@ -7,6 +7,7 @@ class EndPoints {
   static const loginVerify = "auth/jwt/verify/";
   static const statisticsUrl = "api/get_statistics/";
   static const ticketUrl = "newsletter/qrcodes/";
+  static const certificatedUrl = "newsletter/show_all_qr_api/";
   static const eventsUrl = "api/events/";
   static   joinEvent (eventId)=> "api/events/join_event/$eventId/";
 
