@@ -70,7 +70,7 @@ class HomeListItem extends StatelessWidget {
                         image: image,
                         type: "eng_talks",
                            getEventsDetailsHomeModel:
-                           HomeProvider.get(context, listen: false).eventsModel!,
+                           HomeProvider.get(context, listen: false).eventsModel,
                       ),
                       finish: false,
                   );

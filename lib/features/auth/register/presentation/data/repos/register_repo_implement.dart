@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:io';
 
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
@@ -27,11 +26,11 @@ class RegisterRepoImpl extends BaseRepositoryImpl implements RegisterRepo {
       required String national,
       required String phone,
       required XFile file,
+      required Map<String, dynamic> header,
       required BuildContext context}) {
     {
       print(jsonEncode({
-        "profile_image":
-         "asas",
+        "profile_image": "asas",
         "email": email,
         "password": password,
         "username": userName,
@@ -53,11 +52,30 @@ class RegisterRepoImpl extends BaseRepositoryImpl implements RegisterRepo {
           "national_id": national,
           "phone": phone,
         });
-        var response = await apiService!
-            .postData2(endPoint: EndPoints.register1, data: formData);
+        print("headerheader ${header}");
+        var response = await apiService!.postData2(
+            endPoint: EndPoints.register1, data: formData, headers: header);
         var result = Register1Model.fromJson(response.data);
         return Right(result);
       });
     }
+  }
+
+  // var cookieJar=CookieJar();
+
+
+  @override
+  Future<Either<Failure, Register1Model>> register2(
+      {required String userType, required Map<String, dynamic> header}) {
+    return request(() async {
+      var response = await apiService!.postData2(
+          endPoint: EndPoints.register1,
+          data: {
+            "user_type": userType,
+          },
+          headers: header);
+      var result = Register1Model.fromJson(response.data);
+      return Right(result);
+    });
   }
 }

@@ -1,9 +1,14 @@
 import 'package:dio/dio.dart';
 import 'package:engineering_day_app/features/auth/login/presentation/view_model/login_provider.dart';
 
-import '../local_services/cache_keys.dart';
 import 'endpoints.dart';
-
+// addInsbect(dio) async {
+//   var dio = Dio();
+//   var cookieJar = CookieJar();
+//   dio.interceptors.add(CookieManager(cookieJar));
+//
+//   return dio;
+// }
 class ApiService {
   final Dio _dio;
 
@@ -25,21 +30,26 @@ class ApiService {
       data: data,
       queryParameters: query,
     );
+
+
     print("response realUri  =======> : ${response.realUri}");
     print("response data  =======>: ${response.data}");
     print("response headers  =======> : ${response.headers}");
     return response;
   }
+
   Future<Response> postData2({
     required String endPoint,
     bool sendCode = false,
     dynamic data,
+    Map<String, dynamic> headers = const {},
     Map<String, dynamic>? query,
   }) async {
     _dio.options.headers = {
-      "Accept": "application/json",
-      "Content-Type": "application/json",
+      // "Accept": "application/json",
+      // "Content-Type": "application/json",
       // 'Authorization': 'Bearer ${currentUser.value.access}',
+      ...headers
     };
     var response = await _dio.post(
       "${EndPoints.baseUrl}$endPoint",

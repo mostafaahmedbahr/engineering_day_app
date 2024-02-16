@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:dartz/dartz.dart';
 import 'package:engineering_day_app/core/errors/failure.dart';
 import 'package:engineering_day_app/features/auth/register/presentation/data/models/register1.dart';
@@ -16,6 +14,12 @@ abstract class RegisterRepo {
     required String national,
     required String phone,
     required XFile file,
+    required Map<String, dynamic> header,
     required BuildContext context,
+  });
+
+  Future<Either<Failure, Register1Model>> register2({
+    required String userType,
+    required Map<String, dynamic> header,
   });
 }

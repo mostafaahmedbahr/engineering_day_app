@@ -12,10 +12,10 @@ class RegisterPartTwo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<RegisterProvider>(builder: (context, registerProvider, child) {
-      return const SingleChildScrollView(
+      return  SingleChildScrollView(
         child: Column(
           children: [
-             RegisterHeader(),
+            const    RegisterHeader(),
             RegisterPartTwoBody(),
           ],
         ),

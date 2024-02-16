@@ -2,16 +2,19 @@ import 'package:engineering_day_app/core/shared_widgets/loading_dialog.dart';
 import 'package:engineering_day_app/core/utils/app_methods/app_methods.dart';
 import 'package:engineering_day_app/core/utils/new_toast/new_toast_2.dart';
 import 'package:engineering_day_app/features/auth/register/presentation/data/models/register1.dart';
+import 'package:engineering_day_app/features/auth/register/presentation/data/models/user_type_model.dart';
 import 'package:engineering_day_app/features/auth/register/presentation/data/repos/register_repos.dart';
 import 'package:engineering_day_app/features/auth/register/presentation/views/widgets/register2.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:uuid/uuid.dart';
 
 import '../views/widgets/register1.dart';
 import '../views/widgets/register3.dart';
 
 class RegisterProvider with ChangeNotifier {
   RegisterProvider(this.registerRepo);
+
   RegisterRepo? registerRepo;
 
   final PageController pageController = PageController();
@@ -27,7 +30,6 @@ class RegisterProvider with ChangeNotifier {
     currentPage = page;
     notifyListeners();
   }
-
 
   XFile? pickedImage;
   final formKey = GlobalKey<FormState>();
@@ -59,8 +61,9 @@ class RegisterProvider with ChangeNotifier {
     );
   }
 
+  Register1Model register1model = Register1Model();
+  var uuid = Uuid();
 
-  Register1Model register1model=Register1Model();
   Future<void> register1({
     required BuildContext context,
   }) async {
@@ -71,8 +74,9 @@ class RegisterProvider with ChangeNotifier {
         NewToast.showNewErrorToast(
             msg: "الصوره الشخصيه مطلوبه", context: context);
       } else {
-         showLoaderDialog(context);
-        // ignore: use_build_context_synchronously
+        showLoaderDialog(context);
+        String sessionid = uuid.v1();
+        print("sessionidsessionid ${sessionid}");
         var result = await registerRepo!.register1(
             email: emailCtl.text,
             password: passwordCtl.text,
@@ -82,14 +86,16 @@ class RegisterProvider with ChangeNotifier {
             national: nationalCrl.text,
             phone: phoneCtrl.text,
             file: pickedImage!,
+            header: {'Cookie': 'sessionid=$sessionid'},
             context: context);
-
         return result.fold((failure) {
           Navigator.pop(context);
           notifyListeners();
           NewToast.showNewErrorToast(msg: failure.errMessage, context: context);
         }, (data) {
-          register1model=data;
+          register1model = data;
+          print(
+              "register1model.toJson()register1model.toJson() ${register1model.toJson()}");
           Navigator.pop(context);
           changePage(currentPage = 1);
           pageController.nextPage(
@@ -102,6 +108,36 @@ class RegisterProvider with ChangeNotifier {
     }
   }
 
+  UserTypeModel? userType;
+
+  Future<void> register2({
+    required BuildContext context,
+  }) async {
+    notifyListeners();
+    if (userType == null) {
+      NewToast.showNewErrorToast(msg: "يرجي اختيار الفئة", context: context);
+    } else {
+      print("register1model.sessionid ${register1model.sessionid}");
+      showLoaderDialog(context);
+      var result = await registerRepo!.register2(
+          header: {'Cookie': 'sessionid=${register1model.sessionid}'},
+          userType: userType!.value.toString());
+      return result.fold((failure) {
+        Navigator.pop(context);
+        notifyListeners();
+        NewToast.showNewErrorToast(msg: failure.errMessage, context: context);
+      }, (data) {
+        Navigator.pop(context);
+        changePage(currentPage = 2);
+        pageController.nextPage(
+          duration: const Duration(milliseconds: 500),
+          curve: Curves.ease,
+        );
+        notifyListeners();
+      });
+    }
+  }
+
   String? selectedCity;
 
   changeSelectCity(val) {
@@ -109,16 +145,9 @@ class RegisterProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  final List<String> items = [
-    'Item1',
-    'Item2',
-    'Item3',
-    'Item4',
-    'Item5',
-    'Item6',
-    'Item7',
-    'Item8',
-  ];
+//   final List<String> items = [
+// UserTypeEnum.values
+//   ];
 
   DateTime? selectedDate;
 

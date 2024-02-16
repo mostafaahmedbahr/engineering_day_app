@@ -30,7 +30,7 @@ String? updatedAt;
 String? type;
 String? title;
 String? description;
-Null? image;
+String? image;
 String? place;
 String? instructor;
 String? attendanceType;
