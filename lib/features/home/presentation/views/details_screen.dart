@@ -10,19 +10,20 @@ import 'package:engineering_day_app/core/utils/date_time/date_time_utill.dart';
 import 'package:engineering_day_app/features/home/data/models/get_events_details_model.dart';
 import 'package:engineering_day_app/features/home/presentation/view_model/home_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 
 class DetailsScreen extends StatefulWidget {
   const DetailsScreen({
     super.key,
-    required this.getEventsDetailsHomeModel,
     required this.type,
     required this.image,
+    required this.title,
   });
 
   final String type;
   final String image;
-  final GetEventsDetailsHomeModel getEventsDetailsHomeModel;
+  final String title;
 
   @override
   State<DetailsScreen> createState() => _DetailsScreenState();
@@ -151,20 +152,38 @@ class _DetailsScreenState extends State<DetailsScreen> {
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
-                                Image.asset(
-                                  AppImages.userImage,
-                                  width: 68,
-                                  height: 68,
-                                  fit: BoxFit.cover,
+                                Container(
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(100),
+                                      color: AppColors.mainColor2),
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: SvgPicture.asset(
+                                      widget.image,
+                                      width: 68,
+                                      height: 68,
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
                                 ),
                                 Text(
-                                  "مرحبا , عبد الله",
+                                  widget.title,
                                   style: AppStyles.textStyle16DarkMainColorW800
-                                      .copyWith(color: AppColors.whiteColor),
+                                      .copyWith(color: AppColors.blackColor),
                                 ),
                                 Text(
-                                  "تحميل السيرة الذاتية : 25",
-                                  style: AppStyles.textStyle12WhiteW500,
+                                  "يقدمها نخبة من المتحدثين",
+                                  style: AppStyles.textStyle16DarkMainColorW800
+                                      .copyWith(
+                                          color: AppColors.blackColor,
+                                          fontSize: 12),
+                                ),
+                                Text(
+                                  "عدد الفعاليات :${homeProvider.eventsModel.dateDetails?.length}",
+                                  style: AppStyles.textStyle16DarkMainColorW800
+                                      .copyWith(
+                                          color: AppColors.blackColor,
+                                          fontSize: 12),
                                 ),
                               ],
                             ),
@@ -351,7 +370,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                                                   maxLines: 2,
                                                 ),
                                                 SizedBox(
-                                                  height: 15,
+                                                  height: 20,
                                                 )
                                               ],
                                             ),

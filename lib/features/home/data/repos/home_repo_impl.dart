@@ -17,8 +17,8 @@ class HomeRepoImpl extends BaseRepositoryImpl implements HomeRepo {
   Future<Either<Failure, GetEventsDetailsHomeModel>> getEvents(
       {required BuildContext context, required String type}) async {
     return request(() async {
-      var response = await apiService!.get(
-          endPoint: EndPoints.eventsUrl, query: {"type": "sustainability"});
+      var response = await apiService!
+          .get(endPoint: EndPoints.eventsUrl, query: {"type": type});
       // print();
       var result = GetEventsDetailsHomeModel.fromJson(response.data);
       return right(result);

@@ -1,6 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:engineering_day_app/core/utils/app_nav/app_nav.dart';
-import 'package:engineering_day_app/features/home/presentation/view_model/home_provider.dart';
 import 'package:engineering_day_app/features/home/presentation/views/details_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -11,10 +10,11 @@ import '../../../../../core/utils/app_styles/app_styles.dart';
 import '../../../../../lang/locale_keys.dart';
 
 class HomeListItem extends StatelessWidget {
-  const HomeListItem({super.key, required this.title, required this.image});
+  const HomeListItem({super.key, required this.title, required this.image,required this.type});
 
   final String title;
   final String image;
+  final String type;
 
   @override
   Widget build(BuildContext context) {
@@ -73,9 +73,8 @@ class HomeListItem extends StatelessWidget {
                     context: context,
                     screen: DetailsScreen(
                       image: image,
-                      type: "eng_talks",
-                      getEventsDetailsHomeModel:
-                          HomeProvider.get(context, listen: false).eventsModel,
+                      title: title,
+                      type:type,
                     ),
                     finish: false,
                   );

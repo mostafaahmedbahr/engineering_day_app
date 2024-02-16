@@ -27,7 +27,7 @@ class AddJobFairView extends StatelessWidget {
               onTap: () {
                 AppNavigator.navigateTo(context, JobFairView());
               },
-              child: Text(
+              child: const Text(
                 "التقديم علي معرض التوظيف",
                 style: AppStyles.textStyle16DarkMainColorW800,
               ),

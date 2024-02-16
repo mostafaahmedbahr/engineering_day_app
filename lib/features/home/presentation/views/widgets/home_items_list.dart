@@ -12,41 +12,40 @@ class HomeItemsList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<HomeItemModel> homeItemsList  = [
+    List<HomeItemModel> homeItemsList = [
       HomeItemModel(
-        title: LocaleKeys.edamethone.tr(),
-        image: AppImages.svgexport,
-      ),
+          title: LocaleKeys.edamethone.tr(),
+          image: AppImages.svgexport,
+          type: "sustainability"),
       HomeItemModel(
-        title: LocaleKeys.quizzes.tr(),
-        image: AppImages.svgexport2,
-      ),
+          title: LocaleKeys.quizzes.tr(),
+          image: AppImages.svgexport2,
+          type: "contests"),
       HomeItemModel(
-        title: LocaleKeys.engineeringTalks.tr(),
-        image: AppImages.svgexport3,
-      ),
+          title: LocaleKeys.engineeringTalks.tr(),
+          image: AppImages.svgexport3,
+          type: "eng_talks"),
       HomeItemModel(
-        title: LocaleKeys.dialogues.tr(),
-        image: AppImages.svgexport4,
-      ),
+          title: LocaleKeys.dialogues.tr(),
+          image: AppImages.svgexport4,
+          type: "dialogues"),
       HomeItemModel(
-        title: LocaleKeys.vershAction.tr(),
-        image: AppImages.svgexport5,
-      ),
+          title: LocaleKeys.vershAction.tr(),
+          image: AppImages.svgexport5,
+          type: "workshops"),
     ];
     return DynamicHeightGridView(
         shrinkWrap: true,
-        physics:const NeverScrollableScrollPhysics(),
+        physics: const NeverScrollableScrollPhysics(),
         itemCount: homeItemsList.length,
         crossAxisCount: 2,
         crossAxisSpacing: 16,
         mainAxisSpacing: 17,
         builder: (ctx, index) {
-          return     HomeListItem(
+          return HomeListItem(
             title: homeItemsList[index].title,
-            image: homeItemsList[index].image,
+            image: homeItemsList[index].image, type:homeItemsList[index].type ,
           );
-        }
-    );
+        });
   }
 }
