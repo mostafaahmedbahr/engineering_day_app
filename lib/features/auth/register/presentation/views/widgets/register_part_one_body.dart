@@ -19,7 +19,6 @@ class RegisterPartOneBody extends StatefulWidget {
 }
 
 class _RegisterPartOneBodyState extends State<RegisterPartOneBody> {
-
   @override
   Widget build(BuildContext context) {
     return Consumer<RegisterProvider>(builder: (context, provider, child) {

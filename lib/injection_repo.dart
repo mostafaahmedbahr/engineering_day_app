@@ -1,4 +1,6 @@
+import 'package:cookie_jar/cookie_jar.dart';
 import 'package:dio/dio.dart';
+import 'package:dio_cookie_manager/dio_cookie_manager.dart';
 import 'package:engineering_day_app/core/utils/app_services/local_services/cache_helper.dart';
 import 'package:engineering_day_app/core/utils/app_services/remote_services/api_service.dart';
 import 'package:engineering_day_app/features/auth/login/data/repos/login_repo_implement.dart';
@@ -19,7 +21,12 @@ setup() async {
   await CacheHelper.init();
   await getCurrentUser();
 
-  getIt.registerSingleton<ApiService>(ApiService(Dio()));
+
+  var dio = Dio();
+  var cookieJar = CookieJar();
+  dio.interceptors.add(CookieManager(cookieJar));
+
+   getIt.registerSingleton<ApiService>(ApiService(dio));
   getIt.registerSingleton<LoginRepoImpl>(LoginRepoImpl(
     getIt.get<ApiService>(),
   ));

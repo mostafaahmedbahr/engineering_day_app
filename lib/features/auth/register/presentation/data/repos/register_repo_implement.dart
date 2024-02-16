@@ -7,6 +7,7 @@ import 'package:engineering_day_app/core/utils/app_services/remote_services/api_
 import 'package:engineering_day_app/core/utils/app_services/remote_services/base_repository_impl.dart';
 import 'package:engineering_day_app/core/utils/app_services/remote_services/endpoints.dart';
 import 'package:engineering_day_app/features/auth/register/presentation/data/models/register1.dart';
+import 'package:engineering_day_app/features/auth/register/presentation/data/models/register2_model.dart';
 import 'package:engineering_day_app/features/auth/register/presentation/data/repos/register_repos.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
@@ -65,16 +66,18 @@ class RegisterRepoImpl extends BaseRepositoryImpl implements RegisterRepo {
 
 
   @override
-  Future<Either<Failure, Register1Model>> register2(
+  Future<Either<Failure, Register2Model>> register2(
       {required String userType, required Map<String, dynamic> header}) {
     return request(() async {
       var response = await apiService!.postData2(
-          endPoint: EndPoints.register1,
+          endPoint: EndPoints.register2,
           data: {
             "user_type": userType,
           },
           headers: header);
-      var result = Register1Model.fromJson(response.data);
+      var result = Register2Model.fromJson(response.data);
+
+
       return Right(result);
     });
   }

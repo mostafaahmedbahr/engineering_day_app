@@ -86,22 +86,29 @@ class RegisterProvider with ChangeNotifier {
             national: nationalCrl.text,
             phone: phoneCtrl.text,
             file: pickedImage!,
-            header: {'Cookie': 'sessionid=$sessionid'},
+            header: {'Cookie': 'sessionid="aasaasasasasasasasasas"'},
             context: context);
         return result.fold((failure) {
           Navigator.pop(context);
           notifyListeners();
           NewToast.showNewErrorToast(msg: failure.errMessage, context: context);
         }, (data) {
-          register1model = data;
-          print(
-              "register1model.toJson()register1model.toJson() ${register1model.toJson()}");
-          Navigator.pop(context);
-          changePage(currentPage = 1);
-          pageController.nextPage(
-            duration: const Duration(milliseconds: 500),
-            curve: Curves.ease,
-          );
+          print("datadatadata ${data.toJson()}");
+          if(data.sessionid==null){
+            Navigator.pop(context);
+            register1(context: context);
+          }else{
+
+            register1model = data;
+            Navigator.pop(context);
+            changePage(currentPage = 1);
+            pageController.nextPage(
+              duration: const Duration(milliseconds: 500),
+              curve: Curves.ease,
+            );
+          }
+
+
           notifyListeners();
         });
       }
@@ -119,10 +126,14 @@ class RegisterProvider with ChangeNotifier {
     } else {
       print("register1model.sessionid ${register1model.sessionid}");
       showLoaderDialog(context);
+      print({'Cookie': 'sessionid=${register1model.sessionid}   zxsdsdsdsd'});
+      print({'Cookie': 'sessionid=${register1model.sessionid}   zxsdsdsdsd ${userType?.value}' });
       var result = await registerRepo!.register2(
           header: {'Cookie': 'sessionid=${register1model.sessionid}'},
           userType: userType!.value.toString());
+
       return result.fold((failure) {
+        print(failure.errMessage);
         Navigator.pop(context);
         notifyListeners();
         NewToast.showNewErrorToast(msg: failure.errMessage, context: context);
@@ -134,7 +145,9 @@ class RegisterProvider with ChangeNotifier {
           curve: Curves.ease,
         );
         notifyListeners();
-      });
+      }
+
+      );
     }
   }
 

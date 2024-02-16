@@ -3,7 +3,6 @@ import 'package:engineering_day_app/core/shared_widgets/custom_global_app_bar.da
 import 'package:engineering_day_app/core/shared_widgets/custom_sized_box.dart';
 import 'package:engineering_day_app/core/shared_widgets/custom_text_form_filed.dart';
 import 'package:engineering_day_app/core/utils/app_colors/app_colors.dart';
-import 'package:engineering_day_app/core/utils/app_methods/app_methods.dart';
 import 'package:engineering_day_app/core/utils/app_nav/app_nav.dart';
 import 'package:engineering_day_app/core/utils/app_styles/app_styles.dart';
 import 'package:engineering_day_app/features/profile/presentation/view_model/profile_provider.dart';

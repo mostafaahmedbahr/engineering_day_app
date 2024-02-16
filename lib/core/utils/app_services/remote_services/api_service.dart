@@ -2,13 +2,8 @@ import 'package:dio/dio.dart';
 import 'package:engineering_day_app/features/auth/login/presentation/view_model/login_provider.dart';
 
 import 'endpoints.dart';
-// addInsbect(dio) async {
-//   var dio = Dio();
-//   var cookieJar = CookieJar();
-//   dio.interceptors.add(CookieManager(cookieJar));
-//
-//   return dio;
-// }
+
+
 class ApiService {
   final Dio _dio;
 
@@ -30,7 +25,6 @@ class ApiService {
       data: data,
       queryParameters: query,
     );
-
 
     print("response realUri  =======> : ${response.realUri}");
     print("response data  =======>: ${response.data}");
