@@ -5,6 +5,8 @@ import 'package:engineering_day_app/features/auth/login/presentation/views/login
 import 'package:engineering_day_app/features/auth/register/presentation/data/repos/register_repo_implement.dart';
 import 'package:engineering_day_app/features/home/data/repos/home_repo_impl.dart';
 import 'package:engineering_day_app/features/home/presentation/view_model/home_provider.dart';
+import 'package:engineering_day_app/features/job_fair/data/repos/get_recruitment_repo_implement.dart';
+import 'package:engineering_day_app/features/job_fair/presentation/view_model/get_recruitment_cv_provider.dart';
 import 'package:engineering_day_app/features/layout/presentation/views/layout_view.dart';
 import 'package:engineering_day_app/features/profile/presentation/view_model/profile_provider.dart';
 import 'package:engineering_day_app/features/tickets/data/repos/ticket_repo_implement.dart';
@@ -70,6 +72,10 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (_) => RegisterProvider(getIt.get<RegisterRepoImpl>()),
+        ),
+        ChangeNotifierProvider(
+          create: (_) =>
+              RecruitmentCVProvider(getIt.get<GetRecruitmentCvRepoImpl>()),
         ),
       ],
       child: MaterialApp(

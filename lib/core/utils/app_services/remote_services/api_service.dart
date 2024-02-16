@@ -76,7 +76,7 @@ class ApiService {
   Future<Response> putData({
     required String endPoint,
     bool sendAuthToken = false,
-    required FormData data,
+      FormData ?data,
   }) async {
     _dio.options.headers = {
       "accept": "*/*",

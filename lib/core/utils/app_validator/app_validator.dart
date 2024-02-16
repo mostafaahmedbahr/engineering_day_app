@@ -31,6 +31,18 @@ class MyValidators {
     return null;
   }
 
+  static String? urlValidator(String? value) {
+    String pattern =
+        r'(http|https)://[\w-]+(\.[\w-]+)+([\w.,@?^=%&amp;:/~+#-]*[\w@?^=%&amp;/~+#-])?';
+    RegExp regExp = new RegExp(pattern);
+    if (value?.isEmpty ?? true) {
+      return null;
+    } else if (!regExp.hasMatch(value!)) {
+      return 'يرجي ادخال رابط صالح';
+    }
+    return null;
+  }
+
   static String? repeatPasswordValidator({String? value, String? password}) {
     if (value != password) {
       return 'كبمة المرورغير متطابقه';

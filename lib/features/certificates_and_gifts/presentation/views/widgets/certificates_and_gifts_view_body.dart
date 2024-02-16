@@ -26,18 +26,18 @@ class CertificatesAndGiftsViewBody extends StatelessWidget {
               screen: const CertificatesView(),
             ),
           ),
-          const CustomSizedBox(
-            width: 16,
-          ),
-          Expanded(
-            child: CertificatesAndGiftsViewBodyItem(
-              title: LocaleKeys.gifts.tr(),
-              image: AppImages.gift,
-              color: AppColors.mainColor,
-              height: 40,
-              screen: const GiftsView(),
-            ),
-          ),
+          // const CustomSizedBox(
+            // width: 16,
+          // ),
+          // Expanded(
+          //   child: CertificatesAndGiftsViewBodyItem(
+          //     title: LocaleKeys.gifts.tr(),
+          //     image: AppImages.gift,
+          //     color: AppColors.mainColor,
+          //     height: 40,
+          //     screen: const GiftsView(),
+          //   ),
+          // ),
         ],
       ),
     );

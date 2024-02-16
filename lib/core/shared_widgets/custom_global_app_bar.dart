@@ -18,7 +18,8 @@ class CustomGlobalAppBar extends StatelessWidget
   final Color? titleColor;
   final Color? backGroundColor;
   final double? elevation;
-final  List<Widget>? actions;
+  final List<Widget>? actions;
+
   @override
   Widget build(BuildContext context) {
     return PreferredSize(
@@ -29,12 +30,10 @@ final  List<Widget>? actions;
           elevation: elevation ?? 0,
           title: Text(
             title,
-            style: AppStyles.textStyle16DarkMainColorW800.copyWith(color: titleColor),
+            style: AppStyles.textStyle16DarkMainColorW800
+                .copyWith(color: titleColor),
           ),
           actions: actions,
-
-
-
         ));
   }
 

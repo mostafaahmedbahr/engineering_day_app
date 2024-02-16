@@ -64,7 +64,7 @@ color: backgroundColor,
 
                     onTap==null?null:
                     backgroundColor!=null?null:
-                    transparent==true? LinearGradient(colors: [
+                    transparent==true? const LinearGradient(colors: [
                       Color(0xff80cac9),
                       Color(0xff0e90b1),
                     ]):null

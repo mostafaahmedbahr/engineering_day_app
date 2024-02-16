@@ -8,4 +8,11 @@ class EndPoints {
   static const statisticsUrl = "api/get_statistics/";
   static const ticketUrl = "newsletter/qrcodes/";
   static const eventsUrl = "api/events/";
+
+
+
+  static const getRecruitmentCvUrl = "recruitment/cv/";
+  static const updateRecruitmentCvUrl = "recruitment/cv/update/";
+
+
 }
