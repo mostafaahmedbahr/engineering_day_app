@@ -30,6 +30,9 @@ class NoCvWidget extends StatelessWidget {
               style: AppStyles.textStyle16DarkMainColorW800,
             ),
           ),
+          SizedBox(
+            height: 10,
+          ),
           Column(
             children: [
               CustomTextFormField(
@@ -47,7 +50,7 @@ class NoCvWidget extends StatelessWidget {
                                     (provider.recruitmentCv?.cvLink?.isEmpty ??
                                         true))) ==
                             true)
-                        ? MyValidators.urlValidator(value, isRequired: true)
+                        ? MyValidators.urlValidator(value)
                         : MyValidators.urlValidator(value),
                 hintText: "رابط السيره الذاتيه",
               ),
@@ -69,7 +72,9 @@ class NoCvWidget extends StatelessWidget {
                                     (provider.recruitmentCv?.cvLink?.isEmpty ??
                                         true))) ==
                             true)
-                        ? MyValidators.urlValidator(value, isRequired: true)
+                        ? MyValidators.urlValidator(
+                            value,
+                          )
                         : MyValidators.urlValidator(value),
                 hintText: "رابط Linked In",
               ),

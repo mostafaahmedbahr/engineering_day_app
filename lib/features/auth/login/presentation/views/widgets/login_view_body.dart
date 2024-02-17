@@ -30,27 +30,27 @@ class LoginViewBody extends StatelessWidget {
                 controller: loginProvider.emailCon,
                 keyboardType: TextInputType.emailAddress,
                 validator: (String? value) {
-             return     MyValidators.emailValidator(value);
-                 },
+                  return MyValidators.emailValidator(value);
+                },
                 hintText: LocaleKeys.email.tr(),
               ),
               const CustomSizedBox(
                 height: 24,
               ),
               CustomTextFormField(
+                obscureText: loginProvider.isPasswordVisible,
                 controller: loginProvider.passwordCon,
                 keyboardType: TextInputType.visiblePassword,
                 validator: (String? value) {
-             return     MyValidators.displayNameValidator(value);
-                 },
+                  return MyValidators.displayNameValidator(value);
+                },
                 icon: IconButton(
                   color: AppColors.greyColor,
-                  icon:
-                      // loginCubit.isVisible
-                      //     ? const Icon(Icons.visibility_off):
-                      const Icon(Icons.visibility),
+                  icon: loginProvider.isPasswordVisible
+                      ? const Icon(Icons.visibility_off)
+                      : const Icon(Icons.visibility),
                   onPressed: () {
-                    // loginCubit.changeSuffixIcon();
+                    loginProvider.changePasswordVisible();
                   },
                 ),
                 hintText: LocaleKeys.password.tr(),

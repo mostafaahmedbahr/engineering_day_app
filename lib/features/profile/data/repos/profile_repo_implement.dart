@@ -26,15 +26,15 @@ class ProfileRepoImpl extends BaseRepositoryImpl implements ProfileRepo {
   }
 
   @override
-  Future<Either<Failure, GetProfileModel>> editProfileData(
-      {required BuildContext context ,
-        required String username ,
-        required String gender ,
-        required String nationalId ,
-        required String phone ,
-        required String nameInCertificate ,
-        required dynamic image ,
-        }) async {
+  Future<Either<Failure, GetProfileModel>> editProfileData({
+    required BuildContext context,
+    required String username,
+    required String gender,
+    required String nationalId,
+    required String phone,
+    required String nameInCertificate,
+    required dynamic image,
+  }) async {
     return request(() async {
       var response = await apiService!.putData(
         endPoint: EndPoints.getAuthUser,
@@ -49,6 +49,22 @@ class ProfileRepoImpl extends BaseRepositoryImpl implements ProfileRepo {
       );
       var result = GetProfileModel.fromJson(response.data);
       return right(result);
+    });
+  }
+
+  @override
+  Future<Either<Failure, Unit>> changePassword({
+    required BuildContext context,
+    required String newPassword,
+    required String currentPassword,
+  }) async {
+    return request(() async {
+      await apiService!.postData(endPoint: EndPoints.changePassword, data: {
+        "current_password": currentPassword,
+        "new_password": newPassword,
+      });
+
+      return right(unit);
     });
   }
 }

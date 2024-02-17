@@ -1,10 +1,14 @@
 import 'dart:async';
 
+import 'package:engineering_day_app/core/shared_widgets/custom_button.dart';
 import 'package:engineering_day_app/core/utils/app_images/app_images.dart';
 import 'package:engineering_day_app/core/utils/app_styles/app_styles.dart';
 import 'package:engineering_day_app/features/auth/login/presentation/view_model/login_provider.dart';
 import 'package:engineering_day_app/features/auth/register/presentation/view_model/register_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+
+import '../../../../../core/utils/app_colors/app_colors.dart';
 
 class SuccessAuthView extends StatefulWidget {
   const SuccessAuthView({Key? key, this.duration = 3000, required this.home})
@@ -22,17 +26,6 @@ class _SuccessAuthViewState extends State<SuccessAuthView> {
   @override
   void initState() {
     super.initState();
-    timer = Timer(Duration(milliseconds: widget.duration), () {
-      LoginProvider loginProvider = LoginProvider.get(context, listen: false);
-      RegisterProvider registerProvider = RegisterProvider.get(context, listen: false);
-      loginProvider.login(
-          email: registerProvider.emailCtl.text,
-          password: registerProvider.passwordCtl.text,
-          context: context);
-      // Navigator.of(context).pushReplacement(
-      //   MaterialPageRoute(builder: (_) => widget.home),
-      // );
-    });
   }
 
   @override
@@ -43,6 +36,10 @@ class _SuccessAuthViewState extends State<SuccessAuthView> {
 
   @override
   Widget build(BuildContext context) {
+    LoginProvider loginProvider = LoginProvider.get(context);
+
+    RegisterProvider registerProvider = RegisterProvider.get(context);
+
     return Scaffold(
       body: Stack(
         alignment: Alignment.center,
@@ -70,6 +67,8 @@ class _SuccessAuthViewState extends State<SuccessAuthView> {
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              Spacer(),
+
               Container(
                 height: 136,
                 width: 136,
@@ -77,13 +76,21 @@ class _SuccessAuthViewState extends State<SuccessAuthView> {
                   borderRadius: BorderRadius.circular(68),
                   color: const Color.fromRGBO(217, 217, 217, 0.37),
                 ),
+                child: Padding(
+                  padding: const EdgeInsets.all(30),
+                  child: SvgPicture.asset(
+                    AppImages.user,
+                    color: AppColors.whiteColor,
+                  ),
+                ),
               ),
               const SizedBox(
                 height: 22,
               ),
-                Text(
+              Text(
                 "نهارك سعيد, ${RegisterProvider.get(context, listen: false).userNameCtl.text}",
                 style: AppStyles.textStyle25WhiteW900,
+                textAlign: TextAlign.center,
               ),
               const SizedBox(
                 height: 22,
@@ -91,9 +98,26 @@ class _SuccessAuthViewState extends State<SuccessAuthView> {
               Text(
                 "تم تسجيل حسابك",
                 style: AppStyles.textStyle12WhiteW500.copyWith(fontSize: 16),
+                textAlign: TextAlign.center,
               ),
+              // CloseButton(onPressed: (){},)
+              Spacer(),
+              CustomButton(
+                width: MediaQuery.of(context).size.width / 2,
+                backgroundColor: AppColors.mainColor2,
+                btnTxt: "المتابعة",
+                onTap: () {
+                  print("asasas");
+                  loginProvider.login(
+                      email: registerProvider.emailCtl.text,
+                      password: registerProvider.passwordCtl.text,
+                      context: context,
+                      isFromRegister: true);
+                },
+              ),
+              Spacer(),
             ],
-          )
+          ),
         ],
       ),
     );

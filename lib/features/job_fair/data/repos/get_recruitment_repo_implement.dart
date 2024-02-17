@@ -34,8 +34,8 @@ class GetRecruitmentCvRepoImpl extends BaseRepositoryImpl
       required String cvLink,
       required XFile? pdfFile}) async {
     FormData formData = FormData.fromMap({
-      "profile_image": pdfFile?.path == null
-          ? ''
+      "cv": pdfFile?.path == null
+          ? null
           : await MultipartFile.fromFile(pdfFile?.path ?? '',
               filename: pdfFile?.name ?? ''),
       "linkedin": linkedInLink,
@@ -49,6 +49,7 @@ class GetRecruitmentCvRepoImpl extends BaseRepositoryImpl
       return right(result);
     });
   }
+
   @override
   Future<Either<Failure, void>> addRecruitmentCv(
       {required BuildContext context,
@@ -56,9 +57,9 @@ class GetRecruitmentCvRepoImpl extends BaseRepositoryImpl
       required String cvLink,
       required XFile? pdfFile}) async {
     FormData formData = FormData.fromMap({
-      "profile_image": pdfFile?.path == null
-          ? ''
-          : await MultipartFile.fromFile(pdfFile?.path ?? '',
+      "cv": pdfFile?.path == null
+          ? null
+           : await MultipartFile.fromFile(pdfFile?.path ?? '',
               filename: pdfFile?.name ?? ''),
       "linkedin": linkedInLink,
       "cv_link": cvLink,

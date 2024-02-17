@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:engineering_day_app/core/shared_widgets/loading_dialog.dart';
 import 'package:engineering_day_app/core/utils/app_nav/app_nav.dart';
 import 'package:engineering_day_app/core/utils/app_services/local_services/cache_helper.dart';
 import 'package:engineering_day_app/core/utils/app_services/local_services/cache_keys.dart';
@@ -13,14 +14,19 @@ import '../../data/repos/login_repos.dart';
 
 class LoginProvider with ChangeNotifier {
   LoginProvider(this.loginRepo);
+
   static LoginProvider get(context, {listen = true}) =>
       Provider.of<LoginProvider>(context, listen: listen);
 
-
-
-
   var emailCon = TextEditingController();
   var passwordCon = TextEditingController();
+
+  bool isPasswordVisible = true;
+
+  changePasswordVisible() {
+    isPasswordVisible = !isPasswordVisible;
+    notifyListeners();
+  }
 
   bool _isLoading = false;
   bool _isLoggedIn = false;
@@ -43,18 +49,29 @@ class LoginProvider with ChangeNotifier {
   Future<void> login(
       {required String email,
       required String password,
+      bool isFromRegister = false,
       required BuildContext context}) async {
-
-    if((formKey.currentState?.validate()??false)){
+    if ((formKey.currentState?.validate() ?? false) || isFromRegister == true) {
       _isLoading = true;
       notifyListeners();
+
+      if (isFromRegister == true) {
+        showLoaderDialog(context);
+      }
+
       var result = await loginRepo!
           .login(email: email, password: password, context: context);
       return result.fold((failure) {
         _isLoading = false;
+        if (isFromRegister == true) {
+          Navigator.pop(context);
+        }
         notifyListeners();
         NewToast.showNewErrorToast(msg: failure.errMessage, context: context);
       }, (data) {
+        if (isFromRegister == true) {
+          Navigator.pop(context);
+        }
         AppNav.customNavigator(
             context: context, screen: const LayoutView(), finish: true);
 
@@ -64,9 +81,7 @@ class LoginProvider with ChangeNotifier {
       });
 
       _isLoading = true;
-
     }
-
   }
 }
 

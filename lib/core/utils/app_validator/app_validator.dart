@@ -26,7 +26,7 @@ class MyValidators {
       return 'كلمة المرور مطلوبه';
     }
     if (value.length < 8) {
-      return 'الرقم السري يجب الا يقل عن 8 احرف';
+      return 'كلمة المرور يجب الا تقل عن 8 احرف';
     }
     return null;
   }
@@ -37,14 +37,14 @@ class MyValidators {
     RegExp regExp = new RegExp(pattern);
     if(isRequired){
       if (value?.isEmpty ?? true) {
-        return "يرجي رابط صالح";
+        return 'يرجى ادخال رابط صحيح';
       }
     }
 
     if (value?.isEmpty ?? true) {
       return null;
     } else if (!regExp.hasMatch(value!)) {
-      return 'يرجي ادخال رابط صالح';
+      return 'يرجى ادخال رابط صحيح';
     }
     return null;
   }

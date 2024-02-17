@@ -85,7 +85,15 @@ class HomeListItem extends StatelessWidget {
                     //getStatisticsModel:
                     //                       StatisticsProvider.get(context, listen: false).static,
 
-                  },
+                    AppNav.customNavigator(
+                      context: context,
+                      screen: DetailsScreen(
+                        image: image,
+                        title: title,
+                        type: type,
+                      ),
+                      finish: false,
+                    );   },
                   child: Container(
                     height: 24,
                     width: 130,

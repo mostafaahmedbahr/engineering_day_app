@@ -51,7 +51,7 @@ class CustomButton extends StatelessWidget {
     );
 
     return Container(
-      height: height != null ? height! : 40,
+        height: height != null ? height! : 40,
         child: SizedBox(
             width: width ?? Dimensions.webScreenWidth,
             child: Padding(
@@ -59,19 +59,18 @@ class CustomButton extends StatelessWidget {
               child: DecoratedBox(
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(borderRadius),
-color: backgroundColor,
-                    gradient:
-
-                    onTap==null?null:
-                    backgroundColor!=null?null:
-                    transparent==true? const LinearGradient(colors: [
-                      Color(0xff80cac9),
-                      Color(0xff0e90b1),
-                    ]):null
-
-                ),
+                    color: backgroundColor,
+                    gradient: onTap == null
+                        ? null
+                        : backgroundColor != null
+                            ? null
+                            : transparent == true
+                                ? const LinearGradient(colors: [
+                                    Color(0xff80cac9),
+                                    Color(0xff0e90b1),
+                                  ])
+                                : null),
                 child: TextButton(
-
                   onPressed: onTap as void Function()?,
                   style: flatButtonStyle,
                   child: Text(btnTxt ?? '',

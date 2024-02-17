@@ -2,30 +2,20 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>CADisableMinimumFrameDurationOnPhone</key>
+	<true/>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
-	<string>Engineering Day App</string>
+	<string>اليوم الهندسي</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
 	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
-	<key>CFBundleLocalizations</key>
-    <array>
-        <string>en</string>
-        <string>ar</string>
-    </array>
-    <key>LSApplicationQueriesSchemes</key>
-    <array>
-      <string>sms</string>
-      <string>tel</string>
-      <string>https</string>
-      <string>http</string>
-    </array>
 	<key>CFBundleName</key>
-	<string>engineering_day_app</string>
+	<string>attentance</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
@@ -34,12 +24,39 @@
 	<string>????</string>
 	<key>CFBundleVersion</key>
 	<string>$(FLUTTER_BUILD_NUMBER)</string>
+	<key>FDAllFilesDownloadedMessage</key>
+	<string>All files have been downloaded</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>LSSupportsOpeningDocumentsInPlace</key>
+	<true/>
+	<key>NSAppleMusicUsageDescription</key>
+	<string>Play music</string>
+	<key>NSCameraUsageDescription</key>
+	<string>HRM need to access your camera for select request image</string>
+	<key>NSFaceIDUsageDescription</key>
+	<string>اليوم الهندسي uses Face ID to restrict unAuthorized users from accessing the app</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>The application needs to be approved for access permission to the site to know the place of registration of attendance or departure to confirm whether the user is present in the specified place or not!</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>The application needs to be approved for access permission to the site to know the place of registration of attendance or departure to confirm whether the user is present in the specified place or not. </string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>This app requires access to the photo library.</string>
+	<key>UIApplicationSceneManifest</key>
+	<string>UISceneConfigurations</string>
+	<key>UIApplicationSupportsIndirectInputEvents</key>
+	<true/>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>fetch</string>
+		<string>remote-notification</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
-	<string>LaunchScreen</string>
+	<string>Main.storyboard</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
+	<key>UIRequiresFullScreen</key>
+	<true/>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
@@ -53,45 +70,19 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>CADisableMinimumFrameDurationOnPhone</key>
+	<key>UISupportsDocumentBrowser</key>
 	<true/>
-	<key>UIApplicationSupportsIndirectInputEvents</key>
-	<true/>
-	<key>UIBackgroundModes</key>
-    <array>
-       <string>fetch</string>
-       <string>remote-notification</string>
-    </array>
-    <key>UISupportsDocumentBrowser</key>
-    <true/>
-
-    <key>NSPhotoLibraryUsageDescription</key>
-    <string>Explain why your app uses photo library</string>
-    <key>UISupportedInterfaceOrientations</key>
-    <array>
-       <string>UIInterfaceOrientationPortrait</string>
-       <string>UIInterfaceOrientationLandscapeLeft</string>
-       <string>UIInterfaceOrientationLandscapeRight</string>
-    </array>
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<false/>
 
 
-<key>UISupportedInterfaceOrientations</key>
-<array>
-   <string>UIInterfaceOrientationPortrait</string>
-   <string>UIInterfaceOrientationLandscapeLeft</string>
-   <string>UIInterfaceOrientationLandscapeRight</string>
-</array>
-<key>LSSupportsOpeningDocumentsInPlace</key>
-<true/>
-<key>UIFileSharingEnabled</key>
-<true/>
 
-	<key>NSCameraUsageDescription</key>
-	<string>Used to demonstrate image picker plugin</string>
-	<key>NSMicrophoneUsageDescription</key>
-	<string>Used to capture audio for image picker plugin</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Used to demonstrate image picker plugin</string>
+        <key>NSLocationUsageDescription</key>
+        <string>The application needs to be approved for access permission to the site to know the place of registration of attendance or departure to confirm whether the user is present in the specified place or not.</string>
+        <key>NSLocationAlwaysUsageDescription</key>
+        <string>The application needs to be approved for access permission to the site to know the place of registration of attendance or departure to confirm whether the user is present in the specified place or not?</string>
+	
+
 
 </dict>
 </plist>

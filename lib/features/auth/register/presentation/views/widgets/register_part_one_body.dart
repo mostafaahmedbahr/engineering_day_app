@@ -43,6 +43,7 @@ class _RegisterPartOneBodyState extends State<RegisterPartOneBody> {
                 validator: (String? value) =>
                     MyValidators.passwordValidator(value),
                 hintText: LocaleKeys.password.tr(),
+                obscureText: true,
               ),
               const CustomSizedBox(
                 height: 16,

@@ -8,18 +8,24 @@ import 'package:engineering_day_app/core/utils/app_styles/app_styles.dart';
 import 'package:engineering_day_app/core/utils/date_time/date_time_utill.dart';
 import 'package:engineering_day_app/core/utils/download_helper/download_helper.dart';
 import 'package:engineering_day_app/core/utils/new_toast/new_toast_2.dart';
-import 'package:engineering_day_app/features/tickets/data/models/ticket_model.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:qr_flutter_new/qr_flutter.dart';
 import 'package:screenshot/screenshot.dart';
 
 // ignore: must_be_immutable
 class TicketDetails extends StatelessWidget {
-  final EventsQr eventsQr;
+  // final EventsQr eventsQr;
+  String? title;
+  String? date;
+  String? time;
+  String? qrImage;
+  bool? showQr;
 
-  TicketDetails({super.key, required this.eventsQr});
+  TicketDetails(
+      {super.key, this.title, this.date, this.time, this.qrImage, this.showQr});
 
   ScreenshotController screenshotController = ScreenshotController();
 
@@ -53,7 +59,7 @@ class TicketDetails extends StatelessWidget {
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 15),
                       child: Text(
-                        "تذكرة حضور ${eventsQr.event?.title ?? ''}",
+                        "تذكرة حضور ${title ?? ''}",
                         style: AppStyles.textStyle16DarkMainColorW800
                             .copyWith(color: AppColors.whiteColor),
                         textAlign: TextAlign.center,
@@ -64,8 +70,7 @@ class TicketDetails extends StatelessWidget {
                 SizedBox(
                   height: 20,
                 ),
-                Text(
-                    "${dateTimeFormatToDay(eventsQr.event!.startTime!)} ${startTime(eventsQr.time)}",
+                Text("${dateTimeFormatToDay(date)} ${startTime(time)}",
                     style: AppStyles.textStyle14WhiteW800),
                 SizedBox(
                   height: 5,
@@ -92,35 +97,46 @@ class TicketDetails extends StatelessWidget {
                 Center(
                   child: Screenshot(
                     controller: screenshotController,
-                    child: Image.network(
-                      eventsQr.image!,
-                      height: 130,
-                      width: 130,
-                      fit: BoxFit.fill,
-                      loadingBuilder: (ctx, child, loadingProgress) {
-                        if (loadingProgress == null) {
-                          return child;
-                        }
-
-                        return Center(
-                          child: CustomLoading(),
-                        );
-                      },
-                      errorBuilder: (BuildContext context, Object exception,
-                          StackTrace? stackTrace) {
-                        return Container(
-                          height: 100,
-                          child: Center(
-                            child: Text(
-                              'لا يمكن تحميل ال Qr',
-                              style: AppStyles.textStyle16WhiteW400.copyWith(
-                                  fontWeight: FontWeight.w700,
-                                  color: AppColors.redColor),
+                    child: (showQr == true)
+                        ? QrImageView(
+                            foregroundColor: AppColors.lightMainColor,
+                            data: qrImage ?? "",
+                            version: QrVersions.auto,
+                            size: 130,
+                            eyeStyle: const QrEyeStyle(
+                              eyeShape: QrEyeShape.square,
                             ),
+                          )
+                        : Image.network(
+                            qrImage ?? "",
+                            height: 130,
+                            width: 130,
+                            fit: BoxFit.fill,
+                            loadingBuilder: (ctx, child, loadingProgress) {
+                              if (loadingProgress == null) {
+                                return child;
+                              }
+
+                              return Center(
+                                child: CustomLoading(),
+                              );
+                            },
+                            errorBuilder: (BuildContext context,
+                                Object exception, StackTrace? stackTrace) {
+                              return Container(
+                                height: 100,
+                                child: Center(
+                                  child: Text(
+                                    'لا يمكن تحميل ال Qr',
+                                    style: AppStyles.textStyle16WhiteW400
+                                        .copyWith(
+                                            fontWeight: FontWeight.w700,
+                                            color: AppColors.redColor),
+                                  ),
+                                ),
+                              );
+                            },
                           ),
-                        );
-                      },
-                    ),
                   ),
                 ),
                 SizedBox(
@@ -131,7 +147,7 @@ class TicketDetails extends StatelessWidget {
                     final status = await Permission.storage.request();
 
                     if (status.isGranted) {
-                      await download2(Dio(), eventsQr.image ?? '',
+                      await download2(Dio(), qrImage ?? '',
                               '${(await getDownloadPath())}')
                           .then((value) {
                         NewToast.showNewSuccessToast(

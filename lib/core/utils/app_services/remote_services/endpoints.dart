@@ -20,6 +20,7 @@ class EndPoints {
 
 
   static const getAuthUser = "auth/users/me/";
+  static const changePassword = "auth/users/set_password/";
 
 
 

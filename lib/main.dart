@@ -67,7 +67,8 @@ class MyApp extends StatelessWidget {
           create: (_) => CertificatedProvider(getIt.get<CertificatedRepo>()),
         ),
         ChangeNotifierProvider(
-          create: (_) => CertificatedProvider(getIt.get<CertificatedRepoImpl>()),
+          create: (_) =>
+              CertificatedProvider(getIt.get<CertificatedRepoImpl>()),
         ),
         ChangeNotifierProvider(
           create: (_) => HomeProvider(getIt.get<HomeRepoImpl>()),

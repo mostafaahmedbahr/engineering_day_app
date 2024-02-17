@@ -35,10 +35,15 @@ class RecruitmentCVProvider with ChangeNotifier {
       allowedExtensions: ["pdf"],
       type: FileType.custom,
     );
-    filePdf =
-        XFile(result?.files.single.path ?? "", name: result?.files.single.name);
-    debugPrint("---------- upload is done ------------");
-    notifyListeners();
+
+    if(result!=null){
+      filePdf =
+          XFile(result.files.single.path ?? "", name: result.files.single.name);
+      debugPrint("---------- upload is done ------------");
+      notifyListeners();
+
+    }
+
   }
 
   Future<void> getRecruitmentCV(
@@ -55,7 +60,7 @@ class RecruitmentCVProvider with ChangeNotifier {
       notifyListeners();
       NewToast.showNewErrorToast(msg: failure.errMessage, context: context);
     }, (data) {
-      showAddCv=false;
+      showAddCv = false;
 
       recruitmentCv = data;
       _isLoading = false;
@@ -90,8 +95,8 @@ class RecruitmentCVProvider with ChangeNotifier {
       }, (data) {
         Navigator.pop(context);
         _isLoading = false;
-        filePdf=null;
-        pdfLink=null;
+        filePdf = null;
+        pdfLink = null;
         getRecruitmentCV(context: context);
         NewToast.showNewSuccessToast(msg: "تم التحديث بنجاح", context: context);
         notifyListeners();
@@ -102,7 +107,17 @@ class RecruitmentCVProvider with ChangeNotifier {
   Future<void> addRecruitmentCv(
       {required BuildContext context, bool listen = true}) async {
     // _isLoading = true;
-    if (formKey.currentState?.validate() ?? false) {
+    if ((filePdf == null||(filePdf?.path?.isEmpty??true)) &&
+        (((recruitmentCv?.cv == null &&
+                    recruitmentCv?.linkedin == null &&
+                    recruitmentCv?.cvLink == null) ||
+                ((recruitmentCv?.cv?.isEmpty ?? true) &&
+                    (recruitmentCv?.linkedin?.isEmpty ?? true) &&
+                    (recruitmentCv?.cvLink?.isEmpty ?? true))) ==
+            true)) {
+      NewToast.showNewErrorToast(
+          msg: "يجب اضافة السيره الذاتيه", context: context);
+    } else if (formKey.currentState?.validate() ?? false) {
       showLoaderDialog(context);
       if (listen == true) {
         notifyListeners();

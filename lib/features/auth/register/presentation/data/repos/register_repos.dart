@@ -14,7 +14,7 @@ abstract class RegisterRepo {
     required String userNameCert,
     required String national,
     required String phone,
-    required XFile file,
+    required XFile ?file,
     required Map<String, dynamic> header,
     required BuildContext context,
   });

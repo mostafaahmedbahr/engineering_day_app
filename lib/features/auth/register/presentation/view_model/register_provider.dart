@@ -77,7 +77,7 @@ class RegisterProvider with ChangeNotifier {
   }) async {
     notifyListeners();
     if (formKey.currentState?.validate() ?? false) {
-      if (pickedImage == null) {
+      if (false) {
         NewToast.showNewErrorToast(
             msg: "الصوره الشخصيه مطلوبه", context: context);
       } else {
@@ -90,7 +90,7 @@ class RegisterProvider with ChangeNotifier {
             userNameCert: userNameCertCtl.text,
             national: nationalCrl.text,
             phone: phoneCtrl.text,
-            file: pickedImage!,
+            file: pickedImage,
             header: {},
             context: context);
         return result.fold((failure) {

@@ -24,15 +24,15 @@ class RegisterRepoImpl extends BaseRepositoryImpl implements RegisterRepo {
       required String userNameCert,
       required String national,
       required String phone,
-      required XFile file,
+      required XFile ?file,
       required Map<String, dynamic> header,
       required BuildContext context}) {
     {
       return request(() async {
-        String fileName = file.path.split('/').last;
+        String ?fileName = file?.path.split('/').last;
         FormData formData = FormData.fromMap({
           "profile_image":
-              await MultipartFile.fromFile(file.path, filename: fileName),
+          fileName==null?null:    await MultipartFile.fromFile(file?.path??'', filename: fileName),
           "email": email,
           "password": password,
           "username": userName,
