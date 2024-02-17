@@ -6,6 +6,7 @@ import 'package:engineering_day_app/core/utils/app_colors/app_colors.dart';
 import 'package:engineering_day_app/core/utils/app_images/app_images.dart';
 import 'package:engineering_day_app/core/utils/app_styles/app_styles.dart';
 import 'package:engineering_day_app/core/utils/date_time/date_time_utill.dart';
+import 'package:engineering_day_app/core/utils/nodate/nodatea_widget.dart';
 import 'package:engineering_day_app/features/tickets/data/models/ticket_model.dart';
 import 'package:engineering_day_app/features/tickets/dialogs/ticket_details.dart';
 import 'package:engineering_day_app/features/tickets/presentation/view_model/ticket_provider.dart';
@@ -45,7 +46,13 @@ class _TicketViewState extends State<TicketView> {
           ]),
           body: ConditionBuilderWidget(
             isLoading: provider.isLoading,
-            child: ListView.separated(
+            child:
+
+            (provider.ticket.eventsQr?.isEmpty??true)?
+
+
+            EmptyWidget()
+                :    ListView.separated(
               padding: const EdgeInsets.all(10),
               itemCount: provider.ticket.eventsQr?.length ?? 0,
               itemBuilder: (ctx, index) {

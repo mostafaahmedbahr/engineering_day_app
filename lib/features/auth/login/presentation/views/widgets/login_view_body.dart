@@ -19,116 +19,114 @@ class LoginViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Consumer<LoginProvider>(builder: (context, loginProvider, child){
-      return  Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          children: [
-            CustomTextFormField(
-              controller:loginProvider.emailCon,
-              keyboardType: TextInputType.emailAddress,
-              validator: (String? value) {
-                MyValidators.emailValidator(value);
-                return null;
-              },
-              hintText: LocaleKeys.email.tr(),
-            ),
-            const CustomSizedBox(
-              height: 24,
-            ),
-            CustomTextFormField(
-              controller:loginProvider.passwordCon,
-              keyboardType: TextInputType.visiblePassword,
-              validator: (String? value) {
-                MyValidators.passwordValidator(value);
-                return null;
-              },
-              icon: IconButton(
-                color: AppColors.greyColor,
-                icon:
-                // loginCubit.isVisible
-                //     ? const Icon(Icons.visibility_off):
-                const Icon(Icons.visibility),
-                onPressed: () {
-                  // loginCubit.changeSuffixIcon();
+    return Consumer<LoginProvider>(builder: (context, loginProvider, child) {
+      return Form(
+        key: loginProvider.formKey,
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            children: [
+              CustomTextFormField(
+                controller: loginProvider.emailCon,
+                keyboardType: TextInputType.emailAddress,
+                validator: (String? value) {
+             return     MyValidators.emailValidator(value);
+                 },
+                hintText: LocaleKeys.email.tr(),
+              ),
+              const CustomSizedBox(
+                height: 24,
+              ),
+              CustomTextFormField(
+                controller: loginProvider.passwordCon,
+                keyboardType: TextInputType.visiblePassword,
+                validator: (String? value) {
+             return     MyValidators.displayNameValidator(value);
+                 },
+                icon: IconButton(
+                  color: AppColors.greyColor,
+                  icon:
+                      // loginCubit.isVisible
+                      //     ? const Icon(Icons.visibility_off):
+                      const Icon(Icons.visibility),
+                  onPressed: () {
+                    // loginCubit.changeSuffixIcon();
+                  },
+                ),
+                hintText: LocaleKeys.password.tr(),
+              ),
+              const CustomSizedBox(
+                height: 8,
+              ),
+              Align(
+                alignment: Alignment.topLeft,
+                child: Text(
+                  LocaleKeys.forgetPassword.tr(),
+                  style: AppStyles.textStyle12BlackW400,
+                ),
+              ),
+              const CustomSizedBox(
+                height: 24,
+              ),
+              ConditionalBuilder(
+                condition: loginProvider.isLoading != true,
+                fallback: (context) {
+                  return CustomLoading();
+                },
+                builder: (context) {
+                  return CustomButton(
+                    onTap: () {
+                      // loginProvider.emailCon.text =    "admin@gmail.com";
+                      // loginProvider.passwordCon.text = "admin";
+                      loginProvider.login(
+                        context: context,
+                        email: loginProvider.emailCon.text,
+                        password: loginProvider.passwordCon.text,
+                      );
+                      // AppNav.customNavigator(
+                      //   context: context,
+                      //   screen: const LayoutView(),
+                      //   finish: true,
+                      // );
+                    },
+                    height: 52,
+                    transparent: true,
+                    borderRadius: 32,
+                    btnTxt: LocaleKeys.signIn.tr(),
+                  );
                 },
               ),
-              hintText:  LocaleKeys.password.tr(),
-            ),
-            const CustomSizedBox(
-              height: 8,
-            ),
-            Align(
-              alignment: Alignment.topLeft,
-              child: Text(
-                LocaleKeys.forgetPassword.tr(),
-                style: AppStyles.textStyle12BlackW400,
+              const CustomSizedBox(
+                height: 24,
               ),
-            ),
-            const CustomSizedBox(
-              height: 24,
-            ),
-            ConditionalBuilder(
-              condition: loginProvider.isLoading!=true,
-              fallback: (context){
-                return   CustomLoading();
-              },
-              builder: (context){
-                return  CustomButton(
-                  onTap: () {
-                    loginProvider.emailCon.text =    "admin@gmail.com";
-                    loginProvider.passwordCon.text = "admin";
-                    loginProvider.login(
-                      context: context,
-                      email:   loginProvider.emailCon.text,
-                      password: loginProvider.passwordCon.text,
-                    );
-                    // AppNav.customNavigator(
-                    //   context: context,
-                    //   screen: const LayoutView(),
-                    //   finish: true,
-                    // );
-                  },
-                  height: 52,
-                  transparent: true,
-                  borderRadius: 32,
-                  btnTxt:  LocaleKeys.signIn.tr(),
-                );
-              },
-               
-            ),
-            const CustomSizedBox(
-              height: 24,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text( LocaleKeys.haveAccount.tr(),
-                    style: AppStyles.textStyle12BlackW400),
-                const CustomSizedBox(
-                  width: 5,
-                ),
-                InkWell(
-                  onTap: () {
-                    AppNav.customNavigator(
-                      context: context,
-                      screen: const RegisterView(),
-                      finish: false,
-                    );
-                  },
-                  child: Text(
-                    LocaleKeys.registerForTheForum.tr(),
-                    style: AppStyles.textStyle16DarkMainColorW800
-                        .copyWith(fontSize: 14),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(LocaleKeys.haveAccount.tr(),
+                      style: AppStyles.textStyle12BlackW400),
+                  const CustomSizedBox(
+                    width: 5,
                   ),
-                )
-              ],
-            ),
-          ],
+                  InkWell(
+                    onTap: () {
+                      AppNav.customNavigator(
+                        context: context,
+                        screen: const RegisterView(),
+                        finish: false,
+                      );
+                    },
+                    child: Text(
+                      LocaleKeys.registerForTheForum.tr(),
+                      style: AppStyles.textStyle16DarkMainColorW800
+                          .copyWith(fontSize: 14),
+                    ),
+                  )
+                ],
+              ),
+            ],
+          ),
         ),
       );
-    }
-
-    );
+    });
   }
 }

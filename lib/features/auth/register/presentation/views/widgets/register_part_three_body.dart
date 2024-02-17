@@ -62,13 +62,14 @@ class _RegisterPartThreeBodyState extends State<RegisterPartThreeBody> {
                 Expanded(
                   child: CustomButton(
                     onTap: () {
-                      AppNav.customNavigator(
-                        context: context,
-                        screen: const SuccessAuthView(
-                          home: LayoutView(),
-                        ),
-                        finish: true,
-                      );
+                      provider.register3(context: context);
+                      // AppNav.customNavigator(
+                      //   context: context,
+                      //   screen: const SuccessAuthView(
+                      //     home: LayoutView(),
+                      //   ),
+                      //   finish: true,
+                      // );
                     },
                     height: 52,
                     transparent: true,
@@ -128,7 +129,7 @@ class GraduateList extends StatelessWidget {
         CustomTextFormField(
           controller: provider.universityCtr,
           keyboardType: TextInputType.emailAddress,
-          validator: (value) => MyValidators.emailValidator(value),
+          validator: (value) => MyValidators.displayNameValidator(value),
           hintText: "الجامعة",
         ),
         const CustomSizedBox(
@@ -137,7 +138,7 @@ class GraduateList extends StatelessWidget {
         CustomTextFormField(
           controller: provider.collegeCtr,
           keyboardType: TextInputType.text,
-          validator: (String? value) => MyValidators.passwordValidator(value),
+          validator: (value) => MyValidators.displayNameValidator(value),
           hintText: "الكلية",
         ),
         const CustomSizedBox(
@@ -146,7 +147,7 @@ class GraduateList extends StatelessWidget {
         CustomTextFormField(
           controller: provider.sectionCtr,
           keyboardType: TextInputType.text,
-          validator: (String? value) => MyValidators.passwordValidator(value),
+          validator: (value) => MyValidators.displayNameValidator(value),
           hintText: "القسم",
         ),
         const CustomSizedBox(
@@ -179,7 +180,7 @@ class StudentList extends StatelessWidget {
         CustomTextFormField(
           controller: provider.universityCtr,
           keyboardType: TextInputType.emailAddress,
-          validator: (value) => MyValidators.emailValidator(value),
+          validator: (value) => MyValidators.displayNameValidator(value),
           hintText: "الجامعة",
         ),
         const CustomSizedBox(
@@ -188,7 +189,7 @@ class StudentList extends StatelessWidget {
         CustomTextFormField(
           controller: provider.collegeCtr,
           keyboardType: TextInputType.text,
-          validator: (String? value) => MyValidators.passwordValidator(value),
+          validator: (value) => MyValidators.displayNameValidator(value),
           hintText: "الكلية",
         ),
         const CustomSizedBox(
@@ -197,7 +198,7 @@ class StudentList extends StatelessWidget {
         CustomTextFormField(
           controller: provider.sectionCtr,
           keyboardType: TextInputType.text,
-          validator: (String? value) => MyValidators.passwordValidator(value),
+          validator: (value) => MyValidators.displayNameValidator(value),
           hintText: "القسم",
         ),
         const CustomSizedBox(

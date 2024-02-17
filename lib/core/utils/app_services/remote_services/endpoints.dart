@@ -15,6 +15,7 @@ class EndPoints {
 
   static const getRecruitmentCvUrl = "recruitment/cv/";
   static const updateRecruitmentCvUrl = "recruitment/cv/update/";
+  static const addRecruitmentCvUrl = "recruitment/cv/create/";
 
 
 

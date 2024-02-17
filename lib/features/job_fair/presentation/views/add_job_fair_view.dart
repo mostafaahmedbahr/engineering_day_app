@@ -27,10 +27,11 @@ class _AddJobFairViewState extends State<AddJobFairView> {
           TextEditingController(text: prov.recruitmentCv?.linkedin ?? '');
       prov.cvLinkCon =
           TextEditingController(text: prov.recruitmentCv?.cvLink ?? '');
-      prov.pdfLink =
-          (prov.recruitmentCv?.cv?.isEmpty ?? true) ? null : prov.recruitmentCv?.cv;
+      prov.pdfLink = (prov.recruitmentCv?.cv?.isEmpty ?? true)
+          ? null
+          : prov.recruitmentCv?.cv;
 
-   print("prov.pdfLinkprov.pdfLink ${prov.recruitmentCv?.cv}");
+      print("prov.pdfLinkprov.pdfLink ${prov.recruitmentCv?.cv}");
     });
 
     super.initState();

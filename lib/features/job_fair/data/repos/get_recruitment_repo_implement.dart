@@ -49,4 +49,26 @@ class GetRecruitmentCvRepoImpl extends BaseRepositoryImpl
       return right(result);
     });
   }
+  @override
+  Future<Either<Failure, void>> addRecruitmentCv(
+      {required BuildContext context,
+      required String linkedInLink,
+      required String cvLink,
+      required XFile? pdfFile}) async {
+    FormData formData = FormData.fromMap({
+      "profile_image": pdfFile?.path == null
+          ? ''
+          : await MultipartFile.fromFile(pdfFile?.path ?? '',
+              filename: pdfFile?.name ?? ''),
+      "linkedin": linkedInLink,
+      "cv_link": cvLink,
+    });
+
+    return request(() async {
+      var response = await apiService!
+          .postData(endPoint: EndPoints.addRecruitmentCvUrl, data: formData);
+      var result = GetRecruitmentCvModel.fromJson(response.data);
+      return right(result);
+    });
+  }
 }

@@ -1,11 +1,14 @@
 import 'package:engineering_day_app/core/shared_widgets/loading_dialog.dart';
 import 'package:engineering_day_app/core/utils/app_methods/app_methods.dart';
+import 'package:engineering_day_app/core/utils/app_nav/app_nav.dart';
 import 'package:engineering_day_app/core/utils/new_toast/new_toast_2.dart';
 import 'package:engineering_day_app/features/auth/register/presentation/data/enum/user_type_enum.dart';
 import 'package:engineering_day_app/features/auth/register/presentation/data/models/register1.dart';
 import 'package:engineering_day_app/features/auth/register/presentation/data/models/user_type_model.dart';
 import 'package:engineering_day_app/features/auth/register/presentation/data/repos/register_repos.dart';
 import 'package:engineering_day_app/features/auth/register/presentation/views/widgets/register2.dart';
+import 'package:engineering_day_app/features/auth/success_auth/presentation/views/success_auth_view.dart';
+import 'package:engineering_day_app/features/layout/presentation/views/layout_view.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
@@ -42,7 +45,7 @@ class RegisterProvider with ChangeNotifier {
 
   TextEditingController emailCtl = TextEditingController();
   TextEditingController passwordCtl = TextEditingController();
-  TextEditingController userNameCtl = TextEditingController();
+  TextEditingController userNameCtl = TextEditingController(); 
   TextEditingController userNameCertCtl = TextEditingController();
   TextEditingController nationalCrl = TextEditingController();
   TextEditingController phoneCtrl = TextEditingController();
@@ -147,33 +150,33 @@ class RegisterProvider with ChangeNotifier {
     required BuildContext context,
   }) async {
     notifyListeners();
-    if (userType == null) {
+    if (false) {
       NewToast.showNewErrorToast(msg: "يرجي اختيار الفئة", context: context);
     } else {
       Map<String, dynamic> dataToSend = {};
 
       if (userType?.value == UserTypeEnum.graduated.name) {
         dataToSend = {
-          "university": "University of Example",
-          "college": "College of Engineering",
-          "department": "Computer Science",
-          "graduate_year": "2023"
+          "university": universityCtr.text,
+          "college": collegeCtr.text,
+          "department": sectionCtr.text,
+          "graduate_year": selectYear
         };
       }
 
       if (userType?.value == UserTypeEnum.student.name) {
         dataToSend = {
-          "university": "University of Example",
-          "college": "College of Science",
-          "department": "Biology",
+          "university": universityCtr.text,
+          "college": collegeCtr.text,
+          "department": sectionCtr.text,
           "level": "3"
         };
       }
       if (userType?.value == UserTypeEnum.visitor.name) {
-        dataToSend = {"visit_purpose": "Tour the campus"};
+        dataToSend = {"visit_purpose": visitReason};
       }
       if (userType?.value == UserTypeEnum.universityEmployees.name) {
-        dataToSend = {"visit_purpose": "Attend a meeting", "type": "Employee"};
+        dataToSend = {"visit_purpose": visitReason, "type": whoYou};
       }
 
       showLoaderDialog(context);
@@ -186,10 +189,12 @@ class RegisterProvider with ChangeNotifier {
         NewToast.showNewErrorToast(msg: failure.errMessage, context: context);
       }, (data) {
         Navigator.pop(context);
-        changePage(currentPage = 2);
-        pageController.nextPage(
-          duration: const Duration(milliseconds: 500),
-          curve: Curves.ease,
+        AppNav.customNavigator(
+          context: context,
+          screen: const SuccessAuthView(
+            home: LayoutView(),
+          ),
+          finish: true,
         );
         notifyListeners();
       });

@@ -38,27 +38,35 @@ class LoginProvider with ChangeNotifier {
   }
 
   LoginRepo? loginRepo;
+  final formKey = GlobalKey<FormState>();
 
   Future<void> login(
       {required String email,
       required String password,
       required BuildContext context}) async {
-    _isLoading = true;
-    notifyListeners();
-    var result = await loginRepo!
-        .login(email: email, password: password, context: context);
-    return result.fold((failure) {
-      _isLoading = false;
-      notifyListeners();
-      NewToast.showNewErrorToast(msg: failure.errMessage, context: context);
-    }, (data) {
-      AppNav.customNavigator(
-          context: context, screen: const LayoutView(), finish: true);
 
-      setCurrentUser(data.toJson());
-      _isLoading = false;
+    if((formKey.currentState?.validate()??false)){
+      _isLoading = true;
       notifyListeners();
-    });
+      var result = await loginRepo!
+          .login(email: email, password: password, context: context);
+      return result.fold((failure) {
+        _isLoading = false;
+        notifyListeners();
+        NewToast.showNewErrorToast(msg: failure.errMessage, context: context);
+      }, (data) {
+        AppNav.customNavigator(
+            context: context, screen: const LayoutView(), finish: true);
+
+        setCurrentUser(data.toJson());
+        _isLoading = false;
+        notifyListeners();
+      });
+
+      _isLoading = true;
+
+    }
+
   }
 }
 

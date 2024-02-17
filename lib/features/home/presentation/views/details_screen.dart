@@ -11,7 +11,6 @@ import 'package:engineering_day_app/core/utils/date_time/date_time_utill.dart';
 import 'package:engineering_day_app/features/home/data/models/get_events_details_model.dart';
 import 'package:engineering_day_app/features/home/presentation/view_model/home_provider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 
 class DetailsScreen extends StatefulWidget {
@@ -154,20 +153,31 @@ class _DetailsScreenState extends State<DetailsScreen> {
                                   mainAxisAlignment: MainAxisAlignment
                                       .spaceEvenly,
                                   children: [
+                                    // Container(
+                                    //   decoration: BoxDecoration(
+                                    //       borderRadius: BorderRadius.circular(
+                                    //           100),
+                                    //       color: AppColors.mainColor2),
+                                    //   child: Padding(
+                                    //     padding: const EdgeInsets.all(8.0),
+                                    //     child: SvgPicture.asset(
+                                    //       widget.image,
+                                    //       width: 68,
+                                    //       height: 68,
+                                    //       fit: BoxFit.cover,
+                                    //     ),
+                                    //   ),
+                                    // ),
+
                                     Container(
+                                      padding: const EdgeInsets.all(12),
+                                      height: 70,
+                                      width: 70,
                                       decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(
-                                              100),
-                                          color: AppColors.mainColor2),
-                                      child: Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child: SvgPicture.asset(
-                                          widget.image,
-                                          width: 68,
-                                          height: 68,
-                                          fit: BoxFit.cover,
-                                        ),
+                                        color: AppColors.mainColor,
+                                        borderRadius: BorderRadius.circular(50),
                                       ),
+                                      child: Image.asset(widget.image),
                                     ),
                                     Text(
                                       widget.title,
@@ -276,7 +286,49 @@ class _DetailsScreenState extends State<DetailsScreen> {
                                 DateDetails? details =
                                 homeProvider.getSelectItemList?[index];
                                 return InkWell(
-                                  onTap: () {},
+                                  onTap: () {
+                                    showDialog(
+                                        context: context,
+                                        builder: (ctx) {
+                                          return Dialog(
+                                            backgroundColor:
+                                            AppColors.lightBackGround,
+                                            child: Column(
+                                              crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                              mainAxisSize: MainAxisSize.min,
+                                              children: [
+                                                IconButton(
+                                                    onPressed: () {
+                                                      Navigator.pop(context);
+                                                    },
+                                                    icon: Icon(
+                                                      Icons.close,
+                                                      color: AppColors.redColor,
+                                                    )),
+                                                Container(
+                                                  height: 250,
+                                                  child: Padding(
+                                                    padding:
+                                                    const EdgeInsets.all(8.0),
+                                                    child: Text(
+                                                      details.description ?? '',
+                                                      style: AppStyles
+                                                          .textStyle16DarkMainColorW800
+                                                          .copyWith()
+                                                          .copyWith(
+                                                          fontSize: 12,
+                                                          color: AppColors
+                                                              .blackColor),
+                                                      maxLines: 2,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          );
+                                        });
+                                  },
                                   child: Stack(
                                     children: [
                                       Image.asset(
@@ -302,7 +354,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                                                     Text(
                                                       '${dateTimeFormatZTime(
                                                           details!
-                                                              .startTime!)} ${dateTimeFormatZTime(
+                                                              .startTime!)} \n ${dateTimeFormatZTime(
                                                           details.endTime!)}',
                                                       style: AppStyles
                                                           .textStyle16DarkMainColorW800
@@ -311,23 +363,6 @@ class _DetailsScreenState extends State<DetailsScreen> {
                                                           color: AppColors
                                                               .whiteColor),
                                                     ),
-                                                    Padding(
-                                                      padding:
-                                                      const EdgeInsets.all(8.0),
-                                                      child: Text(
-                                                        details.instructor ??
-                                                            '',
-                                                        style: AppStyles
-                                                            .textStyle16DarkMainColorW800
-                                                            .copyWith(
-                                                            fontSize: 14,
-                                                            color: AppColors
-                                                                .whiteColor),
-                                                        maxLines: 2,
-                                                        textAlign: TextAlign
-                                                            .center,
-                                                      ),
-                                                    )
                                                   ],
                                                 ),
                                               ),
@@ -357,6 +392,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                                                           .textStyle16DarkMainColorW800,
                                                       textAlign: TextAlign
                                                           .start,
+                                                      maxLines: 2,
                                                     ),
                                                     SizedBox(
                                                       height: 5,
@@ -375,7 +411,10 @@ class _DetailsScreenState extends State<DetailsScreen> {
                                                                   .textStyle16DarkMainColorW800
                                                                   .copyWith()
                                                                   .copyWith(
-                                                                  fontSize: 14),
+                                                                  fontSize: 14,
+                                                                  fontWeight:
+                                                                  FontWeight
+                                                                      .normal),
                                                             ),
                                                             Icon(
                                                               Icons
@@ -385,31 +424,56 @@ class _DetailsScreenState extends State<DetailsScreen> {
                                                             ),
                                                           ],
                                                         ),
+
+
+                                                        (widget.type ==
+                                                            "sustainability" ||
+                                                            widget.type == "contests")
+                                                            ? SizedBox()
+                                                            :
                                                         CustomButton(
+                                                          margin:
+                                                          EdgeInsets.symmetric(
+                                                              horizontal: 10),
                                                           width: 100,
+                                                          borderRadius: 8,
+                                                          backgroundColor:
+                                                          AppColors.mainColor2,
                                                           btnTxt: "تسجيل",
                                                           onTap: () {
-                                                            print("details.id.toString()details.id.toString()details.id.toString() ${details.id.toString()}");
+                                                            print(
+                                                                "details.id.toString()details.id.toString()details.id.toString() ${details
+                                                                    .id
+                                                                    .toString()}");
                                                             homeProvider
                                                                 .joinEvent(
-                                                                id: details.id.toString()
-                                                                 ,
+                                                                id: details.id
+                                                                    .toString(),
                                                                 context: context);
                                                           },
-                                                        )
+                                                        ),
                                                       ],
                                                     ),
                                                     SizedBox(
                                                       height: 5,
                                                     ),
-                                                    Text(
-                                                      details.description ?? '',
-                                                      style: AppStyles
-                                                          .textStyle16DarkMainColorW800
-                                                          .copyWith()
-                                                          .copyWith(
-                                                          fontSize: 12),
-                                                      maxLines: 2,
+                                                    Row(
+                                                      mainAxisAlignment:
+                                                      MainAxisAlignment.start,
+                                                      children: [
+                                                        Text(
+                                                          details.instructor ??
+                                                              '',
+                                                          style: AppStyles
+                                                              .textStyle16DarkMainColorW800
+                                                              .copyWith(
+                                                            fontSize: 14,
+                                                          ),
+                                                          maxLines: 2,
+                                                          textAlign:
+                                                          TextAlign.center,
+                                                        )
+                                                      ],
                                                     ),
                                                     SizedBox(
                                                       height: 20,

@@ -90,6 +90,37 @@ class RecruitmentCVProvider with ChangeNotifier {
       }, (data) {
         Navigator.pop(context);
         _isLoading = false;
+        filePdf=null;
+        pdfLink=null;
+        getRecruitmentCV(context: context);
+        NewToast.showNewSuccessToast(msg: "تم التحديث بنجاح", context: context);
+        notifyListeners();
+      });
+    }
+  }
+
+  Future<void> addRecruitmentCv(
+      {required BuildContext context, bool listen = true}) async {
+    // _isLoading = true;
+    if (formKey.currentState?.validate() ?? false) {
+      showLoaderDialog(context);
+      if (listen == true) {
+        notifyListeners();
+      }
+      var result = await recruitmentCVRepo!.addRecruitmentCv(
+        context: context,
+        linkedInLink: linkedInCon.text,
+        cvLink: cvLinkCon.text,
+        pdfFile: filePdf,
+      );
+      return result.fold((failure) {
+        Navigator.pop(context);
+        _isLoading = false;
+        notifyListeners();
+        NewToast.showNewErrorToast(msg: failure.errMessage, context: context);
+      }, (data) {
+        Navigator.pop(context);
+        _isLoading = false;
 
         getRecruitmentCV(context: context);
         NewToast.showNewSuccessToast(msg: "تم التحديث بنجاح", context: context);

@@ -15,23 +15,23 @@ class HomeItemsList extends StatelessWidget {
     List<HomeItemModel> homeItemsList = [
       HomeItemModel(
           title: LocaleKeys.edamethone.tr(),
-          image: AppImages.svgexport,
+          image: AppImages.image1,
           type: "sustainability"),
       HomeItemModel(
           title: LocaleKeys.quizzes.tr(),
-          image: AppImages.svgexport2,
+          image: AppImages.image2,
           type: "contests"),
       HomeItemModel(
           title: LocaleKeys.engineeringTalks.tr(),
-          image: AppImages.svgexport3,
+          image: AppImages.image3,
           type: "eng_talks"),
       HomeItemModel(
           title: LocaleKeys.dialogues.tr(),
-          image: AppImages.svgexport4,
+          image: AppImages.image4,
           type: "dialogues"),
       HomeItemModel(
           title: LocaleKeys.vershAction.tr(),
-          image: AppImages.svgexport5,
+          image: AppImages.image5,
           type: "workshops"),
     ];
     return DynamicHeightGridView(

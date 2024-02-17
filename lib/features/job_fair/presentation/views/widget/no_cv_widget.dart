@@ -8,6 +8,7 @@ import 'package:engineering_day_app/core/utils/app_validator/app_validator.dart'
 import 'package:engineering_day_app/features/job_fair/presentation/view_model/get_recruitment_cv_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+
 // ignore: must_be_immutable
 class NoCvWidget extends StatelessWidget {
   RecruitmentCVProvider provider;
@@ -34,7 +35,20 @@ class NoCvWidget extends StatelessWidget {
               CustomTextFormField(
                 controller: provider.linkedInCon,
                 keyboardType: TextInputType.text,
-                validator: (String? value) => MyValidators.urlValidator(value),
+                validator: (String? value) =>
+                    (((provider.recruitmentCv?.cv == null &&
+                                    provider.recruitmentCv?.linkedin == null &&
+                                    provider.recruitmentCv?.cvLink == null) ||
+                                ((provider.recruitmentCv?.cv?.isEmpty ??
+                                        true) &&
+                                    (provider
+                                            .recruitmentCv?.linkedin?.isEmpty ??
+                                        true) &&
+                                    (provider.recruitmentCv?.cvLink?.isEmpty ??
+                                        true))) ==
+                            true)
+                        ? MyValidators.urlValidator(value, isRequired: true)
+                        : MyValidators.urlValidator(value),
                 hintText: "رابط السيره الذاتيه",
               ),
               SizedBox(
@@ -43,7 +57,20 @@ class NoCvWidget extends StatelessWidget {
               CustomTextFormField(
                 controller: provider.cvLinkCon,
                 keyboardType: TextInputType.text,
-                validator: (String? value) => MyValidators.urlValidator(value),
+                validator: (String? value) =>
+                    (((provider.recruitmentCv?.cv == null &&
+                                    provider.recruitmentCv?.linkedin == null &&
+                                    provider.recruitmentCv?.cvLink == null) ||
+                                ((provider.recruitmentCv?.cv?.isEmpty ??
+                                        true) &&
+                                    (provider
+                                            .recruitmentCv?.linkedin?.isEmpty ??
+                                        true) &&
+                                    (provider.recruitmentCv?.cvLink?.isEmpty ??
+                                        true))) ==
+                            true)
+                        ? MyValidators.urlValidator(value, isRequired: true)
+                        : MyValidators.urlValidator(value),
                 hintText: "رابط Linked In",
               ),
               SizedBox(
@@ -92,20 +119,21 @@ class NoCvWidget extends StatelessWidget {
                         child: Container(
                           height: 171,
                           width: double.infinity,
-                          child: provider.pdfLink != null
+                          child: (provider.pdfLink != null ||
+                                  provider.filePdf?.path != null)
                               ? Center(
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       Text(
-                                        provider.pdfLink ?? '',
+                                        "${provider.pdfLink ?? ''}${provider.filePdf?.path ?? ''}",
                                         textAlign: TextAlign.center,
                                       ),
                                       const SizedBox(
                                         height: 10,
                                       ),
                                       const Text(
-                                        "تعديل السيرخ الذاتيه" ,
+                                        "تعديل السيره الذاتيه",
                                         style: AppStyles
                                             .textStyle16DarkMainColorW800,
                                       ),
@@ -189,7 +217,9 @@ class NoCvWidget extends StatelessWidget {
                           (provider.recruitmentCv?.cvLink?.isEmpty ?? true))) ==
                   false) {
                 provider.updateRecruitmentCv(context: context);
-              } else {}
+              } else {
+                provider.addRecruitmentCv(context: context);
+              }
             },
           ),
         ],

@@ -104,6 +104,8 @@ class ProfileProvider with ChangeNotifier {
     if (listen == true) {
       notifyListeners();
     }
+
+
     var result = await profileRepo!.editProfileData(
       context: context,
       username: username,
@@ -121,6 +123,8 @@ class ProfileProvider with ChangeNotifier {
       getProfileModel = data;
       _isLoading = false;
       notifyListeners();
+      Navigator.pop(context);
+      getProfile(context: context);
       NewToast.showNewSuccessToast(msg: "تم التعديل بنجاح", context: context);
       Navigator.pop(context);
     });

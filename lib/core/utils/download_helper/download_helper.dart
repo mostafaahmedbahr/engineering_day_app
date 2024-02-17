@@ -38,6 +38,7 @@ Future<File> savePdfInStorage(String fileName, File file) async {
 
 checkPermission() async {
   var status = await Permission.storage.request();
+  var status2 = await Permission.camera.request();
   if (status.isGranted) {
   } else if (status.isPermanentlyDenied) {
     openAppSettings();

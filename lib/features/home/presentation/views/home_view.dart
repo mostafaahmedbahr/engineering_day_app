@@ -21,66 +21,43 @@ class HomeView extends StatelessWidget {
       key: sKey,
       backgroundColor: AppColors.whiteColor,
       // drawer: const Drawer(),
-      body: Stack(
+      body: ListView(
         children: [
-          ListView(
+          Stack(
             children: [
-              Stack(
-                children: [
-                  SizedBox(
-                    width: double.infinity,
-                    height: 637,
-                    child: Image.asset(
-                      AppImages.background,
-                      fit: BoxFit.cover,
+              SizedBox(
+                width: double.infinity,
+                height: 637,
+                child: Image.asset(
+                  AppImages.background,
+                  fit: BoxFit.cover,
+                ),
+              ),
+              Positioned(
+                  top: 108,
+                  left: 0,
+                  child: Image.asset(AppImages.cutLogo2)),
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const HomeHeader(),
+                    Text(
+                      LocaleKeys.forumEvents.tr(),
+                      style: AppStyles.textStyle20mainColor2W700.copyWith(
+                        fontSize: 16,
+                      ),
                     ),
-                  ),
-                  Positioned(
-                      top: 108,
-                      left: 0,
-                      child: Image.asset(AppImages.cutLogo2)),
-                  Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const HomeHeader(),
-                        Text(
-                          LocaleKeys.forumEvents.tr(),
-                          style: AppStyles.textStyle20mainColor2W700.copyWith(
-                            fontSize: 16,
-                          ),
-                        ),
-                        const CustomSizedBox(
-                          height: 24,
-                        ),
-                        const HomeItemsList(),
-                      ],
+                    const CustomSizedBox(
+                      height: 24,
                     ),
-                  ),
-                ],
+                    const HomeItemsList(),
+                  ],
+                ),
               ),
             ],
           ),
-          Positioned(
-              top: 0,
-              bottom: 0,
-              left: 10,
-              child: RawMaterialButton(
-                onPressed: () {
-                  AppNavigator.navigateTo(context, const ChartsView());
-                },
-                elevation: 2.0,
-                fillColor: AppColors.mainColor3,
-                padding: const EdgeInsets.all(0.0),
-                shape: const CircleBorder(),
-                constraints:
-                    const BoxConstraints(minWidth: 60.0, minHeight: 25.0),
-                child: SvgPicture.asset(
-                  AppImages.chart,
-                  color: AppColors.whiteColor,
-                ),
-              ))
         ],
       ),
     );

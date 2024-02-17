@@ -47,12 +47,22 @@ class AppImages {
 
 
 
+  static const String image1 = "assets/images/pngs/estdam.PNG";
+  static const String image2 = "assets/images/pngs/comp.PNG";
+  static const String image3 = "assets/images/pngs/t7ds.PNG";
+  static const String image4 = "assets/images/pngs/glsat.PNG";
+  static const String image5 = "assets/images/pngs/workshop.PNG";
+
+
+
+
   static const String userProfile = "assets/images/pngs/profile.png";
   static const String checkCvUser = "assets/images/pngs/profile4.png";
   static const String nobacgroundCard = "assets/images/pngs/nobacgroundCard.png";
   static const String checkUser2 = "assets/images/pngs/profile3.png";
   static const String checkUser = "assets/images/pngs/profile2.png";
   static const String documents = "assets/images/pngs/documents.png";
+  static const String noData = "assets/images/pngs/nodata.png";
 
 
 

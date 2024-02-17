@@ -67,7 +67,7 @@ class BottomNavBarItems extends StatelessWidget {
                 activeIcon: SvgPicture.asset(
                   AppImages.user,
                   color: AppColors.mainColor,
-                ),
+                ), 
                 icon: SvgPicture.asset(AppImages.user),
                 label: LocaleKeys.me.tr()),
           ],

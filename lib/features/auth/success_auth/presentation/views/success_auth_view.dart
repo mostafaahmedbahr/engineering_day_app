@@ -81,8 +81,8 @@ class _SuccessAuthViewState extends State<SuccessAuthView> {
               const SizedBox(
                 height: 22,
               ),
-              const Text(
-                "نهارك سعيد, عبد الله ",
+                Text(
+                "نهارك سعيد, ${RegisterProvider.get(context, listen: false).userNameCtl.text}",
                 style: AppStyles.textStyle25WhiteW900,
               ),
               const SizedBox(

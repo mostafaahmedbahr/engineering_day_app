@@ -31,10 +31,16 @@ class MyValidators {
     return null;
   }
 
-  static String? urlValidator(String? value) {
+  static String? urlValidator(String? value,{bool isRequired=false}) {
     String pattern =
         r'(http|https)://[\w-]+(\.[\w-]+)+([\w.,@?^=%&amp;:/~+#-]*[\w@?^=%&amp;/~+#-])?';
     RegExp regExp = new RegExp(pattern);
+    if(isRequired){
+      if (value?.isEmpty ?? true) {
+        return "يرجي رابط صالح";
+      }
+    }
+
     if (value?.isEmpty ?? true) {
       return null;
     } else if (!regExp.hasMatch(value!)) {

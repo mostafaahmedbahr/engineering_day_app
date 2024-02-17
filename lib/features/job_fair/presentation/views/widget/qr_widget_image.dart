@@ -18,10 +18,10 @@ class QrWidgetImage extends StatelessWidget {
           style: AppStyles.textStyle16DarkMainColorW800,
           textAlign: TextAlign.center,
         ),
-        if (getRecruitmentCvModel?.cv != null ||
+        if (getRecruitmentCvModel?.cv != null &&
             (getRecruitmentCvModel?.cv?.isNotEmpty ?? true))
           QrImageView(
-            data: getRecruitmentCvModel!.cv!,
+            data: getRecruitmentCvModel!.cv ?? '',
             size: 150,
           ),
         if (getRecruitmentCvModel?.linkedin != null &&
