@@ -143,10 +143,10 @@ class _ProfileViewState extends State<ProfileView> {
                     ),
                     RecruitmentCVProvider.get(context).recruitmentCv?.cv == null
                         ? SizedBox()
-                        :      const Text(
-                      "مشاهدة السيرة الذاتية",
-                      style: AppStyles.textStyle16DarkMainColorW800,
-                    ),
+                        : const Text(
+                            "مشاهدة السيرة الذاتية",
+                            style: AppStyles.textStyle16DarkMainColorW800,
+                          ),
                     const CustomSizedBox(
                       height: 10,
                     ),
@@ -360,19 +360,22 @@ class _ProfileViewState extends State<ProfileView> {
                                                                     .textStyle14WhiteW800
                                                                     .copyWith(
                                                                         fontWeight:
-                                                                            FontWeight.w600,fontSize: 13)),
+                                                                            FontWeight
+                                                                                .w600,
+                                                                        fontSize:
+                                                                            13)),
                                                             WidgetSpan(
-                                                              child: Text('${
-
-
-                                                                  (profileProvider.getProfileModel.username?.length??0) <= 20
-                                                                      ? profileProvider.getProfileModel.username
-                                                                      : '${profileProvider.getProfileModel.username!.substring(0, 12)}...'
-                                                                  }',style: AppStyles
-                                                                  .textStyle14WhiteW800
-                                                                  .copyWith(
-                                                                  fontWeight:
-                                                                  FontWeight.w600,fontSize: 13),),
+                                                              child: Text(
+                                                                '${(profileProvider.getProfileModel.username?.length ?? 0) <= 20 ? profileProvider.getProfileModel.username : '${profileProvider.getProfileModel.username!.substring(0, 12)}...'}',
+                                                                style: AppStyles
+                                                                    .textStyle14WhiteW800
+                                                                    .copyWith(
+                                                                        fontWeight:
+                                                                            FontWeight
+                                                                                .w600,
+                                                                        fontSize:
+                                                                            13),
+                                                              ),
                                                             )
                                                           ],
                                                         ),
@@ -465,7 +468,6 @@ class _ProfileViewState extends State<ProfileView> {
                                                 width: 43,
                                                 fit: BoxFit.cover,
                                               )),
-
                                         ],
                                       ),
                                     ),
@@ -475,13 +477,16 @@ class _ProfileViewState extends State<ProfileView> {
                             ),
                           ),
 
-Spacer(),
+                    Spacer(),
 
-                CustomButton(btnTxt: "تسجيل الخروج",onTap:(){
-
-                  CacheHelper.sharedPreferences.clear();
-                  AppNavigator.navigateOfAll(context, LoginView());
-                },backgroundColor: AppColors.redColor,)
+                    CustomButton(
+                      btnTxt: "تسجيل الخروج",
+                      onTap: () {
+                        CacheHelper.sharedPreferences.clear();
+                        AppNavigator.navigateOfAll(context, LoginView());
+                      },
+                      backgroundColor: AppColors.redColor,
+                    )
                   ],
                 ),
               ),

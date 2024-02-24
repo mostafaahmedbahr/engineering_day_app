@@ -152,11 +152,11 @@ class _RegisterPartOneBodyState extends State<RegisterPartOneBody> {
               CustomTextFormField(
                 controller: provider.nationalCrl,
                 keyboardType: TextInputType.number,
-                validator: (String? value) =>
-                    MyValidators.displayNameValidator(value),
+                // validator: (String? value) =>
+                //     MyValidators.displayNameValidator(value),
                 hintText: "رقم الهوية",
               ),
-              const CustomSizedBox(
+               const CustomSizedBox(
                 height: 16,
               ),
               CustomTextFormField(

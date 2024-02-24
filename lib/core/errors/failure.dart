@@ -43,7 +43,7 @@ class ServerFailure extends Failure {
 
       if (response["detail"] != null) {
         return ServerFailure(response["detail"]);
-      } else if (response["detail"] != null) {
+      } else if (response["message"] != null) {
         return ServerFailure(response["message"]);
       } else {
         Map<String, dynamic> res = response;
