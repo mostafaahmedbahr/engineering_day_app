@@ -6,8 +6,8 @@ showCustomDialog(context, {required child,bool isDismissible=true}){
 showLoaderDialog(context){
   return   showCustomDialog(
       // isDismissible: false,
-      context, child:  Center(
-    child: Container(
+      context, child:  const Center(
+    child: SizedBox(
       height: 100,
       child: Stack(
         children: [

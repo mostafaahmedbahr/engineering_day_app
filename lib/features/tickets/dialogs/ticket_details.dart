@@ -32,7 +32,7 @@ class TicketDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-        contentPadding: EdgeInsets.symmetric(vertical: 0, horizontal: 0),
+        contentPadding: const EdgeInsets.symmetric(vertical: 0, horizontal: 0),
         backgroundColor: Colors.transparent,
         content: Stack(children: [
           Positioned(
@@ -54,25 +54,23 @@ class TicketDetails extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Container(
-                  child: Center(
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 15),
-                      child: Text(
-                        "تذكرة حضور ${title ?? ''}",
-                        style: AppStyles.textStyle16DarkMainColorW800
-                            .copyWith(color: AppColors.whiteColor),
-                        textAlign: TextAlign.center,
-                      ),
+                Center(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 15),
+                    child: Text(
+                      "تذكرة حضور ${title ?? ''}",
+                      style: AppStyles.textStyle16DarkMainColorW800
+                          .copyWith(color: AppColors.whiteColor),
+                      textAlign: TextAlign.center,
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 Text("${dateTimeFormatToDay(date)} ${startTime(time)}",
                     style: AppStyles.textStyle14WhiteW800),
-                SizedBox(
+                const SizedBox(
                   height: 5,
                 ),
               ],
@@ -86,12 +84,10 @@ class TicketDetails extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Container(
-                  child: Center(
-                    child: Text(
-                      "الرجاء ابراز التذكرة لأحد المنظمين",
-                      style: AppStyles.textStyle14WhiteW800,
-                    ),
+                const Center(
+                  child: Text(
+                    "الرجاء ابراز التذكرة لأحد المنظمين",
+                    style: AppStyles.textStyle14WhiteW800,
                   ),
                 ),
                 Center(
@@ -99,7 +95,8 @@ class TicketDetails extends StatelessWidget {
                     controller: screenshotController,
                     child: (showQr == true)
                         ? QrImageView(
-                            foregroundColor: AppColors.lightMainColor,
+                      // ignore: deprecated_member_use
+                      foregroundColor: AppColors.lightMainColor,
                             data: qrImage ?? "",
                             version: QrVersions.auto,
                             size: 130,
@@ -117,13 +114,13 @@ class TicketDetails extends StatelessWidget {
                                 return child;
                               }
 
-                              return Center(
+                              return const Center(
                                 child: CustomLoading(),
                               );
                             },
                             errorBuilder: (BuildContext context,
                                 Object exception, StackTrace? stackTrace) {
-                              return Container(
+                              return SizedBox(
                                 height: 100,
                                 child: Center(
                                   child: Text(
@@ -139,7 +136,7 @@ class TicketDetails extends StatelessWidget {
                           ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 InkWell(
@@ -153,7 +150,9 @@ class TicketDetails extends StatelessWidget {
                         NewToast.showNewSuccessToast(
                             msg: 'تم تحميل التذكره بنجاح', context: context);
                       }).catchError((e) {
-                        print("e");
+                        if (kDebugMode) {
+                          print("e");
+                        }
                       });
 
                       //   // String fileName =
@@ -180,6 +179,7 @@ class TicketDetails extends StatelessWidget {
                       //   });
                     } else {
                       await Permission.storage.request();
+                      // ignore: use_build_context_synchronously
                       NewToast.showNewErrorToast(
                           msg: "يرجي السماح للوصول الي مساحة التخزين",
                           context: context);
@@ -226,7 +226,9 @@ Future<String?> getDownloadPath() async {
       // }
     }
   } catch (err) {
-    print("Cannot get download folder path");
+    if (kDebugMode) {
+      print("Cannot get download folder path");
+    }
   }
 
   String fileName = DateTime.now().microsecondsSinceEpoch.toString();
@@ -235,6 +237,7 @@ Future<String?> getDownloadPath() async {
   return fullPath;
 }
 
+// ignore: non_constant_identifier_names
 Future<dynamic> ShowCapturedWidget(
     BuildContext context, Uint8List capturedImage) {
   return showDialog(
@@ -242,7 +245,7 @@ Future<dynamic> ShowCapturedWidget(
     context: context,
     builder: (context) => Scaffold(
       appBar: AppBar(
-        title: Text("Captured widget screenshot"),
+        title: const Text("Captured widget screenshot"),
       ),
       body: Center(child: Image.memory(capturedImage)),
     ),
@@ -262,8 +265,12 @@ Future download2(Dio dio, String url, String savePath) async {
             return (status ?? 0) < 500;
           }),
     );
-    print(response.realUri);
-    print(savePath);
+    if (kDebugMode) {
+      print(response.realUri);
+    }
+    if (kDebugMode) {
+      print(savePath);
+    }
     File file = File(savePath);
     var raf = file.openSync(mode: FileMode.write);
     savePdfInStorage(
@@ -272,12 +279,16 @@ Future download2(Dio dio, String url, String savePath) async {
     raf.writeFromSync(response.data);
     await raf.close();
   } catch (e) {
-    print(e);
+    if (kDebugMode) {
+      print(e);
+    }
   }
 }
 
 void showDownloadProgress(received, total) {
   if (total != -1) {
-    print((received / total * 100).toStringAsFixed(0) + "%");
+    if (kDebugMode) {
+      print((received / total * 100).toStringAsFixed(0) + "%");
+    }
   }
 }

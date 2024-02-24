@@ -33,16 +33,19 @@ class BottomNavBarItems extends StatelessWidget {
             BottomNavigationBarItem(
                 activeIcon: SvgPicture.asset(
                   AppImages.home,
+                  // ignore: deprecated_member_use
                   color: AppColors.mainColor,
                 ),
                 icon: SvgPicture.asset(
                   AppImages.home,
+                  // ignore: deprecated_member_use
                   color: AppColors.greyColor,
                 ),
                 label: LocaleKeys.home.tr()),
             BottomNavigationBarItem(
                 activeIcon: SvgPicture.asset(
                   AppImages.jobIcon,
+                  // ignore: deprecated_member_use
                   color: AppColors.mainColor,
                 ),
                 icon: SvgPicture.asset(
@@ -52,6 +55,7 @@ class BottomNavBarItems extends StatelessWidget {
             BottomNavigationBarItem(
                 activeIcon: SvgPicture.asset(
                   AppImages.ticket,
+                  // ignore: deprecated_member_use
                   color: AppColors.mainColor,
                 ),
                 icon: SvgPicture.asset(AppImages.ticket),
@@ -59,6 +63,7 @@ class BottomNavBarItems extends StatelessWidget {
             BottomNavigationBarItem(
                 activeIcon: SvgPicture.asset(
                   AppImages.award,
+                  // ignore: deprecated_member_use
                   color: AppColors.mainColor,
                 ),
                 icon: SvgPicture.asset(AppImages.award),
@@ -66,6 +71,7 @@ class BottomNavBarItems extends StatelessWidget {
             BottomNavigationBarItem(
                 activeIcon: SvgPicture.asset(
                   AppImages.user,
+                  // ignore: deprecated_member_use
                   color: AppColors.mainColor,
                 ),
                 icon: SvgPicture.asset(AppImages.user),

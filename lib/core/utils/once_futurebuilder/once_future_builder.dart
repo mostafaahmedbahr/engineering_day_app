@@ -1,13 +1,13 @@
 import 'package:flutter/widgets.dart';
 
-typedef Future<T> GetFuture<T>();
+typedef GetFuture<T> = Future<T> Function();
 
 class OnceFutureBuilder<T> extends StatefulWidget {
   final GetFuture<T> future;
   final AsyncWidgetBuilder<T> builder;
   final T? initialData;
 
-  OnceFutureBuilder({
+  const OnceFutureBuilder({super.key, 
     required this.future,
     required this.builder,
     this.initialData,

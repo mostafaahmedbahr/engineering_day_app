@@ -16,8 +16,8 @@ class RecruitmentCVProvider with ChangeNotifier {
       Provider.of<RecruitmentCVProvider>(context, listen: listen);
 
   bool _isLoading = false;
-  bool _isLoggedIn = false;
-  String _errorMessage = '';
+  final bool _isLoggedIn = false;
+  final String _errorMessage = '';
 
   bool get isLoading => _isLoading;
 
@@ -107,7 +107,7 @@ class RecruitmentCVProvider with ChangeNotifier {
   Future<void> addRecruitmentCv(
       {required BuildContext context, bool listen = true}) async {
     // _isLoading = true;
-    if ((filePdf == null||(filePdf?.path?.isEmpty??true)) &&
+    if ((filePdf == null||(filePdf?.path.isEmpty??true)) &&
         (((recruitmentCv?.cv == null &&
                     recruitmentCv?.linkedin == null &&
                     recruitmentCv?.cvLink == null) ||

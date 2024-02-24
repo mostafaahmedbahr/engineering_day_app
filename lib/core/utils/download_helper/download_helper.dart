@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:flutter/services.dart';
@@ -18,27 +19,26 @@ Future<String?> getDownloadPath() async {
       }
     }
   } catch (err) {
-    print("Cannot get download folder path");
+    log("Cannot get download folder path");
   }
   return directory?.path;
 }
 
 Future<File> savePdfInStorage(String fileName, File file) async {
   await checkPermission();
-  String _localPath = (await getDownloadPath() ?? "");
+  String localPath = (await getDownloadPath() ?? "");
   String filePath =
-      "${_localPath + "/" + fileName.trim() + "" + DateTime.now().microsecondsSinceEpoch.toString()}.png";
+      "${"$localPath/${fileName.trim()}${DateTime.now().microsecondsSinceEpoch}"}.png";
   File fileDef = File(filePath);
   await fileDef.create(recursive: true);
   Uint8List bytes = await file.readAsBytes();
   await fileDef.writeAsBytes(bytes);
-  print("${fileDef.writeAsBytes(bytes)} fileDef.writeAsBytes(bytes)fileDef.writeAsBytes(bytes)");
+  log("${fileDef.writeAsBytes(bytes)} fileDef.writeAsBytes(bytes)fileDef.writeAsBytes(bytes)");
   return fileDef.writeAsBytes(bytes);
 }
 
 checkPermission() async {
   var status = await Permission.storage.request();
-  var status2 = await Permission.camera.request();
   if (status.isGranted) {
   } else if (status.isPermanentlyDenied) {
     openAppSettings();

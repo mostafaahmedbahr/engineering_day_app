@@ -2,14 +2,11 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:engineering_day_app/core/shared_widgets/custom_sized_box.dart';
 import 'package:engineering_day_app/core/utils/app_colors/app_colors.dart';
 import 'package:engineering_day_app/core/utils/app_images/app_images.dart';
-import 'package:engineering_day_app/core/utils/app_navigatiion/navigator.dart';
 import 'package:engineering_day_app/core/utils/app_styles/app_styles.dart';
-import 'package:engineering_day_app/features/charts/presentation/views/charts_view.dart';
 import 'package:engineering_day_app/features/home/presentation/views/widgets/home_header.dart';
 import 'package:engineering_day_app/features/home/presentation/views/widgets/home_items_list.dart';
 import 'package:engineering_day_app/lang/locale_keys.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});

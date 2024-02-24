@@ -8,10 +8,9 @@ import 'dart:async';
 
 import 'package:engineering_day_app/core/shared_widgets/custom_loading.dart';
 import 'package:engineering_day_app/core/utils/download_helper/download_helper.dart';
-import 'package:engineering_day_app/core/utils/once_futurebuilder/OnceFutureBuilder.dart';
 import 'package:flutter/material.dart';
-import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:webview_flutter/webview_flutter.dart';
+// ignore: depend_on_referenced_packages
 import 'package:webview_flutter_wkwebview/webview_flutter_wkwebview.dart';
 
 import '../../../auth/login/presentation/view_model/login_provider.dart';
@@ -99,7 +98,7 @@ class _WebViewPageState extends State<WebViewPage> {
     return Scaffold(
       appBar: AppBar(title: const Text('Scan qr')),
       body: controllers == null
-          ? Center(
+          ? const Center(
               child: CustomLoading(),
             )
           : WebViewWidget(controller: controllers!),

@@ -16,7 +16,7 @@ ThemeData lightTheme = ThemeData(
       borderRadius: BorderRadius.circular(8.0),
     ),
     backgroundColor: AppColors.mainColor2,
-    titleTextStyle: TextStyle(
+    titleTextStyle: const TextStyle(
         fontWeight: FontWeight.w500,
         fontSize: 16,
         color: Color(0xffe2e2e2)),

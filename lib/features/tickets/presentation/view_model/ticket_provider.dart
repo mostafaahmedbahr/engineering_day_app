@@ -1,6 +1,7 @@
 import 'package:engineering_day_app/core/utils/new_toast/new_toast_2.dart';
 import 'package:engineering_day_app/features/tickets/data/models/ticket_model.dart';
 import 'package:engineering_day_app/features/tickets/data/repos/ticket_repos.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -34,7 +35,11 @@ class TicketProvider with ChangeNotifier {
       notifyListeners();
       NewToast.showNewErrorToast(msg: failure.errMessage, context: context);
     }, (data) {
-      print("data.toJson()data.toJson() ${data.toJson()}");
+      if (kDebugMode) {
+        if (kDebugMode) {
+          print("data.toJson()data.toJson() ${data.toJson()}");
+        }
+      }
       ticket = data;
       _isLoading = false;
       notifyListeners();

@@ -19,16 +19,16 @@ class CertificatesViewBodyItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Uri _url = Uri.parse(url);
-    Future<void> _launchUrl() async {
+    final Uri  url0 = Uri.parse(url);
+    Future<void> launchUrl0() async {
       if (!await launchUrl(
-        _url,
+          url0,
           webViewConfiguration: WebViewConfiguration(headers:
             {
             'Authorization': 'Bearer ${currentUser.value.access}'}
           )
       )) {
-        throw Exception('Could not launch $_url');
+        throw Exception('Could not launch $url0');
       }
     }
 
@@ -55,7 +55,7 @@ class CertificatesViewBodyItem extends StatelessWidget {
               ),
               InkWell(
                 onTap: () {
-                  _launchUrl();
+                  launchUrl0();
                 },
                 child: Container(
                   height: 40,

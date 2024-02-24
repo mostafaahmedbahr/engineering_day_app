@@ -5,7 +5,7 @@ import '../utils/app_colors/app_colors.dart';
 
 
 class CustomLoading extends StatelessWidget {
-    CustomLoading({Key? key , this.color}) : super(key: key);
+    const CustomLoading({Key? key , this.color}) : super(key: key);
  final  Color? color;
   @override
   Widget build(BuildContext context) {

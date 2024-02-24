@@ -46,6 +46,7 @@ class GetRecruitmentCvRepoImpl extends BaseRepositoryImpl
       var response = await apiService!
           .putData(endPoint: EndPoints.updateRecruitmentCvUrl, data: formData);
       var result = GetRecruitmentCvModel.fromJson(response.data);
+      // ignore: void_checks
       return right(result);
     });
   }
@@ -69,6 +70,7 @@ class GetRecruitmentCvRepoImpl extends BaseRepositoryImpl
       var response = await apiService!
           .postData(endPoint: EndPoints.addRecruitmentCvUrl, data: formData);
       var result = GetRecruitmentCvModel.fromJson(response.data);
+      // ignore: void_checks
       return right(result);
     });
   }

@@ -41,7 +41,6 @@ class RegisterRepoImpl extends BaseRepositoryImpl implements RegisterRepo {
           "national_id": national,
           "phone": phone,
         });
-        print("headerheader ${header}");
         var response = await apiService!.postData2(
             endPoint: EndPoints.register1, data: formData, headers: header);
         var result = Register1Model.fromJson(response.data);

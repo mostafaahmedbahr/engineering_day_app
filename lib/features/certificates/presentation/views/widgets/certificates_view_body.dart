@@ -32,7 +32,7 @@ class _CertificatesViewBodyState extends State<CertificatesViewBody> {
         condition: certificatedProvider.isLoading != true &&
             certificatedProvider.certificatedModel.userCetificates != null,
         fallback: (context) {
-          return CustomLoading();
+          return const CustomLoading();
         },
         builder: (context) {
           return (certificatedProvider
@@ -77,7 +77,7 @@ class _CertificatesViewBodyState extends State<CertificatesViewBody> {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
-                                Icon(Icons.warning,color: AppColors.yellowColor,size: 25,),
+                                const Icon(Icons.warning,color: AppColors.yellowColor,size: 25,),
                                 Text(
                                   "من الممكن طلب بيانات المرور \n عند الضغط علي تفاصيل الشهادة",
                                   style: AppStyles.textStyle12WhiteW500

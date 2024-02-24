@@ -70,17 +70,13 @@ class RegisterProvider with ChangeNotifier {
   }
 
   Register1Model register1model = Register1Model();
-  var uuid = Uuid();
+  var uuid = const Uuid();
 
   Future<void> register1({
     required BuildContext context,
   }) async {
     notifyListeners();
     if (formKey.currentState?.validate() ?? false) {
-      if (false) {
-        NewToast.showNewErrorToast(
-            msg: "الصوره الشخصيه مطلوبه", context: context);
-      } else {
         showLoaderDialog(context);
         var result = await registerRepo!.register1(
             email: emailCtl.text,
@@ -113,7 +109,6 @@ class RegisterProvider with ChangeNotifier {
 
           notifyListeners();
         });
-      }
     }
   }
 
@@ -150,9 +145,6 @@ class RegisterProvider with ChangeNotifier {
     required BuildContext context,
   }) async {
     notifyListeners();
-    if (false) {
-      NewToast.showNewErrorToast(msg: "يرجي اختيار الفئة", context: context);
-    } else {
       Map<String, dynamic> dataToSend = {};
 
       if (userType?.value == UserTypeEnum.graduated.name) {
@@ -198,7 +190,6 @@ class RegisterProvider with ChangeNotifier {
         );
         notifyListeners();
       });
-    }
   }
 
   List<String> graduateYears = [];

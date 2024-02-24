@@ -10,7 +10,6 @@ class ServerFailure extends Failure {
   ServerFailure(super.errMessage);
 
   factory ServerFailure.fromDioError(DioException dioException) {
-    print(dioException.type);
     switch (dioException.type) {
       case DioExceptionType.connectionTimeout:
         return ServerFailure("connectionTimeOut");
@@ -39,7 +38,6 @@ class ServerFailure extends Failure {
         statusCode == 401 ||
         statusCode == 403 ||
         statusCode == 405) {
-      print("responseresponse ${response}");
 
       if (response["detail"] != null) {
         return ServerFailure(response["detail"]);
@@ -57,7 +55,6 @@ class ServerFailure extends Failure {
     } else if (statusCode == 404) {
       return ServerFailure("requestNotFound");
     } else {
-      print("asasas ${statusCode}");
       return ServerFailure("Something went Error Try Again");
     }
   }

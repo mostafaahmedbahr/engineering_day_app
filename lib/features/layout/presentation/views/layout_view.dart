@@ -7,6 +7,7 @@ import 'package:engineering_day_app/features/job_fair/presentation/view_model/ge
 import 'package:engineering_day_app/features/layout/presentation/views/widgets/bottom_nav_bar_item.dart';
 import 'package:engineering_day_app/features/profile/presentation/view_model/profile_provider.dart';
 import 'package:engineering_day_app/features/tickets/presentation/view_model/ticket_provider.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
@@ -44,7 +45,9 @@ class _LayoutViewState extends State<LayoutView> {
           ? null
           : prov.recruitmentCv?.cv;
 
-      print("prov.pdfLinkprov.pdfLink ${prov.recruitmentCv?.cv}");
+      if (kDebugMode) {
+        print("prov.pdfLinkprov.pdfLink ${prov.recruitmentCv?.cv}");
+      }
     });
     super.initState();
   }
@@ -80,6 +83,7 @@ class _LayoutViewState extends State<LayoutView> {
                     child: SvgPicture.asset(
                       AppImages.chart,
 
+                      // ignore: deprecated_member_use
                       color: AppColors.whiteColor,
                     ),
                   ))

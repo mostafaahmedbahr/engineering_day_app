@@ -5,6 +5,7 @@ import 'package:engineering_day_app/core/utils/app_images/app_images.dart';
 import 'package:engineering_day_app/core/utils/app_styles/app_styles.dart';
 import 'package:engineering_day_app/features/auth/login/presentation/view_model/login_provider.dart';
 import 'package:engineering_day_app/features/auth/register/presentation/view_model/register_provider.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -67,7 +68,7 @@ class _SuccessAuthViewState extends State<SuccessAuthView> {
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Spacer(),
+              const Spacer(),
 
               Container(
                 height: 136,
@@ -80,6 +81,7 @@ class _SuccessAuthViewState extends State<SuccessAuthView> {
                   padding: const EdgeInsets.all(30),
                   child: SvgPicture.asset(
                     AppImages.user,
+                    // ignore: deprecated_member_use
                     color: AppColors.whiteColor,
                   ),
                 ),
@@ -101,13 +103,15 @@ class _SuccessAuthViewState extends State<SuccessAuthView> {
                 textAlign: TextAlign.center,
               ),
               // CloseButton(onPressed: (){},)
-              Spacer(),
+              const Spacer(),
               CustomButton(
                 width: MediaQuery.of(context).size.width / 2,
                 backgroundColor: AppColors.mainColor2,
                 btnTxt: "المتابعة",
                 onTap: () {
-                  print("asasas");
+                  if (kDebugMode) {
+                    print("asasa s");
+                  }
                   loginProvider.login(
                       email: registerProvider.emailCtl.text,
                       password: registerProvider.passwordCtl.text,
@@ -115,7 +119,7 @@ class _SuccessAuthViewState extends State<SuccessAuthView> {
                       isFromRegister: true);
                 },
               ),
-              Spacer(),
+              const Spacer(),
             ],
           ),
         ],

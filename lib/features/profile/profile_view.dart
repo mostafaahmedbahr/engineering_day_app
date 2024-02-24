@@ -12,6 +12,7 @@ import 'package:engineering_day_app/features/job_fair/presentation/dialog/job_fa
 import 'package:engineering_day_app/features/job_fair/presentation/view_model/get_recruitment_cv_provider.dart';
 import 'package:engineering_day_app/features/profile/pdf_preview.dart';
 import 'package:engineering_day_app/features/profile/presentation/view_model/profile_provider.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_cached_pdfview/flutter_cached_pdfview.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -142,7 +143,7 @@ class _ProfileViewState extends State<ProfileView> {
                       height: 10,
                     ),
                     RecruitmentCVProvider.get(context).recruitmentCv?.cv == null
-                        ? SizedBox()
+                        ? const SizedBox()
                         : const Text(
                             "مشاهدة السيرة الذاتية",
                             style: AppStyles.textStyle16DarkMainColorW800,
@@ -266,7 +267,7 @@ class _ProfileViewState extends State<ProfileView> {
                     // )
 
                     RecruitmentCVProvider.get(context).recruitmentCv?.cv == null
-                        ? SizedBox()
+                        ? const SizedBox()
                         : InkWell(
                             onTap: () async {
                               return AppNavigator.navigateTo(
@@ -277,13 +278,13 @@ class _ProfileViewState extends State<ProfileView> {
                                               .cv ??
                                           ''));
                             },
-                            child: Container(
+                            child: SizedBox(
                               height: 180,
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(20),
                                 child: Column(
                                   children: [
-                                    Container(
+                                    SizedBox(
                                       height: 100,
                                       child: Stack(
                                         children: [
@@ -293,11 +294,15 @@ class _ProfileViewState extends State<ProfileView> {
                                             autoSpacing: false,
                                             pageFling: false,
                                             onError: (error) {
-                                              print(error.toString());
+                                              if (kDebugMode) {
+                                                print(error.toString());
+                                              }
                                             },
                                             onPageError: (page, error) {
-                                              print(
+                                              if (kDebugMode) {
+                                                print(
                                                   '$page: ${error.toString()}');
+                                              }
                                             },
                                             // onPageChanged: (int page, int total) {
                                             //   print('page change: $page/$total');
@@ -311,165 +316,163 @@ class _ProfileViewState extends State<ProfileView> {
                                         ],
                                       ),
                                     ),
-                                    Container(
-                                      child: Stack(
-                                        children: [
-                                          Container(
-                                            height: 80,
-                                            decoration: BoxDecoration(
-                                              borderRadius: BorderRadius.only(
-                                                bottomLeft: Radius.circular(20),
-                                                bottomRight:
-                                                    Radius.circular(20),
-                                              ),
-                                              gradient: LinearGradient(
-                                                begin: Alignment.bottomRight,
-                                                end: Alignment.topLeft,
-                                                colors: [
-                                                  AppColors.mainColor,
-                                                  AppColors.mainColor,
-                                                  AppColors.mainColor,
-                                                  AppColors.mainColor
-                                                      .withOpacity(.6),
-                                                ],
-                                              ),
+                                    Stack(
+                                      children: [
+                                        Container(
+                                          height: 80,
+                                          decoration: BoxDecoration(
+                                            borderRadius: const BorderRadius.only(
+                                              bottomLeft: Radius.circular(20),
+                                              bottomRight:
+                                                  Radius.circular(20),
                                             ),
-                                            child: Padding(
-                                              padding:
-                                                  const EdgeInsets.all(16.0),
-                                              child: Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceBetween,
-                                                children: [
-                                                  Column(
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .spaceBetween,
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .start,
-                                                    children: [
-                                                      Text.rich(
-                                                        TextSpan(
-                                                          children: [
-                                                            TextSpan(
-                                                                text:
-                                                                    'السيرة الذاتية ل',
-                                                                style: AppStyles
-                                                                    .textStyle14WhiteW800
-                                                                    .copyWith(
-                                                                        fontWeight:
-                                                                            FontWeight
-                                                                                .w600,
-                                                                        fontSize:
-                                                                            13)),
-                                                            WidgetSpan(
-                                                              child: Text(
-                                                                '${(profileProvider.getProfileModel.username?.length ?? 0) <= 20 ? profileProvider.getProfileModel.username : '${profileProvider.getProfileModel.username!.substring(0, 12)}...'}',
-                                                                style: AppStyles
-                                                                    .textStyle14WhiteW800
-                                                                    .copyWith(
-                                                                        fontWeight:
-                                                                            FontWeight
-                                                                                .w600,
-                                                                        fontSize:
-                                                                            13),
-                                                              ),
-                                                            )
-                                                          ],
-                                                        ),
-                                                      ),
-                                                      Text.rich(
-                                                        TextSpan(
-                                                          children: [
-                                                            TextSpan(
-                                                              text: profileProvider
-                                                                  .getProfileModel
-                                                                  .email,
-                                                              style: AppStyles
-                                                                  .textStyle14WhiteW800,
-                                                            )
-                                                          ],
-                                                        ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                  Row(
-                                                    children: [
-                                                      InkWell(
-                                                        onTap: () {
-                                                          showDialog(
-                                                              context: context,
-                                                              builder: (ctx) {
-                                                                return JobCvQrDialog(
-                                                                  name: profileProvider
-                                                                          .getProfileModel
-                                                                          .username ??
-                                                                      '',
-                                                                  cvLink: RecruitmentCVProvider.get(
-                                                                              context)
-                                                                          .recruitmentCv
-                                                                          ?.cv ??
-                                                                      ''
-                                                                          '',
-                                                                );
-                                                              });
-                                                        },
-                                                        child: SvgPicture.asset(
-                                                          AppImages.qrIcon,
-                                                          height: 30,
-                                                        ),
-                                                      ),
-                                                      SizedBox(
-                                                        width: 10,
-                                                      ),
-                                                      CustomButton(
-                                                          onTap: () {
-                                                            // showDialog(
-                                                            //     context: context,
-                                                            //     builder: (c) {
-                                                            //       return JobFairDialog();
-                                                            //     });
-                                                            AppNavigator.navigateTo(
-                                                                context,
-                                                                PDFViewerCachedFromUrl(
-                                                                    url: RecruitmentCVProvider.get(context,
-                                                                                listen: false)
-                                                                            .recruitmentCv!
-                                                                            .cv ??
-                                                                        ''));
-                                                          },
-                                                          transparent: false,
-                                                          borderRadius: 10,
-                                                          btnTxt: "مشاهده ",
-                                                          width: 100),
-                                                    ],
-                                                  )
-                                                ],
-                                              ),
+                                            gradient: LinearGradient(
+                                              begin: Alignment.bottomRight,
+                                              end: Alignment.topLeft,
+                                              colors: [
+                                                AppColors.mainColor,
+                                                AppColors.mainColor,
+                                                AppColors.mainColor,
+                                                AppColors.mainColor
+                                                    .withOpacity(.6),
+                                              ],
                                             ),
                                           ),
-                                          Positioned(
-                                              left: 0,
-                                              top: 8,
-                                              child: Image.asset(
-                                                AppImages.cutLogo,
-                                                height: 66,
-                                                width: 43,
-                                                fit: BoxFit.cover,
-                                              )),
-                                          Positioned(
-                                              right: -2,
-                                              bottom: 0,
-                                              child: Image.asset(
-                                                AppImages.cutLogo,
-                                                height: 66,
-                                                width: 43,
-                                                fit: BoxFit.cover,
-                                              )),
-                                        ],
-                                      ),
+                                          child: Padding(
+                                            padding:
+                                                const EdgeInsets.all(16.0),
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                Column(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceBetween,
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment
+                                                          .start,
+                                                  children: [
+                                                    Text.rich(
+                                                      TextSpan(
+                                                        children: [
+                                                          TextSpan(
+                                                              text:
+                                                                  'السيرة الذاتية ل',
+                                                              style: AppStyles
+                                                                  .textStyle14WhiteW800
+                                                                  .copyWith(
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w600,
+                                                                      fontSize:
+                                                                          13)),
+                                                          WidgetSpan(
+                                                            child: Text(
+                                                              '${(profileProvider.getProfileModel.username?.length ?? 0) <= 20 ? profileProvider.getProfileModel.username : '${profileProvider.getProfileModel.username!.substring(0, 12)}...'}',
+                                                              style: AppStyles
+                                                                  .textStyle14WhiteW800
+                                                                  .copyWith(
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w600,
+                                                                      fontSize:
+                                                                          13),
+                                                            ),
+                                                          )
+                                                        ],
+                                                      ),
+                                                    ),
+                                                    Text.rich(
+                                                      TextSpan(
+                                                        children: [
+                                                          TextSpan(
+                                                            text: profileProvider
+                                                                .getProfileModel
+                                                                .email,
+                                                            style: AppStyles
+                                                                .textStyle14WhiteW800,
+                                                          )
+                                                        ],
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                                Row(
+                                                  children: [
+                                                    InkWell(
+                                                      onTap: () {
+                                                        showDialog(
+                                                            context: context,
+                                                            builder: (ctx) {
+                                                              return JobCvQrDialog(
+                                                                name: profileProvider
+                                                                        .getProfileModel
+                                                                        .username ??
+                                                                    '',
+                                                                cvLink: RecruitmentCVProvider.get(
+                                                                            context)
+                                                                        .recruitmentCv
+                                                                        ?.cv ??
+                                                                    ''
+                                                                        '',
+                                                              );
+                                                            });
+                                                      },
+                                                      child: SvgPicture.asset(
+                                                        AppImages.qrIcon,
+                                                        height: 30,
+                                                      ),
+                                                    ),
+                                                    const SizedBox(
+                                                      width: 10,
+                                                    ),
+                                                    CustomButton(
+                                                        onTap: () {
+                                                          // showDialog(
+                                                          //     context: context,
+                                                          //     builder: (c) {
+                                                          //       return JobFairDialog();
+                                                          //     });
+                                                          AppNavigator.navigateTo(
+                                                              context,
+                                                              PDFViewerCachedFromUrl(
+                                                                  url: RecruitmentCVProvider.get(context,
+                                                                              listen: false)
+                                                                          .recruitmentCv!
+                                                                          .cv ??
+                                                                      ''));
+                                                        },
+                                                        transparent: false,
+                                                        borderRadius: 10,
+                                                        btnTxt: "مشاهده ",
+                                                        width: 100),
+                                                  ],
+                                                )
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                        Positioned(
+                                            left: 0,
+                                            top: 8,
+                                            child: Image.asset(
+                                              AppImages.cutLogo,
+                                              height: 66,
+                                              width: 43,
+                                              fit: BoxFit.cover,
+                                            )),
+                                        Positioned(
+                                            right: -2,
+                                            bottom: 0,
+                                            child: Image.asset(
+                                              AppImages.cutLogo,
+                                              height: 66,
+                                              width: 43,
+                                              fit: BoxFit.cover,
+                                            )),
+                                      ],
                                     ),
                                   ],
                                 ),
@@ -477,13 +480,13 @@ class _ProfileViewState extends State<ProfileView> {
                             ),
                           ),
 
-                    Spacer(),
+                    const Spacer(),
 
                     CustomButton(
                       btnTxt: "تسجيل الخروج",
                       onTap: () {
                         CacheHelper.sharedPreferences.clear();
-                        AppNavigator.navigateOfAll(context, LoginView());
+                        AppNavigator.navigateOfAll(context, const LoginView());
                       },
                       backgroundColor: AppColors.redColor,
                     )

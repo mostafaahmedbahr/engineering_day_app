@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:engineering_day_app/core/errors/failure.dart';
@@ -19,7 +21,7 @@ class BaseRepositoryImpl implements BaseRepository {
         // print("eeee ${e.response}");
         return left(ServerFailure.fromDioError(e));
       } else {
-        print(e);
+        log(e.toString());
         return left(ServerFailure(e.toString()));
       }
     }

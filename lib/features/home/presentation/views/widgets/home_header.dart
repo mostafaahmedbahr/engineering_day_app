@@ -7,7 +7,6 @@ import 'package:engineering_day_app/features/home/presentation/views/web_view_pa
 import 'package:engineering_day_app/lang/locale_keys.dart';
 import 'package:flutter/material.dart';
 
-import 'drawer_icon.dart';
 import 'home_two_buttons.dart';
 import 'intro_video.dart';
 
@@ -29,7 +28,7 @@ class HomeHeader extends StatelessWidget {
             IconButton(
                 onPressed: () {
                   // https://kauengday.mftcevents.com/newsletter/qr_reader/self_attend/very_secret
-                  AppNavigator.navigateTo(context, WebViewPage());
+                  AppNavigator.navigateTo(context, const WebViewPage());
                 },
                 icon: const Icon(Icons.qr_code_scanner_outlined,color: AppColors.whiteColor,))
           ]),

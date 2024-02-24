@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dio/dio.dart';
 import 'package:engineering_day_app/features/auth/login/presentation/view_model/login_provider.dart';
 
@@ -26,9 +28,9 @@ class ApiService {
       queryParameters: query,
     );
 
-    print("response realUri  =======> : ${response.realUri}");
-    print("response data  =======>: ${response.data}");
-    print("response headers  =======> : ${response.headers}");
+    log("response realUri  =======> : ${response.realUri}");
+    log("response data  =======>: ${response.data}");
+    log("response headers  =======> : ${response.headers}");
     return response;
   }
 
@@ -50,9 +52,9 @@ class ApiService {
       data: data,
       queryParameters: query,
     );
-    print("response realUri  =======> : ${response.realUri}");
-    print("response data  =======>: ${response.data}");
-    print("response headers  =======> : ${response.headers}");
+    log("response realUri  =======> : ${response.realUri}");
+    log("response data  =======>: ${response.data}");
+    log("response headers  =======> : ${response.headers}");
     return response;
   }
 
@@ -87,9 +89,9 @@ class ApiService {
       '${EndPoints.baseUrl}$endPoint',
       data: data,
     );
-    print("response realUri  =======> : ${response.realUri}");
-    print("response data  =======>: ${response.data}");
-    print("response headers  =======> : ${response.headers}");
+    log("response realUri  =======> : ${response.realUri}");
+    log("response data  =======>: ${response.data}");
+    log("response headers  =======> : ${response.headers}");
     return response;
   }
 
@@ -109,9 +111,9 @@ class ApiService {
       data: data,
       queryParameters: query,
     );
-    print("response realUri  =======> : ${response.realUri}");
-    print("response data  =======>: ${response.data}");
-    print("response headers  =======> : ${response.headers}");
+    log("response realUri  =======> : ${response.realUri}");
+    log("response data  =======>: ${response.data}");
+    log("response headers  =======> : ${response.headers}");
     return response;
   }
 }

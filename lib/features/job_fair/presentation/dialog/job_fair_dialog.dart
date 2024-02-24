@@ -1,4 +1,4 @@
-import 'package:engineering_day_app/core/shared_widgets/CustomDivider.dart';
+import 'package:engineering_day_app/core/shared_widgets/custom_divider.dart';
 import 'package:engineering_day_app/core/utils/app_colors/app_colors.dart';
 import 'package:engineering_day_app/core/utils/app_images/app_images.dart';
 import 'package:engineering_day_app/core/utils/app_styles/app_styles.dart';
@@ -16,7 +16,7 @@ class JobCvQrDialog extends StatelessWidget {
   Widget build(BuildContext context) {
     return Dialog(
       child: Container(
-        padding: EdgeInsets.all(16),
+        padding: const EdgeInsets.all(16),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           mainAxisSize: MainAxisSize.min,
@@ -26,7 +26,7 @@ class JobCvQrDialog extends StatelessWidget {
               style: AppStyles.textStyle16DarkMainColorW800
                   .copyWith(color: AppColors.lightMainColor, fontSize: 18),
             ),
-            SizedBox(
+            const SizedBox(
               height: 16,
             ),
             Image.asset(
@@ -34,7 +34,7 @@ class JobCvQrDialog extends StatelessWidget {
               height: 66,
               fit: BoxFit.cover,
             ),
-            SizedBox(
+            const SizedBox(
               height: 16,
             ),
             Text(
@@ -42,7 +42,7 @@ class JobCvQrDialog extends StatelessWidget {
               style: AppStyles.textStyle16DarkMainColorW800
                   .copyWith(color: AppColors.whiteColor),
             ),
-            SizedBox(
+            const SizedBox(
               height: 16,
             ),
             Text(
@@ -51,17 +51,18 @@ class JobCvQrDialog extends StatelessWidget {
               style: AppStyles.textStyle14WhiteW800
                   .copyWith(color: AppColors.whiteColor),
             ),
-            SizedBox(
+            const SizedBox(
               height: 16,
             ),
-            CustomDivider(
+            const CustomDivider(
               color: Colors.white,
             ),
-            SizedBox(
+            const SizedBox(
               height: 16,
             ),
             Center(
               child: QrImageView(
+                // ignore: deprecated_member_use
                 foregroundColor: AppColors.lightMainColor,
                 data: cvLink,
                 version: QrVersions.auto,
@@ -71,7 +72,7 @@ class JobCvQrDialog extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 16,
             ),
           ],

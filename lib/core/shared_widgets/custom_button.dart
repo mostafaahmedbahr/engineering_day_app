@@ -50,7 +50,7 @@ class CustomButton extends StatelessWidget {
       ),
     );
 
-    return Container(
+    return SizedBox(
         height: height != null ? height! : 40,
         child: SizedBox(
             width: width ?? Dimensions.webScreenWidth,

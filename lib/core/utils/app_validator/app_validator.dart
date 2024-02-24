@@ -34,7 +34,7 @@ class MyValidators {
   static String? urlValidator(String? value,{bool isRequired=false}) {
     String pattern =
         r'(http|https)://[\w-]+(\.[\w-]+)+([\w.,@?^=%&amp;:/~+#-]*[\w@?^=%&amp;/~+#-])?';
-    RegExp regExp = new RegExp(pattern);
+    RegExp regExp = RegExp(pattern);
     if(isRequired){
       if (value?.isEmpty ?? true) {
         return 'يرجى ادخال رابط صحيح';

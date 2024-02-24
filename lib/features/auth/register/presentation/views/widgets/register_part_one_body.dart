@@ -7,12 +7,13 @@ import 'package:engineering_day_app/core/utils/app_styles/app_styles.dart';
 import 'package:engineering_day_app/core/utils/app_validator/app_validator.dart';
 import 'package:engineering_day_app/features/auth/register/presentation/view_model/register_provider.dart';
 import 'package:engineering_day_app/lang/locale_keys.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
 
 class RegisterPartOneBody extends StatefulWidget {
-  RegisterPartOneBody({super.key});
+  const RegisterPartOneBody({super.key});
 
   @override
   State<RegisterPartOneBody> createState() => _RegisterPartOneBodyState();
@@ -81,7 +82,9 @@ class _RegisterPartOneBodyState extends State<RegisterPartOneBody> {
                         onTap: () {
                           provider.isMan = true;
                           setState(() {});
-                          print("const $provider.isMan");
+                          if (kDebugMode) {
+                            print("const $provider.isMan");
+                          }
                         },
                         child: Container(
                           height: 44,

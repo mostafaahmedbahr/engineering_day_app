@@ -3,6 +3,7 @@ import 'package:engineering_day_app/core/utils/new_toast/new_toast_2.dart';
 import 'package:engineering_day_app/features/home/data/models/get_events_details_model.dart';
 import 'package:engineering_day_app/features/home/data/repos/home_repo.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:provider/provider.dart';
 
 class HomeProvider with ChangeNotifier {
@@ -19,8 +20,8 @@ class HomeProvider with ChangeNotifier {
   }
 
   bool _isLoading = false;
-  bool _isLoggedIn = false;
-  String _errorMessage = '';
+  final bool _isLoggedIn = false;
+  final String _errorMessage = '';
 
   bool get isLoading => _isLoading;
 
@@ -67,7 +68,9 @@ class HomeProvider with ChangeNotifier {
         ?.where((element) =>
             (element.startTime?.contains(selectedEventDay!) ?? false))
         .toList();
-    print(eventDetails);
+    if (kDebugMode) {
+      print(eventDetails);
+    }
     notifyListeners();
   }
 

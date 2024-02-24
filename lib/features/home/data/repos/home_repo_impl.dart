@@ -29,6 +29,7 @@ class HomeRepoImpl extends BaseRepositoryImpl implements HomeRepo {
   Future<Either<Failure, void>> joinEvent({required String id}) {
     return request(() async {
       await apiService!.postData(endPoint: "${EndPoints.joinEvent(id)}");
+      // ignore: void_checks
       return const Right(unit);
     });
   }

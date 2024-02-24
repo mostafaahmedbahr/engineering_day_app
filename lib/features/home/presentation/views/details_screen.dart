@@ -10,6 +10,7 @@ import 'package:engineering_day_app/core/utils/app_styles/app_styles.dart';
 import 'package:engineering_day_app/core/utils/date_time/date_time_utill.dart';
 import 'package:engineering_day_app/features/home/data/models/get_events_details_model.dart';
 import 'package:engineering_day_app/features/home/presentation/view_model/home_provider.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -42,11 +43,11 @@ class _DetailsScreenState extends State<DetailsScreen> {
     return Consumer<HomeProvider>(builder: (context, homeProvider, child) {
       return SafeArea(
           child: Scaffold(
-        appBar: CustomGlobalAppBar(title: "تفاصيل الفعالية", actions: []),
+        appBar: const CustomGlobalAppBar(title: "تفاصيل الفعالية", actions: []),
         body: ConditionalBuilder(
           condition: homeProvider.isLoading != true,
           fallback: (context) {
-            return CustomLoading();
+            return const CustomLoading();
           },
           builder: (context) {
             return SingleChildScrollView(
@@ -230,7 +231,9 @@ class _DetailsScreenState extends State<DetailsScreen> {
                                 onTap: () {
                                   homeProvider.selectedEventDay =
                                       homeProvider.eventsModel.dayList?[index];
-                                  print(homeProvider.selectedEventDay);
+                                  if (kDebugMode) {
+                                    print(homeProvider.selectedEventDay);
+                                  }
                                   homeProvider.getSelectedItem(
                                       homeProvider.selectedEventDay);
                                   // homeProvider.changeShowTicketsValue();
@@ -293,11 +296,11 @@ class _DetailsScreenState extends State<DetailsScreen> {
                                                 onPressed: () {
                                                   Navigator.pop(context);
                                                 },
-                                                icon: Icon(
+                                                icon: const Icon(
                                                   Icons.close,
                                                   color: AppColors.redColor,
                                                 )),
-                                            Container(
+                                            SizedBox(
                                               height: 250,
                                               child: Padding(
                                                 padding:
@@ -333,27 +336,25 @@ class _DetailsScreenState extends State<DetailsScreen> {
                                     children: [
                                       Expanded(
                                         flex: 3,
-                                        child: Container(
-                                          child: Center(
-                                            child: Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.center,
-                                              children: [
-                                                Text(
-                                                  '${dateTimeFormatZTime(details!.startTime!)} \n ${dateTimeFormatZTime(details.endTime!)}',
-                                                  style: AppStyles
-                                                      .textStyle16DarkMainColorW800
-                                                      .copyWith(
-                                                          fontSize: 12,
-                                                          color: AppColors
-                                                              .whiteColor),
-                                                ),
-                                              ],
-                                            ),
+                                        child: Center(
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.center,
+                                            children: [
+                                              Text(
+                                                '${dateTimeFormatZTime(details!.startTime!)} \n ${dateTimeFormatZTime(details.endTime!)}',
+                                                style: AppStyles
+                                                    .textStyle16DarkMainColorW800
+                                                    .copyWith(
+                                                        fontSize: 12,
+                                                        color: AppColors
+                                                            .whiteColor),
+                                              ),
+                                            ],
                                           ),
                                         ),
                                       ),
-                                      SizedBox(
+                                      const SizedBox(
                                         width: 10,
                                       ),
                                       Expanded(
@@ -378,7 +379,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                                                   textAlign: TextAlign.start,
                                                   maxLines: 2,
                                                 ),
-                                                SizedBox(
+                                                const SizedBox(
                                                   height: 5,
                                                 ),
                                                 Row(
@@ -399,7 +400,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                                                                       FontWeight
                                                                           .normal),
                                                         ),
-                                                        Icon(
+                                                        const Icon(
                                                           Icons
                                                               .location_on_sharp,
                                                           color: AppColors
@@ -411,9 +412,9 @@ class _DetailsScreenState extends State<DetailsScreen> {
                                                                 "sustainability" ||
                                                             widget.type ==
                                                                 "contests")
-                                                        ? SizedBox()
+                                                        ? const SizedBox()
                                                         : CustomButton(
-                                                            margin: EdgeInsets
+                                                            margin: const EdgeInsets
                                                                 .symmetric(
                                                                     horizontal:
                                                                         10),
@@ -424,8 +425,10 @@ class _DetailsScreenState extends State<DetailsScreen> {
                                                                     .mainColor2,
                                                             btnTxt: "تسجيل",
                                                             onTap: () {
-                                                              print(
+                                                              if (kDebugMode) {
+                                                                print(
                                                                   "details.id.toString()details.id.toString()details.id.toString() ${details.id.toString()}");
+                                                              }
                                                               homeProvider.joinEvent(
                                                                   id: details.id
                                                                       .toString(),
@@ -435,7 +438,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                                                           ),
                                                   ],
                                                 ),
-                                                SizedBox(
+                                                const SizedBox(
                                                   height: 5,
                                                 ),
                                                 Row(
@@ -455,7 +458,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                                                     )
                                                   ],
                                                 ),
-                                                SizedBox(
+                                                const SizedBox(
                                                   height: 20,
                                                 )
                                               ],

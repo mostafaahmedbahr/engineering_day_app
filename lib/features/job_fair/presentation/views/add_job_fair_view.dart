@@ -5,6 +5,7 @@ import 'package:engineering_day_app/core/utils/app_styles/app_styles.dart';
 import 'package:engineering_day_app/features/job_fair/presentation/view_model/get_recruitment_cv_provider.dart';
 import 'package:engineering_day_app/features/job_fair/presentation/views/widget/no_cv_widget.dart';
 import 'package:engineering_day_app/features/job_fair/presentation/views/widget/qr_widget_image.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -31,7 +32,6 @@ class _AddJobFairViewState extends State<AddJobFairView> {
           ? null
           : prov.recruitmentCv?.cv;
 
-      print("prov.pdfLinkprov.pdfLink ${prov.recruitmentCv?.cv}");
     });
 
     super.initState();
@@ -42,12 +42,14 @@ class _AddJobFairViewState extends State<AddJobFairView> {
     return Consumer<RecruitmentCVProvider>(
       builder: (BuildContext context, RecruitmentCVProvider provider,
           Widget? child) {
-        print(((provider.recruitmentCv?.cv != null &&
+        if (kDebugMode) {
+          print(((provider.recruitmentCv?.cv != null &&
                 provider.recruitmentCv?.linkedin != null &&
                 provider.recruitmentCv?.cvLink != null) &&
             ((provider.recruitmentCv?.cv?.isNotEmpty ?? true) &&
                 (provider.recruitmentCv?.linkedin?.isNotEmpty ?? true) &&
                 (provider.recruitmentCv?.cvLink?.isNotEmpty ?? true))));
+        }
         return Scaffold(
             appBar: CustomGlobalAppBar(
               title: 'معرض التوظيف',
@@ -59,7 +61,7 @@ class _AddJobFairViewState extends State<AddJobFairView> {
                             (provider.recruitmentCv?.linkedin?.isEmpty ??
                                 true) &&
                             (provider.recruitmentCv?.cvLink?.isEmpty ?? true)))
-                    ? SizedBox()
+                    ? const SizedBox()
                     : InkWell(
                         onTap: () {
                           setState(() {
@@ -67,7 +69,7 @@ class _AddJobFairViewState extends State<AddJobFairView> {
                           });
                         },
                         child: Padding(
-                          padding: EdgeInsets.all(10),
+                          padding: const EdgeInsets.all(10),
                           child: Text(
                             (provider.showAddCv == true)
                                 ? ""

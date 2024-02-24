@@ -24,6 +24,8 @@
 //   }
 // }
 
+import 'package:flutter/foundation.dart';
+
 class GetEventsDetailsHomeModel {
   final List<DateDetails>? dateDetails;
   List<String>? dayList;
@@ -38,7 +40,9 @@ class GetEventsDetailsHomeModel {
     List<String> newDayList = [];
     json.forEach((key, value) {
       newDayList.add(key);
-      print("keyeyeyeyeyye ${key}");
+      if (kDebugMode) {
+        print("keyeyeyeyeyye $key");
+      }
       List newValue = value;
       for (var i in newValue) {
         newDateDetails.add(DateDetails.fromJson(i));
@@ -118,28 +122,28 @@ class DateDetails {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
 //     if (this.time != null) {
 // // data['time'] = this.time!.map((v) => v.toJson()).toList();
 //     }
-    data['is_active'] = this.isActive;
-    data['is_deleted'] = this.isDeleted;
-    data['created_at'] = this.createdAt;
-    data['updated_at'] = this.updatedAt;
-    data['type'] = this.type;
-    data['title'] = this.title;
-    data['description'] = this.description;
-    data['image'] = this.image;
-    data['place'] = this.place;
-    data['instructor'] = this.instructor;
-    data['attendance_type'] = this.attendanceType;
-    data['start_time'] = this.startTime;
-    data['end_time'] = this.endTime;
-    data['is_consultation'] = this.isConsultation;
-    data['capacity'] = this.capacity;
-    data['verification_code'] = this.verificationCode;
-    data['user'] = this.user;
+    data['is_active'] = isActive;
+    data['is_deleted'] = isDeleted;
+    data['created_at'] = createdAt;
+    data['updated_at'] = updatedAt;
+    data['type'] = type;
+    data['title'] = title;
+    data['description'] = description;
+    data['image'] = image;
+    data['place'] = place;
+    data['instructor'] = instructor;
+    data['attendance_type'] = attendanceType;
+    data['start_time'] = startTime;
+    data['end_time'] = endTime;
+    data['is_consultation'] = isConsultation;
+    data['capacity'] = capacity;
+    data['verification_code'] = verificationCode;
+    data['user'] = user;
     return data;
   }
 }

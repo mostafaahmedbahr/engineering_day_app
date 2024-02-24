@@ -1,5 +1,5 @@
 import 'package:dartz/dartz.dart';
-import 'package:engineering_day_app/features/auth/login/data/models/TokenModel.dart';
+import 'package:engineering_day_app/features/auth/login/data/models/token_model.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../core/errors/failure.dart';

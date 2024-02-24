@@ -1,5 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
-import 'package:engineering_day_app/core/shared_widgets/CustomDivider.dart';
+import 'package:engineering_day_app/core/shared_widgets/custom_divider.dart';
 import 'package:engineering_day_app/core/shared_widgets/condition_builder.dart';
 import 'package:engineering_day_app/core/shared_widgets/custom_global_app_bar.dart';
 import 'package:engineering_day_app/core/utils/app_colors/app_colors.dart';
@@ -10,11 +10,12 @@ import 'package:engineering_day_app/features/tickets/data/models/ticket_model.da
 import 'package:engineering_day_app/features/tickets/dialogs/ticket_details.dart';
 import 'package:engineering_day_app/features/tickets/presentation/view_model/ticket_provider.dart';
 import 'package:engineering_day_app/lang/locale_keys.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class TicketView extends StatefulWidget {
-  TicketView({super.key});
+  const TicketView({super.key});
 
   @override
   State<TicketView> createState() => _TicketViewState();
@@ -32,7 +33,9 @@ class _TicketViewState extends State<TicketView> {
   Widget build(BuildContext context) {
     return Consumer<TicketProvider>(
       builder: (context, provider, child) {
-        print(provider.ticket.eventTicket?.eventAttendQr);
+        if (kDebugMode) {
+          print(provider.ticket.eventTicket?.eventAttendQr);
+        }
         return Scaffold(
           appBar: CustomGlobalAppBar(title: "التذاكر", actions: [
             Padding(
@@ -60,14 +63,14 @@ class _TicketViewState extends State<TicketView> {
                       qrImage: provider.ticket.eventTicket?.eventAttendQr,
                     ),
                   ),
-                  Container(
+                  const SizedBox(
                       height: 50,
                       child: CustomDivider()),
                   (provider.ticket.eventsQr?.isEmpty ?? true)
-                      ? SizedBox()
+                      ? const SizedBox()
                       : ListView.separated(
                     shrinkWrap: true,
-                    physics: NeverScrollableScrollPhysics(),
+                    physics: const NeverScrollableScrollPhysics(),
                           padding: const EdgeInsets.all(10),
                           itemCount: provider.ticket.eventsQr?.length ?? 0,
                           itemBuilder: (ctx, index) {
@@ -82,7 +85,7 @@ class _TicketViewState extends State<TicketView> {
                             );
                           },
                           separatorBuilder: (BuildContext context, int index) {
-                            return Container(
+                            return const SizedBox(
                                 height: 70,
                                 child: CustomDivider(
                                   color: AppColors.mainColor,
@@ -99,6 +102,7 @@ class _TicketViewState extends State<TicketView> {
   }
 }
 
+// ignore: must_be_immutable
 class CustomTicketWidget extends StatelessWidget {
   bool? isAttend;
   bool? showQr;
@@ -136,7 +140,7 @@ class CustomTicketWidget extends StatelessWidget {
             ),
             Expanded(
               flex: 7,
-              child: Container(
+              child: SizedBox(
                 height: 145,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -198,7 +202,7 @@ class CustomTicketWidget extends StatelessWidget {
                               ),
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 15,
                           ),
                         ],
@@ -208,7 +212,7 @@ class CustomTicketWidget extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               width: 15,
             )
           ],
@@ -219,7 +223,7 @@ class CustomTicketWidget extends StatelessWidget {
           bottom: 0,
           child: RotatedBox(
               quarterTurns: 1,
-              child: Container(
+              child: SizedBox(
                 width: 140,
                 height: 15,
                 child: Center(

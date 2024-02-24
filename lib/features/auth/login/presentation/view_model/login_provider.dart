@@ -5,8 +5,9 @@ import 'package:engineering_day_app/core/utils/app_nav/app_nav.dart';
 import 'package:engineering_day_app/core/utils/app_services/local_services/cache_helper.dart';
 import 'package:engineering_day_app/core/utils/app_services/local_services/cache_keys.dart';
 import 'package:engineering_day_app/core/utils/new_toast/new_toast_2.dart';
-import 'package:engineering_day_app/features/auth/login/data/models/TokenModel.dart';
+import 'package:engineering_day_app/features/auth/login/data/models/token_model.dart';
 import 'package:engineering_day_app/features/layout/presentation/views/layout_view.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -30,7 +31,7 @@ class LoginProvider with ChangeNotifier {
 
   bool _isLoading = false;
   bool _isLoggedIn = false;
-  String _errorMessage = '';
+  final String _errorMessage = '';
 
   bool get isLoading => _isLoading;
 
@@ -79,8 +80,6 @@ class LoginProvider with ChangeNotifier {
         _isLoading = false;
         notifyListeners();
       });
-
-      _isLoading = true;
     }
   }
 }
@@ -95,7 +94,7 @@ void setCurrentUser(Map<String, dynamic> jsonData) async {
       value: json.encode(jsonData),
     );
   } catch (e) {
-    throw new Exception(e);
+    throw Exception(e);
   }
 }
 
@@ -107,7 +106,9 @@ Future<TokenModel> getCurrentUser() async {
   } else {
     currentUser.value.auth = false;
   }
-  print(currentUser.value.toJson().toString());
+  if (kDebugMode) {
+    print(currentUser.value.toJson().toString());
+  }
   // currentUser.notifyListeners();
   return currentUser.value;
 }
